@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BsWhatsapp, BsTelephone } from 'react-icons/bs';
 
 import { Background } from '../background/Background';
 import { Button } from '../button/Button';
@@ -12,31 +13,31 @@ const Hero = () => (
     <Section yPadding="py-6">
       <NavbarTwoColumns logo={<Logo xl />}>
         <li>
-          <Link href="https://github.com/ixartz/Next-JS-Landing-Page-Starter-Template">
-            <a>GitHub</a>
+          <Link href="tel:+918296801240" passHref>
+            <BsTelephone className="text-primary-500" />
           </Link>
         </li>
         <li>
-          <Link href="/">
-            <a>Sign in</a>
+          <Link href="https://wa.me/918296801240" passHref>
+            <BsWhatsapp className="text-primary-500" />
           </Link>
         </li>
       </NavbarTwoColumns>
     </Section>
 
-    <Section yPadding="pt-20 pb-32">
+    <Section>
       <HeroOneButton
         title={
           <>
-            {'The modern landing page for\n'}
-            <span className="text-primary-500">React developers</span>
+            {'We are excited to help you\n'}
+            <span className="text-primary-500">achieve your teeth goals!</span>
           </>
         }
-        description="The easiest way to build a React landing page in seconds."
+        description="Let’s make dental health a priority."
         button={
-          <Link href="https://creativedesignsguru.com/category/nextjs/">
+          <Link href="https://clinicia.com/calendar/book?u=tanishakaulavkar">
             <a>
-              <Button xl>Download Your Free Theme</Button>
+              <Button xl>Book an appointment today</Button>
             </a>
           </Link>
         }

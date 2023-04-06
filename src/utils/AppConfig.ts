@@ -1,6 +1,6 @@
 export const AppConfig = {
-  site_name: 'Starter',
-  title: 'Nextjs Starter',
-  description: 'Starter code for your Nextjs Boilerplate with Tailwind CSS',
+  site_name: 'EmergeDental',
+  title: 'Emerge Dental Studio',
+  description: 'We are excited to help you achieve your teeth goals!',
   locale: 'en',
 };
