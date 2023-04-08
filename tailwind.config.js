@@ -16,6 +16,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
+          0: '#f2e7f3',
           100: '#a762ad',
           200: '#a15bab',
           300: '#9a55a9',
@@ -39,7 +40,7 @@ module.exports = {
         },
       },
       lineHeight: {
-        hero: '4.5rem',
+        hero: '2.5rem',
       },
     },
   },

@@ -14,7 +14,7 @@ const Grid = (props: IGridProps) => (
   //     props.yPadding ? props.yPadding : 'py-8'
   //   }`}
   // >
-  <Section title={props.title} yPadding="pt-12 pb-12">
+  <Section title={props.title} yPadding="py-8 px-8">
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
       {props.children}
     </div>

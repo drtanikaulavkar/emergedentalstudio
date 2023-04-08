@@ -13,17 +13,17 @@ import { Grid } from '../layout/Grid';
 const features: { title: string; icon?: any }[] = [
   { title: 'Individualised Dental Care', icon: <RiUserHeartLine /> },
   { title: 'Experienced Dental Professionals', icon: <TbDental /> },
-  { title: 'Bleeding Edge Technology', icon: <HiOutlineDesktopComputer /> },
+  { title: 'Latest Technology', icon: <HiOutlineDesktopComputer /> },
   { title: 'Multi-specialty Clinic', icon: <RiHospitalLine /> },
   { title: 'Safe & Private', icon: <MdOutlineHealthAndSafety /> },
   { title: 'Sanitized for your protection', icon: <RiHandSanitizerLine /> },
 ];
 
 const GridFeatures = () => (
-  <Grid title="Why Us?">
+  <Grid title="Why Choose Us?">
     {features.map((item) => (
-      <div key="1" className="flex gap-4 items-center">
-        <IconContext.Provider value={{ size: '24' }}>
+      <div key={item.title} className="flex gap-4 items-center">
+        <IconContext.Provider value={{ size: '32' }}>
           <div className=" text-primary-500">{item.icon}</div>
         </IconContext.Provider>
         <h3 className="text-xl text-gray-900 font-semibold">{item.title}</h3>

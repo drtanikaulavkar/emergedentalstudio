@@ -17,14 +17,11 @@ export const Navbar = (props: INavbarProps) => {
   return (
     <>
       {/* Main navigation container */}
-      <nav
-        className="flex-no-wrap relative flex w-full items-center justify-between py-4 lg:flex-wrap lg:justify-start"
-        data-te-navbar-ref=""
-      >
-        <div className="flex w-full flex-wrap items-center justify-between ">
+      <nav className="flex-no-wrap relative flex flex-col w-full justify-between p-4 lg:flex-wrap lg:justify-start rounded-lg bg-primary-0">
+        <div className="flex w-full flex-wrap items-center justify-between">
           {/* Hamburger button for mobile view */}
           <button
-            className="block border-0 bg-transparent px-2.5 py-2 text-primary-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
+            className="block border-0 text-primary-500 focus:no-underline focus:outline-none focus:ring-0 lg:hidden"
             type="button"
             onClick={handleClick}
           >
@@ -44,61 +41,38 @@ export const Navbar = (props: INavbarProps) => {
               </svg>
             </span>
           </button>
-
+          {/* Logo */}
+          <Link href="/" passHref>
+            <a>{props.logo}</a>
+          </Link>
           {/* Collapsible navigation container */}
-          <div
-            className={`${
-              active ? '' : 'hidden'
-            }   flex-grow basis-[100%] items-center lg:!flex lg:basis-auto`}
-          >
-            {/* Logo */}
-            <Link href="/">{props.logo}</Link>
-            {/* Left navigation links */}
-            <ul
-              className="list-style-none ml-auto mt-1 flex flex-col pl-0 text-xl lg:flex-row text-gray-600  focus:text-gray-700 lg:px-2"
-              data-te-navbar-nav-ref=""
-            >
+          <div className="hidden flex-grow lg:block">
+            {/* Navigation links */}
+            <ul className="list-style-none px-2 ml-auto mt-auto flex justify-end text-xl text-gray-600  focus:text-gray-700">
               {props.children}
-              {/* Dashboard link */}
-              <li
-                className="lg:pr-2 hover:text-gray-900"
-                data-te-nav-item-ref=""
-              >
-                <a href="#" data-te-nav-link-ref="">
-                  Dashboard
-                </a>
-              </li>
-              {/* Team link */}
-              <li
-                className="lg:pr-2 hover:text-gray-900"
-                data-te-nav-item-ref=""
-              >
-                <a href="#" data-te-nav-link-ref="">
-                  Team
-                </a>
-              </li>
-              {/* Projects link */}
-              <li
-                className="lg:pr-2 hover:text-gray-900"
-                data-te-nav-item-ref=""
-              >
-                <a href="#" data-te-nav-link-ref="">
-                  Projects
-                </a>
-              </li>
             </ul>
           </div>
-
-          {/* Right elements */}
-          <div className="relative flex items-center gap-2">
-            <Link href="tel:+918296801240" passHref>
-              <BsTelephone className="text-primary-500" />
-            </Link>
-
-            <Link href="https://wa.me/918296801240" passHref>
+          <div className="flex text-2xl items-center gap-4">
+            <a href="tel:+918296801240">
+              <BsTelephone className="text-primary-500" />{' '}
+            </a>
+            <a
+              target="_blank"
+              href="https://wa.me/918296801240"
+              rel="noopener noreferrer"
+            >
               <BsWhatsapp className="text-primary-500" />
-            </Link>
+            </a>
           </div>
+        </div>
+        <div
+          // Dropdown div for mobile
+          className={`${active ? '' : 'hidden'} px-2 flex w-full lg:hidden`}
+        >
+          {/* Navigation links */}
+          <ul className="list-style-none mt-auto gap-2 pt-2 flex flex-col justify-end text-xl text-gray-600  focus:text-gray-700">
+            {props.children}
+          </ul>
         </div>
       </nav>
     </>

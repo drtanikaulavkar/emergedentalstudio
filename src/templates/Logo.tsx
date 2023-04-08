@@ -11,8 +11,8 @@ const Logo = (props: ILogoProps) => {
   return (
     <span className={`inline-flex items-center ${fontStyle}`}>
       <img
-        className="m-1.5 inline-block"
-        src={`${router.basePath}/assets/images/emerge.svg`}
+        className="m-1.5 inline-block bg-none"
+        src={`${router.basePath}/assets/images/emergeSq.png`}
         style={{ height: imageSize }}
         alt=""
         loading="lazy"
