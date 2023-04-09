@@ -38,9 +38,16 @@ module.exports = {
           800: '#2d3748',
           900: '#1a202c',
         },
+        hero: {
+          1: '#87c3e3',
+        },
       },
       lineHeight: {
-        hero: '2.5rem',
+        hero: '3.5rem',
+      },
+      backgroundImage: {
+        hero_bg: "url('/public/assets/images/heroBg.svg')",
+        hero_bg2: "url('/public/assets/images/heroBg2.svg')",
       },
     },
   },

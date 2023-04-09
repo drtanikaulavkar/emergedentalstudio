@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Navbar } from '../navigation/Navbar';
 import { Logo } from './Logo';
 
@@ -12,8 +14,10 @@ const Nav = () => {
   return (
     <Navbar logo={<Logo xl />}>
       {pages.map((page: { name: string; link: string }) => (
-        <li key={page.name} className="lg:pr-2 hover:text-gray-900">
-          <a href={page.link}>{page.name} </a>
+        <li key={page.name} className="px-4 hover:text-gray-900">
+          <Link href={page.link}>
+            <a>{page.name} </a>
+          </Link>
         </li>
       ))}
     </Navbar>

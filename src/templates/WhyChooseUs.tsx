@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { IconContext } from 'react-icons';
 import { HiOutlineDesktopComputer } from 'react-icons/hi';
 import { MdOutlineHealthAndSafety } from 'react-icons/md';
@@ -10,7 +12,7 @@ import { TbDental } from 'react-icons/tb';
 
 import { Grid } from '../layout/Grid';
 
-const features: { title: string; icon?: any }[] = [
+const features: { title: string; icon?: ReactNode }[] = [
   { title: 'Individualised Dental Care', icon: <RiUserHeartLine /> },
   { title: 'Experienced Dental Professionals', icon: <TbDental /> },
   { title: 'Latest Technology', icon: <HiOutlineDesktopComputer /> },
@@ -19,7 +21,7 @@ const features: { title: string; icon?: any }[] = [
   { title: 'Sanitized for your protection', icon: <RiHandSanitizerLine /> },
 ];
 
-const GridFeatures = () => (
+const WhyChooseUs = () => (
   <Grid title="Why Choose Us?">
     {features.map((item) => (
       <div key={item.title} className="flex gap-4 items-center">
@@ -35,4 +37,4 @@ const GridFeatures = () => (
 //   <div className="text-white">{item.icon}</div>
 // </div>
 
-export { GridFeatures };
+export { WhyChooseUs };

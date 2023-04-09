@@ -48,7 +48,7 @@ export const Navbar = (props: INavbarProps) => {
           {/* Collapsible navigation container */}
           <div className="hidden flex-grow lg:block">
             {/* Navigation links */}
-            <ul className="list-style-none px-2 ml-auto mt-auto flex justify-end text-xl text-gray-600  focus:text-gray-700">
+            <ul className="list-style-none px-2 ml-auto mt-auto flex justify-end text-gray-600  focus:text-gray-700">
               {props.children}
             </ul>
           </div>
