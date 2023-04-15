@@ -17,8 +17,8 @@ export const Navbar = (props: INavbarProps) => {
   return (
     <>
       {/* Main navigation container */}
-      <nav className="flex-no-wrap relative flex flex-col w-full justify-between p-4 lg:flex-wrap lg:justify-start rounded-lg bg-primary-0">
-        <div className="flex w-full flex-wrap items-center justify-between">
+      <nav className="flex-no-wrap relative flex-col w-full justify-between p-4 rounded-lg bg-primary-0">
+        <div className="flex w-full items-center justify-between gap-4">
           {/* Hamburger button for mobile view */}
           <button
             className="block border-0 text-primary-500 focus:no-underline focus:outline-none focus:ring-0 lg:hidden"
@@ -43,12 +43,17 @@ export const Navbar = (props: INavbarProps) => {
           </button>
           {/* Logo */}
           <Link href="/" passHref>
-            <a>{props.logo}</a>
+            <a
+              className="lg:ml-0 ml-4" // margin for alight center due to two icon on right
+            >
+              {props.logo}
+            </a>
           </Link>
+
           {/* Collapsible navigation container */}
           <div className="hidden flex-grow lg:block">
             {/* Navigation links */}
-            <ul className="list-style-none px-2 ml-auto mt-auto flex justify-end text-gray-600  focus:text-gray-700">
+            <ul className="list-style-none flex justify-end text-gray-600  focus:text-gray-700">
               {props.children}
             </ul>
           </div>
@@ -70,7 +75,7 @@ export const Navbar = (props: INavbarProps) => {
           className={`${active ? '' : 'hidden'} px-2 flex w-full lg:hidden`}
         >
           {/* Navigation links */}
-          <ul className="list-style-none mt-auto gap-2 pt-2 flex flex-col justify-end text-xl text-gray-600  focus:text-gray-700">
+          <ul className="list-style-none mt-auto gap-2 pt-2 flex flex-col justify-end text-gray-600  focus:text-gray-700">
             {props.children}
           </ul>
         </div>

@@ -1,20 +1,20 @@
-import { Background } from '../background/Background';
 import { Button } from '../button/Button';
 import { HeroV3 } from '../hero/HeroV3';
 import { Section } from '../layout/Section';
 import { Nav } from './Nav';
 
 const Hero = () => (
-  <Background color="bg-hero-1 bg-gradient-to-br from-blue-200 to-blue-300">
+  <>
     <Section yPadding="pt-6">
       <Nav />
     </Section>
 
-    <Section>
+    <Section yPadding="pt-16">
       <HeroV3
         title={
           <span>
             {'We are excited to help you '}
+            <span>{'\n'}</span>
             <span className="lg:text-primary-500">
               achieve your teeth goals!
             </span>
@@ -28,7 +28,7 @@ const Hero = () => (
         }
       />
     </Section>
-  </Background>
+  </>
 );
 
 // <Section yPadding="py-8">

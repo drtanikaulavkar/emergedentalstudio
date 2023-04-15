@@ -1,24 +1,25 @@
+import { Background } from '../background/Background';
 import { Meta } from '../layout/Meta';
-import { Section } from '../layout/Section';
 import { AppConfig } from '../utils/AppConfig';
-import { Banner } from './Banner';
 import { Footer } from './Footer';
 import { Hero } from './Hero';
 import { Stats } from './Stats';
-import { VerticalFeatures } from './VerticalFeatures';
+import { Testimonials } from './Testimonials';
 import { WhyChooseUs } from './WhyChooseUs';
 
 const Base = () => (
   <div className="antialiased text-gray-600">
     <Meta title={AppConfig.title} description={AppConfig.description} />
-    <Hero />
+    <Background image>
+      {/* <Background color="bg-gradient-to-b from-blue-200 to-blue-300"> */}
+      <Hero />
+      <Stats />
+    </Background>
     <WhyChooseUs />
-    <Stats />
-    <VerticalFeatures />
-    <Section title="Testimonials" description="Contact Us">
-      <a>TODO</a>
-    </Section>
-    <Banner />
+    {/* <Background color="bg-gradient-to-b from-blue-200 to-blue-300"> */}
+    {/* </Background> */}
+    {/* <VerticalFeatures /> */}
+    <Testimonials />
     <Footer />
   </div>
 );

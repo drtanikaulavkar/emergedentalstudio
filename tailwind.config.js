@@ -46,7 +46,7 @@ module.exports = {
         hero: '3.5rem',
       },
       backgroundImage: {
-        hero_bg: "url('/public/assets/images/heroBg.svg')",
+        hero_bg: "url('/public/assets/images/heroBg.jpg')",
         hero_bg2: "url('/public/assets/images/heroBg2.svg')",
       },
     },

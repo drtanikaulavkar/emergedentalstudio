@@ -22,7 +22,7 @@ const HeroV3 = (props: IHeroOneButtonProps) => {
 
   return (
     <div className={verticalFeatureClass}>
-      <header className="w-full flex-grow text-center">
+      <header className="w-full flex-grow text-center lg:text-right">
         <h1 className="text-5xl text-gray-900 font-semibold whitespace-pre-line leading-hero">
           {props.title}
         </h1>
@@ -31,15 +31,15 @@ const HeroV3 = (props: IHeroOneButtonProps) => {
         </div>
         {props.button}
       </header>
-      <div className="hidden lg:block bottom-0 left-0">
+      {/* <div className="hidden md:block lg:block relative bottom-0 right-0">
         <img
-          className=" hidden lg:block bg-none mt-2"
+          className="hidden md:block lg:block bg-none mt-2"
           src="/assets/images/tanishaHero.png"
           style={{}}
           alt="Dr.Tanisha Hero Image"
           loading="lazy"
-        />{' '}
-      </div>
+        />
+      </div> */}
     </div>
   );
 };
