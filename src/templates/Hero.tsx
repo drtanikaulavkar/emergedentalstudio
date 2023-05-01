@@ -1,4 +1,3 @@
-import { Button } from '../button/Button';
 import { HeroV3 } from '../hero/HeroV3';
 import { Section } from '../layout/Section';
 import { Nav } from './Nav';
@@ -8,6 +7,10 @@ const Hero = () => (
     <Section yPadding="pt-6">
       <Nav />
     </Section>
+
+    {/* <Section yPadding="pt-6">
+      <Nav2 /> todo: improve sm
+    </Section> */}
 
     <Section yPadding="pt-16">
       <HeroV3
@@ -22,8 +25,12 @@ const Hero = () => (
         }
         description="Let’s make dental health a priority."
         button={
+          // can use iframe here, with modal
           <a href="https://clinicia.com/calendar/book?u=tanishakaulavkar">
-            <Button xl>Book an appointment</Button>
+            {/* <Button xl>Book an appointment</Button> */}
+            <button className="btn btn-primary bg-primary-900 normal-case text-xl">
+              Book an appointment
+            </button>
           </a>
         }
       />

@@ -1,3 +1,5 @@
+const daisyui = require('daisyui');
+
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -45,11 +47,7 @@ module.exports = {
       lineHeight: {
         hero: '3.5rem',
       },
-      backgroundImage: {
-        hero_bg: "url('/public/assets/images/heroBg.jpg')",
-        hero_bg2: "url('/public/assets/images/heroBg2.svg')",
-      },
     },
   },
-  plugins: [],
+  plugins: [daisyui],
 };

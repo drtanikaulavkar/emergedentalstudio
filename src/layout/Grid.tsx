@@ -10,7 +10,11 @@ type IGridProps = {
 };
 
 const Grid = (props: IGridProps) => (
-  <Section title={props.title} yPadding={props.yPadding || 'py-8 px-8'}>
+  <Section
+    title={props.title}
+    leftTitle
+    yPadding={props.yPadding || 'py-8 px-8'}
+  >
     <div
       className={`grid gap-6 ${
         props.gridLayout || 'sm:grid-cols-2 md:grid-cols-3'

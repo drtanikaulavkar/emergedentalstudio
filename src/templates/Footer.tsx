@@ -4,10 +4,13 @@ import { Background } from '../background/Background';
 import { CenteredFooter } from '../footer/CenteredFooter';
 import { Section } from '../layout/Section';
 import { LogoV2 } from './LogoV2';
+import { Maps } from './Maps';
 
 const Footer = () => (
   <Background color="bg-gray-100">
     <Section>
+      <Maps />
+
       <CenteredFooter
         logo={<LogoV2 />}
         iconList={

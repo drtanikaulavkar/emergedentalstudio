@@ -8,18 +8,14 @@ import { Testimonials } from './Testimonials';
 import { WhyChooseUs } from './WhyChooseUs';
 
 const Base = () => (
-  <div className="antialiased text-gray-600">
+  <div className="antialiased text-gray-600 bg-slate-100">
     <Meta title={AppConfig.title} description={AppConfig.description} />
     <Background image>
-      {/* <Background color="bg-gradient-to-b from-blue-200 to-blue-300"> */}
       <Hero />
-      <Stats />
+      <WhyChooseUs />
     </Background>
-    <WhyChooseUs />
-    {/* <Background color="bg-gradient-to-b from-blue-200 to-blue-300"> */}
-    {/* </Background> */}
-    {/* <VerticalFeatures /> */}
     <Testimonials />
+    <Stats />
     <Footer />
   </div>
 );

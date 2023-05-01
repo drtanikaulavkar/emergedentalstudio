@@ -22,14 +22,14 @@ const HeroV3 = (props: IHeroOneButtonProps) => {
 
   return (
     <div className={verticalFeatureClass}>
-      <header className="w-full flex-grow text-center lg:text-right">
+      <header className="w-full flex-grow text-center lg:text-left">
         <h1 className="text-5xl text-gray-900 font-semibold whitespace-pre-line leading-hero">
           {props.title}
         </h1>
-        <div className="text-2xl mt-4 mb-12 font-semibold text-primary-500 lg:text-gray-700">
+        <div className="text-2xl mt-4 font-semibold text-primary-500 lg:text-gray-700">
           {props.description}
         </div>
-        {props.button}
+        <div className="my-12">{props.button}</div>
       </header>
       {/* <div className="hidden md:block lg:block relative bottom-0 right-0">
         <img

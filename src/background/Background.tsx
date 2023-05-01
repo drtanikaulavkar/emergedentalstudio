@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import herobg from '../../public/assets/images/heroBg3.jpg';
+import herobg from '../../public/assets/images/heroBg3a.jpg';
 
 type IBackgroundProps = {
   children: ReactNode;

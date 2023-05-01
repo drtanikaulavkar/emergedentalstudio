@@ -16,13 +16,13 @@ const statistics: {
   {
     number: 20,
     symbol: '+',
-    text: 'Dental services offered',
+    text: 'Dental services',
     icon: imgDentalServices,
   },
   {
     number: 7,
     symbol: '+',
-    text: 'Proffesionals on board',
+    text: 'Professional dentists',
     icon: imgProfsOnBoard,
   },
   { number: 100, symbol: '%', text: 'Happy patients', icon: imgHappyPatients },
@@ -36,10 +36,16 @@ const Stats = () => (
         key={item.text}
         className="flex flex-col items-center justify-end p-4"
       >
-        <div className="inline-block px-2 text-primary-500">
-          <Image src={item.icon} height={50} loading="lazy" alt="" />
-        </div>
-        <h3 className="text-5xl text-gray-900 font-semibold">
+        {/* <div className="inline-block px-2 text-primary-500"> */}
+        <Image
+          src={item.icon}
+          width={'100%'}
+          height={'100%'}
+          loading="lazy"
+          alt=""
+        />
+        {/* </div> */}
+        <h3 className="text-4xl text-gray-900 font-semibold">
           <CountUp end={item.number} enableScrollSpy />
           {item.symbol}
         </h3>
