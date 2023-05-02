@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 
-import className from 'classnames';
+import Image from 'next/image';
+
+import heroImg from '../../public/assets/images/hero.jpg';
 
 type IHeroOneButtonProps = {
   title: ReactNode;
@@ -10,36 +12,20 @@ type IHeroOneButtonProps = {
 };
 
 const HeroV3 = (props: IHeroOneButtonProps) => {
-  const verticalFeatureClass = className(
-    'flex',
-    'relative',
-    'flex-nowrap',
-    'items-center',
-    {
-      'flex-row-reverse': props.reverse,
-    }
-  );
-
   return (
-    <div className={verticalFeatureClass}>
-      <header className="w-full flex-grow text-center lg:text-left">
+    <div className="flex flex-row flex-wrap justify-between items-center">
+      <div className="flex-grow text-center py-8">
         <h1 className="text-5xl text-gray-900 font-semibold whitespace-pre-line leading-hero">
           {props.title}
         </h1>
-        <div className="text-2xl mt-4 font-semibold text-primary-500 lg:text-gray-700">
+        <div className="text-2xl mt-4 font-semibold text-gray-700">
           {props.description}
         </div>
-        <div className="my-12">{props.button}</div>
-      </header>
-      {/* <div className="hidden md:block lg:block relative bottom-0 right-0">
-        <img
-          className="hidden md:block lg:block bg-none mt-2"
-          src="/assets/images/tanishaHero.png"
-          style={{}}
-          alt="Dr.Tanisha Hero Image"
-          loading="lazy"
-        />
-      </div> */}
+        <div className="mt-6">{props.button}</div>
+      </div>
+      <div className=" lg:basis-2/5">
+        <Image src={heroImg} alt="dentist w patient" />
+      </div>
     </div>
   );
 };

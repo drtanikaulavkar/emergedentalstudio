@@ -12,15 +12,13 @@ const Hero = () => (
       <Nav2 /> todo: improve sm
     </Section> */}
 
-    <Section yPadding="pt-16">
+    <Section yPadding="lg:pt-4">
       <HeroV3
         title={
           <span>
             {'We are excited to help you '}
             <span>{'\n'}</span>
-            <span className="lg:text-primary-500">
-              achieve your teeth goals!
-            </span>
+            <span className="text-primary-500">achieve your teeth goals!</span>
           </span>
         }
         description="Let’s make dental health a priority."
@@ -28,8 +26,8 @@ const Hero = () => (
           // can use iframe here, with modal
           <a href="https://clinicia.com/calendar/book?u=tanishakaulavkar">
             {/* <Button xl>Book an appointment</Button> */}
-            <button className="btn btn-primary bg-primary-900 normal-case text-xl">
-              Book an appointment
+            <button className="btn btn-primary bg-primary-900 normal-case rounded-full text-xl">
+              Book appointment
             </button>
           </a>
         }

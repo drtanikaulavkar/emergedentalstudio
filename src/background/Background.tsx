@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
-import herobg from '../../public/assets/images/heroBg3a.jpg';
-
 type IBackgroundProps = {
   children: ReactNode;
   color?: string;
@@ -14,7 +12,8 @@ const Background = (props: IBackgroundProps) => (
       <div
         className="bg-cover bg-center h-screen"
         style={{
-          backgroundImage: `url(${herobg.src})`,
+          // backgroundImage: `url(${herobg.src})`,
+          backgroundColor: '#deeefd',
           width: '100%',
           height: '100%',
         }}

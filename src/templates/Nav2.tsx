@@ -15,7 +15,7 @@ const Nav2 = () => {
   };
 
   return (
-    <div className="navbar bg-primary-0 rounded-lg">
+    <div className="navbar rounded-lg">
       <button
         className="block border-0 text-primary-500 focus:no-underline focus:outline-none focus:ring-0 lg:hidden"
         type="button"

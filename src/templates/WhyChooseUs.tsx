@@ -22,7 +22,7 @@ const features: { title: string; icon?: ReactNode }[] = [
 ];
 
 const WhyChooseUs = () => (
-  <Grid title="Why Choose Us?" yPadding="pb-16 pt-8 px-4">
+  <Grid title="Why Choose Us?" yPadding="py-12 lg:pt-0 px-4">
     {features.map((item) => (
       <div key={item.title} className="flex gap-4 items-center">
         <IconContext.Provider value={{ size: '32' }}>

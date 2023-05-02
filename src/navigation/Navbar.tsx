@@ -17,7 +17,7 @@ export const Navbar = (props: INavbarProps) => {
   return (
     <>
       {/* Main navigation container */}
-      <nav className="flex-no-wrap relative flex-col w-full justify-between p-4 rounded-lg bg-primary-0">
+      <nav className="flex-no-wrap relative flex-col w-full justify-between p-4 rounded-lg bg-white lg:bg-inherit">
         <div className="flex w-full items-center justify-between gap-4">
           {/* Hamburger button for mobile view */}
           <button
