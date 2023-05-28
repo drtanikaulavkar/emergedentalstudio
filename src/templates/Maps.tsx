@@ -5,19 +5,22 @@ import { MdAlternateEmail } from 'react-icons/md';
 import emergeSq from '../../public/assets/images/emergeSq.png';
 
 const Maps = () => (
-  <div className="flex flex-wrap w-full justify-between gap-12 text-gray-700">
-    <div className="lg:basis-1/3 ml-4">
+  <div
+    id="contact-us"
+    className="flex flex-wrap w-full justify-between gap-12 text-gray-700"
+  >
+    <div className="lg:basis-1/3 ml-2 lg:ml-4">
       <Image src={emergeSq} alt="emerge sq logo" height={75} width={75} />
       <ul>
         <li className="text-3xl">Emerge Dental Studio </li>
         <li className="text-xl">Dentist, Prosthodontist</li>
         <li className="text-xl">7th Main, Indiranagar</li>
       </ul>
-      <ul className="space-y-2">
+      <ul className="space-y-2 text-xl">
         <li>___</li>
         <li className="flex flex-row items-center align-middle gap-4">
           <BsTelephone className="text-primary-500" />
-          <a href="tel:+918296801240">+91 918296 801240</a>
+          <a href="tel:+918296801240">+91 82968 01240</a>
         </li>
         <li className="flex flex-row items-center align-middle gap-4">
           <MdAlternateEmail className="text-primary-500" />

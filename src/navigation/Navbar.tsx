@@ -1,7 +1,8 @@
 import { ReactNode, useState } from 'react';
 
+import Hamburger from 'hamburger-react';
 import Link from 'next/link';
-import { BsWhatsapp, BsTelephone } from 'react-icons/bs';
+import { BsWhatsapp } from 'react-icons/bs';
 
 type INavbarProps = {
   logo: ReactNode;
@@ -10,41 +11,20 @@ type INavbarProps = {
 
 export const Navbar = (props: INavbarProps) => {
   const [active, setActive] = useState(false);
-  const handleClick = () => {
-    setActive(!active);
-  };
 
   return (
     <>
       {/* Main navigation container */}
-      <nav className="flex-no-wrap relative flex-col w-full justify-between p-4 rounded-lg bg-white lg:bg-inherit">
+      <nav className="flex-no-wrap relative flex-col w-full justify-between p-2 rounded-lg lg:rounded-full bg-hero-0 ">
         <div className="flex w-full items-center justify-between gap-4">
           {/* Hamburger button for mobile view */}
-          <button
-            className="block border-0 text-primary-500 focus:no-underline focus:outline-none focus:ring-0 lg:hidden"
-            type="button"
-            onClick={handleClick}
-          >
-            {/* Hamburger icon */}
-            <span className="[&>svg]:w-7">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-7 w-7"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </span>
-          </button>
+          <div className="lg:hidden px-2 text-primary-400">
+            <Hamburger toggled={active} toggle={setActive} />
+          </div>
           {/* Logo */}
           <Link href="/" passHref>
             <a
-              className="lg:ml-0 ml-4" // margin for alight center due to two icon on right
+              className="lg:ml-2" // margin for alight center due to two icon on right
             >
               {props.logo}
             </a>
@@ -53,30 +33,44 @@ export const Navbar = (props: INavbarProps) => {
           {/* Collapsible navigation container */}
           <div className="hidden flex-grow lg:block">
             {/* Navigation links */}
-            <ul className="list-style-none flex justify-end text-gray-600  focus:text-gray-700">
+            <ul className="list-style-none flex justify-start text-gray-600  focus:text-gray-700">
               {props.children}
             </ul>
           </div>
-          <div className="flex text-2xl items-center gap-4">
-            <a href="tel:+918296801240">
+          <div className="flex text-3xl items-center text-primary-400">
+            {/* <a href="tel:+918296801240">
               <BsTelephone className="text-primary-500" />{' '}
-            </a>
+            </a> */}
             <a
               target="_blank"
               href="https://wa.me/918296801240"
               rel="noopener noreferrer"
             >
-              <BsWhatsapp className="text-primary-500" />
+              <BsWhatsapp className="mx-2" />
             </a>
+            <button className="btn btn-primary rounded-full hidden lg:block">
+              <a href="https://clinicia.com/calendar/book?u=tanishakaulavkar">
+                Book Appointment
+              </a>
+            </button>
           </div>
         </div>
         <div
           // Dropdown div for mobile
-          className={`${active ? '' : 'hidden'} px-2 flex w-full lg:hidden`}
+          className={`${
+            active ? '' : 'hidden'
+          } px-2 text-xl flex w-full lg:hidden`}
         >
           {/* Navigation links */}
           <ul className="list-style-none mt-auto gap-2 pt-2 flex flex-col justify-end text-gray-600  focus:text-gray-700">
             {props.children}
+            <li>
+              <button className="btn btn-primary rounded-full normal-case text-xl">
+                <a href="https://clinicia.com/calendar/book?u=tanishakaulavkar">
+                  Book Appointment
+                </a>
+              </button>
+            </li>
           </ul>
         </div>
       </nav>

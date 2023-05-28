@@ -7,11 +7,11 @@ type ILogoProps = {
 };
 
 const LogoV2 = (props: ILogoProps) => {
-  const imageSize = props.xl ? 32 : 28;
+  const imageSize = props.xl ? 36 : 28;
   const router = useRouter();
   return (
     <img
-      className="inline-block bg-none"
+      className="inline-block bg-none mx-2"
       src={`${router.basePath}/assets/images/emergeLogo.webp`}
       style={{ height: imageSize }}
       alt=""

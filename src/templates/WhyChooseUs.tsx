@@ -14,11 +14,11 @@ import { Grid } from '../layout/Grid';
 
 const features: { title: string; icon?: ReactNode }[] = [
   { title: 'Individualised Dental Care', icon: <RiUserHeartLine /> },
+  { title: 'Multi-specialty Clinic', icon: <RiHospitalLine /> },
+  { title: 'Safe And Private', icon: <MdOutlineHealthAndSafety /> },
   { title: 'Experienced Dental Professionals', icon: <TbDental /> },
   { title: 'Latest Technology', icon: <HiOutlineDesktopComputer /> },
-  { title: 'Multi-specialty Clinic', icon: <RiHospitalLine /> },
-  { title: 'Safe & Private', icon: <MdOutlineHealthAndSafety /> },
-  { title: 'Sanitized for your protection', icon: <RiHandSanitizerLine /> },
+  { title: 'Sanitized For Your Protection', icon: <RiHandSanitizerLine /> },
 ];
 
 const WhyChooseUs = () => (
@@ -28,13 +28,10 @@ const WhyChooseUs = () => (
         <IconContext.Provider value={{ size: '32' }}>
           <div className=" text-primary-900">{item.icon}</div>
         </IconContext.Provider>
-        <h3 className="text-xl text-gray-900 font-semibold">{item.title}</h3>
+        <p className="text-xl text-gray-900 font-semibold">{item.title}</p>
       </div>
     ))}
   </Grid>
 );
-// <div className="mt-1 bg-primary-500 rounded-full  p-1.5 w-8 h-8 shrink-0">
-//   <div className="text-white">{item.icon}</div>
-// </div>
 
 export { WhyChooseUs };

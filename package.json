@@ -16,17 +16,22 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@types/react-headroom": "^3.2.0",
     "classnames": "^2.3.1",
     "daisyui": "^2.51.5",
+    "hamburger-react": "^2.5.0",
+    "lightgallery": "^2.7.1",
     "next": "^12.0.9",
     "next-images": "^1.8.5",
     "next-seo": "^4.29.0",
     "react": "^17.0.2",
     "react-countup": "^6.4.2",
     "react-dom": "^17.0.2",
+    "react-headroom": "^3.2.1",
     "react-icons": "^4.8.0",
     "react-visibility-sensor": "^5.1.1",
-    "styled-jsx-plugin-postcss": "^4.0.1"
+    "styled-jsx-plugin-postcss": "^4.0.1",
+    "yet-another-react-lightbox": "^3.10.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.0.9",
