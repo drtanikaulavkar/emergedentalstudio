@@ -1,5 +1,16 @@
+import { Background } from '../background/Background';
+import { Base } from '../templates/Base';
+import { Nav } from '../templates/Nav';
+
 const About = () => (
-  <div className="py-16 text-center">WIP: About the team</div>
+  <Base>
+    <Background image>
+      <Nav />
+
+      <div>Tanisha</div>
+      <div>Team</div>
+    </Background>
+  </Base>
 );
 
 export default About;

@@ -6,6 +6,7 @@ type IGridProps = {
   title?: string;
   yPadding?: string;
   gridLayout?: string;
+  gridGap?: string;
   children: ReactNode;
 };
 
@@ -16,7 +17,7 @@ const Grid = (props: IGridProps) => (
     yPadding={props.yPadding || 'py-8 px-8'}
   >
     <div
-      className={`grid gap-6 ${
+      className={`grid ${props.gridGap || 'gap-6'} ${
         props.gridLayout || 'sm:grid-cols-2 md:grid-cols-3'
       }`}
     >
