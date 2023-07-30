@@ -5,6 +5,7 @@ import { Hero } from './Hero';
 import { Nav } from './Nav';
 import { Services } from './Services';
 import { Stats } from './Stats';
+import { Team } from './Team';
 import { Testimonials } from './Testimonials';
 import { WhyChooseUs } from './WhyChooseUs';
 
@@ -16,9 +17,14 @@ const Home = () => (
       <WhyChooseUs />
     </Background>
     <Services />
-    <Testimonials />
     <Stats />
-    <Footer />
+    <Background image>
+      <Team />
+    </Background>
+    <Testimonials />
+    <Background image>
+      <Footer />
+    </Background>
   </Base>
 );
 

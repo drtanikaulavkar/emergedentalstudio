@@ -24,7 +24,7 @@ export const Navbar = (props: INavbarProps) => {
           {/* Logo */}
           <Link href="/" passHref>
             <a
-              className="lg:ml-2" // margin for alight center due to two icon on right
+              className="lg:ml-3" // margin for alight center due to two icon on right
             >
               {props.logo}
             </a>

@@ -62,7 +62,7 @@ const ImplantPhoto = '/assets/services/implant/implant1.jpg';
 const Services = () => (
   <div id="services">
     <Section title="Our Services" yPadding="pt-12">
-      <div className="carousel carousel-center w-full space-x-4">
+      <div className="carousel carousel-center w-full space-x-4 py-2">
         {services.map((item) => (
           <div className="carousel-item" key={item.title}>
             <OneService

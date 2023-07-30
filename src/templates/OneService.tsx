@@ -7,7 +7,7 @@ type IServiceProps = {
 
 const OneService = (props: IServiceProps) => {
   return (
-    <div className="card w-64 card-compact bg-primary-0 shadow-md hover:border-2 hover:border-primary-400">
+    <div className="card w-64 rounded-md card-compact bg-primary-0 shadow-sm hover:border-2 hover:border-primary-400">
       <figure>
         <img src={props.photo} alt={props.title} />
       </figure>
