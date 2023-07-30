@@ -43,7 +43,7 @@ const services: {
 ];
 
 const Team = () => (
-  <div id="team">
+  <div id="meet-our-team">
     <Section title="Meet the Team">
       <div className="grid grid-cols-3 gap-2">
         {services.map((item) => (

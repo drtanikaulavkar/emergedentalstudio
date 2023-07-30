@@ -5,7 +5,7 @@ import { Navbar } from '../navigation/Navbar';
 import { LogoV2 } from './LogoV2';
 
 const pages: { name: string; link: string }[] = [
-  { name: 'About', link: '/about' },
+  { name: 'About', link: '/#meet-our-team' },
   { name: 'Services', link: '/#services' },
   { name: 'Gallery', link: '/gallery' },
   { name: 'Contact Us', link: '/#contact-us' },
