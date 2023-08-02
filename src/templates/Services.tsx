@@ -62,7 +62,7 @@ const ImplantPhoto = '/assets/services/implant/implant1.jpg';
 const Carousel = (props: { len: number }) => (
   <>
     {services.slice(0, props.len).map((item) => (
-      <div className="carousel-item basis-1/4" key={item.title}>
+      <div className="flex" key={item.title}>
         <OneService
           title={item.title}
           summary={item.summary}
@@ -71,17 +71,18 @@ const Carousel = (props: { len: number }) => (
         />
       </div>
     ))}
-    <div className="carousel-item basis-1/4">
+    <div className="my-auto">
       <OneService
         title="More Services"
+        titleCenter
         summary=""
         keywords={[
           'scaling',
+          'dentures',
+          'root canal',
           'extraction',
           'wisdom teeth',
           'mouth rehabilitation',
-          'dentures',
-          'root canal',
         ]}
       />
     </div>
@@ -91,11 +92,14 @@ const Carousel = (props: { len: number }) => (
 const Services = () => (
   <div id="services">
     <Section title="Our Services">
-      <div className="grid-cols-4 hidden md:lg:flex w-full">
+      {/* <div className="hidden md:lg:flex carousel w-full">
         <Carousel len={3} />
       </div>
-      <div className="md:lg:hidden carousel carousel-vertical w-full">
+      <div className="md:lg:hidden carousel justify-center carousel-vertical w-full">
         <Carousel len={2} />
+      </div> */}
+      <div className="flex flex-wrap justify-center gap-4 w-full">
+        <Carousel len={3} />
       </div>
     </Section>
   </div>

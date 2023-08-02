@@ -10,7 +10,7 @@ type IServiceProps = {
 
 const PersonTeam = (props: IServiceProps) => {
   return (
-    <div className="md:lg:w-96 flex flex-col justify-between">
+    <div className="max-w-md flex flex-col justify-between">
       <div className="w-full relative h-72 bg-primary-100 rounded-t-xl">
         {props.photo && (
           <Image
