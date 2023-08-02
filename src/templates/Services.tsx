@@ -59,20 +59,43 @@ const services: { title: string; summary: string; keywords?: string[] }[] = [
 ];
 const ImplantPhoto = '/assets/services/implant/implant1.jpg';
 
+const Carousel = (props: { len: number }) => (
+  <>
+    {services.slice(0, props.len).map((item) => (
+      <div className="carousel-item basis-1/4" key={item.title}>
+        <OneService
+          title={item.title}
+          summary={item.summary}
+          keywords={item.keywords}
+          photo={ImplantPhoto}
+        />
+      </div>
+    ))}
+    <div className="carousel-item basis-1/4">
+      <OneService
+        title="More Services"
+        summary=""
+        keywords={[
+          'scaling',
+          'extraction',
+          'wisdom teeth',
+          'mouth rehabilitation',
+          'dentures',
+          'root canal',
+        ]}
+      />
+    </div>
+  </>
+);
+
 const Services = () => (
   <div id="services">
-    <Section title="Our Services" yPadding="pt-12">
-      <div className="carousel carousel-center w-full space-x-4 py-2">
-        {services.map((item) => (
-          <div className="carousel-item" key={item.title}>
-            <OneService
-              title={item.title}
-              summary={item.summary}
-              keywords={item.keywords}
-              photo={ImplantPhoto}
-            />
-          </div>
-        ))}
+    <Section title="Our Services">
+      <div className="grid-cols-4 hidden md:lg:flex w-full">
+        <Carousel len={3} />
+      </div>
+      <div className="md:lg:hidden carousel carousel-vertical w-full">
+        <Carousel len={2} />
       </div>
     </Section>
   </div>

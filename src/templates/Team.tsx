@@ -1,7 +1,7 @@
 import { Section } from '../layout/Section';
 import { PersonTeam } from './PersonTeam';
 
-const services: {
+const team: {
   name: string;
   designation: string;
   qualification?: string;
@@ -45,8 +45,8 @@ const services: {
 const Team = () => (
   <div id="meet-our-team">
     <Section title="Meet the Team">
-      <div className="grid grid-cols-3 gap-2">
-        {services.map((item) => (
+      <div className="w-full flex justify-center gap-2">
+        {team.slice(0, 1).map((item) => (
           <PersonTeam
             key={item.name}
             name={item.name}

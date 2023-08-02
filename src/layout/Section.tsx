@@ -12,13 +12,15 @@ type ISectionProps = {
 const Section = (props: ISectionProps) => (
   <div
     className={`max-w-screen-lg mx-auto 
-    ${props.yPadding ? props.yPadding : 'py-16'} 
+    ${props.yPadding ? props.yPadding : 'py-6 md:lg:py-8'} 
     ${props.xPadding ? props.xPadding : 'px-3'}
     }`}
   >
     {(props.title || props.description) && (
       <div
-        className={`mb-8 ${props.leftTitle ? 'lg:text-left' : ''} text-center`}
+        className={`mb-2 md:lg:mb-6 ${
+          props.leftTitle ? 'lg:text-left' : ''
+        } text-center`}
       >
         {props.title && (
           <h2 className="text-4xl text-gray-900 font-bold">{props.title}</h2>
