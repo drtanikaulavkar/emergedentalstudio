@@ -1,6 +1,6 @@
 export const AppConfig = {
-  site_name: 'EmergeDental',
+  site_name: 'Emerge Dental',
   title: 'Emerge Dental Studio',
-  description: 'We are excited to help you achieve your teeth goals!',
+  description: 'Cosmetic, Implant and TMJ Specialty Dental Clinic',
   locale: 'en',
 };

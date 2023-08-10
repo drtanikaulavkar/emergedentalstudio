@@ -9,7 +9,11 @@ type IBaseProps = {
 
 const Base = (props: IBaseProps) => (
   <div className="antialiased text-gray-600 bg-slate-100">
-    <Meta title={AppConfig.title} description={AppConfig.description} />
+    <Meta
+      title={AppConfig.title}
+      description={AppConfig.description}
+      canonical="https://emergedentalstudio.com/"
+    />
     {props.children}
   </div>
 );
