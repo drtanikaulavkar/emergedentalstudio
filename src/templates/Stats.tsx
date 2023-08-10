@@ -43,11 +43,11 @@ const Stats = () => (
             alt=""
           />
           {/* </div> */}
-          <h3 className="text-4xl text-gray-900 font-semibold">
+          <h3 className="text-4xl text-gray-900 font-bold">
             <CountUp end={item.number} enableScrollSpy />
             {item.symbol}
           </h3>
-          <p className="text-center text-gray-900"> {item.text}</p>
+          <p className="text-center text-gray-900 font-semibold">{item.text}</p>
         </div>
       ))}
     </div>

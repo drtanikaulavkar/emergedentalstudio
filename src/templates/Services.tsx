@@ -1,24 +1,39 @@
 import { Section } from '../layout/Section';
 import { OneService } from './OneService';
 
-const services: { title: string; summary: string; keywords?: string[] }[] = [
+const services: {
+  title: string;
+  summary: string;
+  image?: string;
+  keywords?: string[];
+}[] = [
   {
     title: 'Dental Implants',
     summary:
       'Dental implants are artificial tooth roots that are used to replace missing teeth.',
+    image: '/assets/services/1Implants.png',
     keywords: ['crown', 'bridge'],
   },
   {
     title: 'Cosmetic Dentistry',
     summary:
       'Cosmetic dentistry refers to a range of dental procedures that are performed to improve the appearance of teeth, gums, and bite.',
+    image: '/assets/services/2Cosmetic.png',
     keywords: [],
   },
   {
     title: 'Braces & Aligners',
     summary:
       'Braces and aligners are orthodontic treatments that are used to straighten teeth, correct bite issues, and improve the overall alignment of teeth and jaws.',
+    image: '/assets/services/3Aligners.png',
     keywords: ['invisalign'],
+  },
+  {
+    title: 'Dentures',
+    summary:
+      'Dentures are removable prosthetic devices that are used to replace missing teeth and surrounding tissues.',
+    image: '/assets/services/4Dentures.png',
+    keywords: [],
   },
   {
     title: 'Pediatric Dentistry',
@@ -30,12 +45,6 @@ const services: { title: string; summary: string; keywords?: string[] }[] = [
     title: 'Root Canal',
     summary:
       'A root canal treatment, also known as endodontic therapy, is a dental procedure that is performed to save a damaged or infected tooth.',
-    keywords: [],
-  },
-  {
-    title: 'Dentures',
-    summary:
-      'Dentures are removable prosthetic devices that are used to replace missing teeth and surrounding tissues.',
     keywords: [],
   },
   {
@@ -57,9 +66,8 @@ const services: { title: string; summary: string; keywords?: string[] }[] = [
     keywords: ['scaling'],
   },
 ];
-const ImplantPhoto = '/assets/services/implant/implant1.jpg';
 
-const Carousel = (props: { len: number }) => (
+const Carousel = (props: { len: number; hideMore: boolean }) => (
   <>
     {services.slice(0, props.len).map((item) => (
       <div className="flex" key={item.title}>
@@ -67,39 +75,42 @@ const Carousel = (props: { len: number }) => (
           title={item.title}
           summary={item.summary}
           keywords={item.keywords}
-          photo={ImplantPhoto}
+          photo={item.image}
+          mdLgWidth={props.hideMore ? 'w-72' : 'w-50%'}
         />
       </div>
     ))}
-    <div className="my-auto">
-      <OneService
-        title="More Services"
-        titleCenter
-        summary=""
-        keywords={[
-          'scaling',
-          'dentures',
-          'root canal',
-          'extraction',
-          'wisdom teeth',
-          'mouth rehabilitation',
-        ]}
-      />
-    </div>
+    {!props.hideMore && (
+      <div className="my-auto">
+        <OneService
+          title="More Services"
+          titleCenter
+          summary=""
+          keywords={[
+            'scaling',
+            'pediatric',
+            'root canal',
+            'extraction',
+            'wisdom teeth',
+            'mouth rehabilitation',
+          ]}
+        />
+      </div>
+    )}
   </>
 );
 
-const Services = () => (
+const Services = (props: { len?: number; hideMore?: boolean }) => (
   <div id="services">
-    <Section title="Our Services">
-      {/* <div className="hidden md:lg:flex carousel w-full">
-        <Carousel len={3} />
-      </div>
-      <div className="md:lg:hidden carousel justify-center carousel-vertical w-full">
-        <Carousel len={2} />
-      </div> */}
+    <Section
+      title="Our Services"
+      description="Check out our comprehensive dental procedures"
+    >
       <div className="flex flex-wrap justify-center gap-4 w-full">
-        <Carousel len={3} />
+        <Carousel
+          len={props.len || services.length}
+          hideMore={props.hideMore || false}
+        />
       </div>
     </Section>
   </div>

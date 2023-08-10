@@ -4,7 +4,7 @@ import { Footer } from './Footer';
 import { Hero } from './Hero';
 import { Nav } from './Nav';
 import { Services } from './Services';
-import { StatsV2 } from './StatsV2';
+import { Stats } from './Stats';
 import { Team } from './Team';
 import { Testimonials } from './Testimonials';
 import { WhyChooseUs } from './WhyChooseUs';
@@ -18,8 +18,8 @@ const Home = () => (
         <WhyChooseUs />
       </div>
     </Background>
-    <Services />
-    <StatsV2 />
+    <Services len={4} />
+    <Stats />
     <Background image>
       <Team />
       <div className="block md:lg:hidden">

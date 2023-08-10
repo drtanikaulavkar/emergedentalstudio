@@ -4,11 +4,17 @@ type IServiceProps = {
   photo?: string;
   keywords?: string[];
   titleCenter?: boolean;
+  mdLgWidth?: string;
 };
 
 const OneService = (props: IServiceProps) => {
   return (
-    <div className="card card-compact max-w-sm md:lg:max-w-xs bg-primary-0 shadow-sm hover:border-2 hover:border-primary-400">
+    <div
+      className={`card card-compact max-w-sm ${
+        props.mdLgWidth ? `md:lg:${props.mdLgWidth}` : 'md:lg:w-72'
+      } bg-primary-0 shadow-sm`}
+      // } bg-primary-0 shadow-sm hover:border-2 hover:border-primary-400`}
+    >
       <figure>
         {props.photo && <img src={props.photo} alt={props.title} />}
       </figure>
@@ -20,7 +26,7 @@ const OneService = (props: IServiceProps) => {
         >
           {props.title}
         </h2>
-        <p>{props.summary}</p>
+        <p className="text-base">{props.summary}</p>
         <div
           className={`card-actions ${
             props.titleCenter ? 'justify-center' : 'justify-end'
