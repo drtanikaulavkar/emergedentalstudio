@@ -20,9 +20,12 @@ const Hero = () => (
         }
         description="Let’s make dental health a priority."
         button={
-          <Link href="/services" passHref>
+          <Link
+            href="https://clinicia.com/calendar/book?u=tanishakaulavkar"
+            passHref
+          >
             <button className="btn btn-primary normal-case rounded-full text-xl">
-              Go To Services
+              BOOK YOUR APPOINTMENT
             </button>
           </Link>
         }

@@ -41,7 +41,7 @@ module.exports = {
           900: '#1a202c',
         },
         hero: {
-          0: '#DDFDF7',
+          0: '#FFFFFF',
           1: '#87c3e3',
         },
       },
