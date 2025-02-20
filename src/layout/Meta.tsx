@@ -10,6 +10,11 @@ type IMetaProps = {
   canonical?: string;
 };
 
+const seoTitle =
+  'Best Dentist Near Me in Bengaluru for Expert Dental Care & Treatments | Emerge Dental Studio';
+const seoDescription =
+  'Looking for a 5-star rated dentist in Bengaluru? Our expert dental clinic offers top-notch care for all dental needs. Book an appointment today!';
+
 const Meta = (props: IMetaProps) => {
   const router = useRouter();
 
@@ -48,12 +53,12 @@ const Meta = (props: IMetaProps) => {
         />
       </Head>
       <NextSeo
-        title={props.title}
-        description={props.description}
+        title={seoTitle}
+        description={seoDescription}
         canonical={props.canonical}
         openGraph={{
           title: props.title,
-          description: props.description,
+          description: seoDescription,
           url: props.canonical,
           locale: AppConfig.locale,
           site_name: AppConfig.site_name,

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { Section } from '../layout/Section';
 import { Navbar } from '../navigation/Navbar';
 import { LogoV2 } from './LogoV2';
 
@@ -13,17 +12,15 @@ const pages: { name: string; link: string }[] = [
 
 const Nav = () => {
   return (
-    <Section yPadding="pt-6">
-      <Navbar logo={<LogoV2 xl />}>
-        {pages.map((page: { name: string; link: string }) => (
-          <li key={page.name} className="lg:px-4 hover:text-gray-900">
-            <Link href={page.link}>
-              <a>{page.name} </a>
-            </Link>
-          </li>
-        ))}
-      </Navbar>
-    </Section>
+    <Navbar logo={<LogoV2 xl />}>
+      {pages.map((page: { name: string; link: string }) => (
+        <li key={page.name} className="lg:px-4 hover:text-gray-900">
+          <Link href={page.link}>
+            <a>{page.name} </a>
+          </Link>
+        </li>
+      ))}
+    </Navbar>
   );
 };
 

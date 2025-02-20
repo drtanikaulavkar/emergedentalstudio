@@ -15,13 +15,6 @@ const services: {
     keywords: ['crown', 'bridge'],
   },
   {
-    title: 'Cosmetic Dentistry',
-    summary:
-      'Cosmetic dentistry refers to a range of dental procedures that are performed to improve the appearance of teeth, gums, and bite.',
-    image: '/assets/services/2Cosmetic.png',
-    keywords: [],
-  },
-  {
     title: 'Braces & Aligners',
     summary:
       'Braces and aligners are orthodontic treatments that are used to straighten teeth, correct bite issues, and improve the overall alignment of teeth and jaws.',
@@ -33,6 +26,13 @@ const services: {
     summary:
       'Dentures are removable prosthetic devices that are used to replace missing teeth and surrounding tissues.',
     image: '/assets/services/4Dentures.png',
+    keywords: [],
+  },
+  {
+    title: 'Cosmetic Dentistry',
+    summary:
+      'Cosmetic dentistry refers to a range of dental procedures that are performed to improve the appearance of teeth, gums, and bite.',
+    image: '/assets/services/2Cosmetic.png',
     keywords: [],
   },
   {
@@ -76,7 +76,7 @@ const Carousel = (props: { len: number; hideMore: boolean }) => (
           summary={item.summary}
           keywords={item.keywords}
           photo={item.image}
-          mdLgWidth={props.hideMore ? 'w-72' : 'w-50%'}
+          // mdLgWidth={props.hideMore ? 'w-72' : 'w-screen'}
         />
       </div>
     ))}
@@ -104,9 +104,9 @@ const Services = (props: { len?: number; hideMore?: boolean }) => (
   <div id="services">
     <Section
       title="Our Services"
-      description="Check out our comprehensive dental procedures"
+      description="Explore our comprehensive dental procedures"
     >
-      <div className="flex flex-wrap justify-center gap-4 w-full">
+      <div className="flex overflow-auto gap-4 w-full pb-4">
         <Carousel
           len={props.len || services.length}
           hideMore={props.hideMore || false}

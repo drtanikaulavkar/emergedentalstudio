@@ -12,19 +12,23 @@ import { WhyChooseUs } from './WhyChooseUs';
 const Home = () => (
   <Base>
     <Background image>
-      <Nav />
-      <Hero />
-      <div className="hidden md:lg:block">
-        <WhyChooseUs />
+      <div className="h-screen flex flex-col">
+        <Nav />
+        <div className="flex-grow max-h-screen">
+          <Hero />
+        </div>
+        <div className="hidden lg:block">
+          <WhyChooseUs />
+        </div>
       </div>
     </Background>
     <Services len={4} />
     <Stats />
     <Background image>
-      <Team />
-      <div className="block md:lg:hidden">
+      <div className="pt-4 block lg:hidden">
         <WhyChooseUs />
       </div>
+      <Team />
     </Background>
     <Testimonials />
     <Background image>

@@ -1,36 +1,25 @@
 import Link from 'next/link';
+import { FaArrowCircleRight } from 'react-icons/fa';
 
 import { HeroV3 } from '../hero/HeroV3';
-import { Section } from '../layout/Section';
 
 const Hero = () => (
   <>
-    {/* <Section yPadding="pt-6">
-      <Nav2 /> todo: improve sm
-    </Section> */}
-
-    <Section yPadding="lg:pt-4">
-      <HeroV3
-        title={
-          <span>
-            {'We are excited to help you '}
-            <span>{'\n'}</span>
-            <span className="text-primary-500">achieve your teeth goals!</span>
-          </span>
-        }
-        description="Let’s make dental health a priority."
-        button={
-          <Link
-            href="https://clinicia.com/calendar/book?u=tanishakaulavkar"
-            passHref
-          >
-            <button className="btn btn-primary normal-case rounded-full text-xl">
-              BOOK YOUR APPOINTMENT
-            </button>
-          </Link>
-        }
-      />
-    </Section>
+    <HeroV3
+      title="We are excited to help you"
+      title2="achieve your teeth goals."
+      description="Let’s make dental health a priority."
+      button={
+        <Link
+          href="https://clinicia.com/calendar/book?u=tanishakaulavkar"
+          passHref
+        >
+          <button className="btn btn-primary normal-case text-2xl">
+            Book Appointment Now <FaArrowCircleRight className="ml-2" />
+          </button>
+        </Link>
+      }
+    />
   </>
 );
 

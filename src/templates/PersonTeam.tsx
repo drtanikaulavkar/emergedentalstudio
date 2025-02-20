@@ -18,7 +18,7 @@ const PersonTeam = (props: IServiceProps) => {
       )}
       <div className=" bg-slate-100 p-4 rounded-b-xl">
         <div className="grow">
-          <h2 className="text-xl font-medium text-primary-700">{props.name}</h2>
+          <h3 className="text-xl font-medium text-primary-700">{props.name}</h3>
           <p className="text font-light">{props.qualification}</p>
         </div>
         <div className="pt-4">

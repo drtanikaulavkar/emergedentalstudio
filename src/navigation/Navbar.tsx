@@ -15,10 +15,10 @@ export const Navbar = (props: INavbarProps) => {
   return (
     <>
       {/* Main navigation container */}
-      <nav className="flex-no-wrap relative flex-col w-full justify-between p-2 rounded-lg lg:rounded-full bg-hero-0 ">
+      <nav className="flex-no-wrap relative flex-col justify-between p-2 m-2 md:lg:m-10 rounded-lg bg-hero-0 ">
         <div className="flex w-full items-center justify-between gap-4">
           {/* Hamburger button for mobile view */}
-          <div className="lg:hidden px-2 text-primary-400">
+          <div className="lg:hidden text-primary-400">
             <Hamburger toggled={active} toggle={setActive} />
           </div>
           {/* Logo */}
@@ -46,9 +46,9 @@ export const Navbar = (props: INavbarProps) => {
               href="https://wa.me/918296801240"
               rel="noopener noreferrer"
             >
-              <BsWhatsapp className="mx-2" />
+              <BsWhatsapp className="m-2" />
             </a>
-            <button className="btn btn-primary rounded-full hidden lg:block">
+            <button className="btn btn-primary rounded-lg hidden lg:block">
               <a href="https://clinicia.com/calendar/book?u=tanishakaulavkar">
                 Book Appointment
               </a>
@@ -65,7 +65,7 @@ export const Navbar = (props: INavbarProps) => {
           <ul className="list-style-none mt-auto gap-2 pt-2 flex flex-col justify-end text-gray-600  focus:text-gray-700">
             {props.children}
             <li>
-              <button className="btn btn-primary rounded-full normal-case text-xl">
+              <button className="btn btn-primary rounded-lg normal-case font-bold">
                 <a href="https://clinicia.com/calendar/book?u=tanishakaulavkar">
                   Book Appointment
                 </a>
