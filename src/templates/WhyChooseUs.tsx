@@ -17,14 +17,18 @@ const features: { title: string; icon?: ReactNode }[] = [
     title: 'Advanced Technology & Equipment',
     icon: <RiCapsuleFill />,
   },
-  { title: 'Convenient Location in Bengaluru', icon: <FaLocationDot /> },
+  { title: 'Convenient Location in Indiranagar', icon: <FaLocationDot /> },
   { title: 'Personalised Dental Care', icon: <RiUserHeartLine /> },
   { title: 'Multispecialty Dental Clinic', icon: <RiHospitalLine /> },
   { title: 'Affordable & Flexible Pricing', icon: <RiMoneyDollarCircleLine /> },
 ];
 
 const WhyChooseUs = () => (
-  <Grid title="Why Choose Us?" yPadding="pt-0 pb-6 lg:pb-8 px-4" gridGap="4">
+  <Grid
+    title="Why Choose Our Dental Clinic in Bengaluru?"
+    yPadding="pt-0 pb-6 lg:pb-8 px-4"
+    gridGap="4"
+  >
     {features.map((item) => (
       <div key={item.title} className="flex gap-4 items-center p-2">
         <IconContext.Provider value={{ size: '32' }}>

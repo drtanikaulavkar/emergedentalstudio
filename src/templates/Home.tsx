@@ -12,9 +12,10 @@ import { WhyChooseUs } from './WhyChooseUs';
 const Home = () => (
   <Base>
     <Background image>
-      <div className="h-screen flex flex-col">
+      <div className="h-screen flex flex-col justify-center">
         <Nav />
-        <div className="flex-grow max-h-screen">
+        <div className="max-h-screen m-auto">
+          {/* TODO: m-auto squeezes content to center - does not look good on mobile. try to justify-between/around */}
           <Hero />
         </div>
         <div className="hidden lg:block">

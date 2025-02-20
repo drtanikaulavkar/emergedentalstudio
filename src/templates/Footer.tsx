@@ -3,7 +3,7 @@ import { Section } from '../layout/Section';
 import { Maps } from './Maps';
 
 const Footer = () => (
-  <Section title="Contact Us">
+  <Section>
     <Maps />
     <div className="mt-8 text-sm text-center">
       <FooterCopyright />
