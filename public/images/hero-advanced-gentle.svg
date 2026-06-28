@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Advanced gentle trusted placeholder</title>
+  <desc id="desc">Abstract treatment planning scene with layered panels.</desc>
+  <rect width="1200" height="675" fill="#18131f"/>
+  <path d="M0 505c170-80 310-104 470-42 224 87 422 70 730-92v304H0z" fill="#006f72" opacity=".55"/>
+  <path d="M0 595c260-86 454-86 650-18 170 59 334 54 550-22v120H0z" fill="#6323a5" opacity=".72"/>
+  <rect x="100" y="90" width="1000" height="420" rx="32" fill="#fbfcf8"/>
+  <rect x="170" y="160" width="360" height="280" rx="22" fill="#ddf5ee"/>
+  <rect x="590" y="162" width="340" height="44" rx="22" fill="#6323a5"/>
+  <rect x="590" y="246" width="420" height="34" rx="17" fill="#006f72"/>
+  <rect x="590" y="318" width="360" height="34" rx="17" fill="#f46b4f"/>
+  <path d="M305 220c-46 0-78 35-78 82 0 62 56 114 78 114 21 0 35-38 58-38s37 38 59 38c21 0 78-52 78-114 0-47-33-82-78-82-24 0-40 10-59 29-18-19-34-29-58-29z" fill="none" stroke="#6323a5" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -17,6 +17,7 @@ export const service = defineType({
     defineField({name: "eyebrow", title: "Small Label", type: "string"}),
     defineField({name: "summary", title: "Card Summary", type: "text", rows: 3}),
     defineField({name: "description", title: "Page Intro", type: "text", rows: 5}),
+    defineField({name: "imageSrc", title: "Local Image Source", type: "string"}),
     defineField({name: "image", title: "Service Image", type: "image", options: {hotspot: true}}),
     defineField({name: "imageAlt", title: "Image Alt Text", type: "string"}),
     defineField({name: "highlights", title: "Highlights", type: "array", of: [{type: "string"}]}),

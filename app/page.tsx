@@ -1,10 +1,71 @@
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import type {Metadata} from "next";
 import {SectionHeader} from "@/components/SectionHeader";
 import {ServiceCard} from "@/components/ServiceCard";
 import {doctor, formatAddress} from "@/lib/siteData";
 import {getPageBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries";
+
+const carouselSlides = [
+  {
+    caption: "Personalised smile and implant care",
+    src: "/images/hero-smile-care.svg",
+    alt: "Personalised smile and implant care at Emerge Dental Studio"
+  },
+  {
+    caption: "Advanced. Gentle. Trusted.",
+    src: "/images/hero-advanced-gentle.svg",
+    alt: "Advanced gentle trusted dental care"
+  },
+  {
+    caption: "Expert dentistry for your smile.",
+    src: "/images/hero-expert-dentistry.svg",
+    alt: "Expert dentistry for your smile"
+  }
+];
+
+const faqs = [
+  {
+    question: "How do I book an appointment?",
+    answer:
+      "You can book an appointment through WhatsApp, the online booking link, or by calling us directly on +91 82968 01240."
+  },
+  {
+    question: "Do you offer emergency dental services?",
+    answer:
+      "Yes. Emerge Dental Studio provides same-day emergency appointments for issues like tooth trauma, broken teeth, and extreme toothaches."
+  },
+  {
+    question: "How often should I visit the dentist?",
+    answer: "Dental check-ups are recommended every 6 months to maintain healthy teeth and gums and catch issues early."
+  },
+  {
+    question: "Are dental treatments painful?",
+    answer:
+      "Patient comfort is a priority. We use advanced, minimally invasive techniques and local anesthesia to support a pain-free experience."
+  },
+  {
+    question: "Is the dental clinic kid-friendly?",
+    answer:
+      "Yes. Emerge Dental Studio offers pediatric dental care in a friendly, calming environment to make your child's visit stress-free."
+  },
+  {
+    question: "What should I expect during my first visit?",
+    answer:
+      "Your first visit includes a full-mouth examination, digital X-rays if needed, a consultation, and a customized treatment plan with charge estimates."
+  },
+  {
+    question: "What payment options do you offer?",
+    answer:
+      "We accept cash, credit card, debit card, Paytm, Google Pay, PhonePe, CRED, and other UPI payment methods."
+  },
+  {
+    question: "What are the timings of the dental clinic?",
+    answer:
+      "The clinic is open from 10 AM to 1 PM and 4 PM to 8 PM, Monday through Saturday. The clinic is closed on Sundays."
+  }
+];
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("home");
@@ -17,51 +78,51 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const [settings, services, page] = await Promise.all([getSiteSettings(), getServices(), getPageBySlug("home")]);
   const servicesIntro = page.sections[0];
-  const cta = page.sections[1];
+  const bookingMessage = "Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%21";
+  const whatsappBookingUrl = `https://wa.me/${settings.whatsappNumber}?text=${bookingMessage}`;
+  const mapsUrl =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0059496583885!2d77.63272917520163!3d12.971470887343878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17258ff3f73d%3A0xa4f9b26340b29668!2sEmerge%20Dental%20Studio%20%7C%20Dentist%2C%20Prosthodontist%20%7C%207th%20Main%2C%20Indiranagar!5e0!3m2!1sen!2sin!4v1682962797284!5m2!1sen!2sin";
 
   return (
     <main>
       <section className="container hero">
         <div className="hero-copy">
-          <p className="eyebrow">Dentist in Bengaluru</p>
+          <p className="section-kicker">Implants, cosmetic dentistry, and prosthodontic care in Indiranagar</p>
           <h1>{page.heroTitle}</h1>
           <p>{page.heroText}</p>
-          <div className="actions">
-            <Link className="button" href="/contact">
-              Book appointment
-            </Link>
-            <a className="button secondary" href={`https://wa.me/${settings.whatsappNumber}`} target="_blank" rel="noreferrer">
-              WhatsApp us
-            </a>
-            <a className="button ghost" href={settings.bookingUrl} target="_blank" rel="noreferrer">
-              Book online
-            </a>
-          </div>
         </div>
-        <aside className="hero-panel" aria-label="Clinic highlights">
-          <Image src="/images/emerge-logo.png" alt="Emerge Dental Studio logo" width={420} height={105} priority />
-          <div className="stat-grid">
-            <div className="stat">
-              <strong>5-star</strong>
-              <p>Patient-focused dental care</p>
-            </div>
-            <div className="stat">
-              <strong>BDS, MDS</strong>
-              <p>Prosthodontics expertise</p>
-            </div>
-            <div className="stat">
-              <strong>9</strong>
-              <p>Core dental services</p>
-            </div>
-            <div className="stat">
-              <strong>Indiranagar</strong>
-              <p>{formatAddress(settings)}</p>
-            </div>
+        <aside className="hero-media" aria-label="Emerge Dental Studio highlights">
+          <div className="hero-carousel">
+            {carouselSlides.map((slide) => (
+              <figure className="carousel-slide" key={slide.caption}>
+                <Image src={slide.src} alt={slide.alt} width={1200} height={675} priority={slide === carouselSlides[0]} />
+                <figcaption>{slide.caption}</figcaption>
+              </figure>
+            ))}
           </div>
+          <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+            Book online
+          </a>
         </aside>
       </section>
 
-      <section className="section alt">
+      <section className="container section services-section">
+        <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
+          {servicesIntro?.body}
+        </SectionHeader>
+        <div className="grid service-grid">
+          {services.slice(0, 6).map((service) => (
+            <ServiceCard key={service.slug} service={service} />
+          ))}
+        </div>
+        <div className="actions">
+          <Link className="button ghost" href="/services">
+            View all services
+          </Link>
+        </div>
+      </section>
+
+      <section className="section doctor-section">
         <div className="container split">
           <Image
             className="doctor-photo"
@@ -71,7 +132,7 @@ export default async function HomePage() {
             height={800}
           />
           <div className="rich-text">
-            <p className="eyebrow">Meet the doctor</p>
+            <p className="section-kicker">Meet the doctor</p>
             <h2>{doctor.name}</h2>
             <p>
               {doctor.role} - {doctor.qualifications}
@@ -84,47 +145,66 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="container section">
-        <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Dental care for every stage of your smile"}>
-          {servicesIntro?.body}
-        </SectionHeader>
-        <div className="grid service-grid">
-          {services.slice(0, 6).map((service) => (
-            <ServiceCard key={service.slug} service={service} />
-          ))}
-        </div>
-        <div className="actions">
-          <Link className="button" href="/services">
-            View all services
-          </Link>
-        </div>
-      </section>
-
-      <section className="section alt">
+      <section className="section reviews-section">
         <div className="container">
-          <SectionHeader eyebrow="Testimonials" title="Kind words from patients" />
-          <div className="grid testimonial-grid">
-            {settings.testimonials.map((testimonial) => (
-              <blockquote className="testimonial" key={testimonial.name}>
-                <p>{testimonial.quote}</p>
-                <strong>
-                  {testimonial.name} - {testimonial.rating}/5
-                </strong>
-              </blockquote>
-            ))}
+          <SectionHeader eyebrow="Google reviews" title="What patients say about Emerge" />
+          <Script src="https://apps.elfsight.com/p/platform.js" strategy="lazyOnload" />
+          <div className="reviews-widget">
+            <div className="elfsight-app-ff647765-4f7b-4dc5-bd88-b5235109b9ca" />
           </div>
         </div>
       </section>
 
-      <section className="container section">
-        <div className="cta-band">
+      <section className="container section faq-section">
+        <div className="faq-layout">
+          <Image className="faq-image" src="/images/faq-placeholder.svg" alt="Dental appointment FAQ illustration" width={720} height={720} />
           <div>
-            <h2>{cta?.title || "Ready to book your visit?"}</h2>
-            <p>{cta?.body || "Send a WhatsApp message or book online for a convenient appointment at Emerge Dental Studio."}</p>
+            <p className="section-kicker">Before you visit</p>
+            <h2>Frequently asked questions</h2>
+            <div className="faq-list">
+              {faqs.map((faq) => (
+                <details key={faq.question}>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
-          <Link className="button" href="/contact">
-            Book now
-          </Link>
+        </div>
+      </section>
+
+      <section className="section contact-section">
+        <div className="container contact-home">
+          <div className="contact-card">
+            <p className="section-kicker">Contact us</p>
+            <h2>Visit Emerge Dental Studio</h2>
+            <p>{formatAddress(settings)}</p>
+            <div className="contact-actions">
+              <a href={`tel:${settings.phone}`}>{settings.phone}</a>
+              <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+                WhatsApp booking
+              </a>
+            </div>
+            <div className="hours-list">
+              {settings.hours.map((hour) => (
+                <p key={`${hour.days}-${hour.label}`}>
+                  <strong>{hour.days}</strong>: {hour.label}
+                </p>
+              ))}
+              {settings.closedDays.map((day) => (
+                <p key={day}>
+                  <strong>{day}</strong>: Closed
+                </p>
+              ))}
+            </div>
+          </div>
+          <iframe
+            className="map-embed"
+            src={mapsUrl}
+            title="Directions to Emerge Dental Studio"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </main>

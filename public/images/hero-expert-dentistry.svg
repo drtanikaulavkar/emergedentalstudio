@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Expert dentistry placeholder</title>
+  <desc id="desc">Abstract smile arc and dental care composition.</desc>
+  <rect width="1200" height="675" fill="#fbfcf8"/>
+  <rect x="72" y="78" width="1056" height="520" rx="42" fill="#6323a5"/>
+  <path d="M72 430c176-82 326-90 506-14 208 88 368 80 550-28v210H72z" fill="#006f72" opacity=".78"/>
+  <circle cx="930" cy="202" r="112" fill="#f4c34f" opacity=".9"/>
+  <path d="M250 268c84 96 194 144 330 144s246-48 330-144" fill="none" stroke="#fff" stroke-width="28" stroke-linecap="round"/>
+  <path d="M322 218c-50 0-86 38-86 91 0 68 62 126 86 126 24 0 39-43 65-43s41 43 65 43c24 0 86-58 86-126 0-53-36-91-86-91-26 0-44 11-65 32-21-21-39-32-65-32z" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

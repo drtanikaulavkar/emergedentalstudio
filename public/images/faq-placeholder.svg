@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">Dental FAQ placeholder</title>
+  <desc id="desc">Abstract question cards for dental appointment questions.</desc>
+  <rect width="720" height="720" fill="#f0f7f3"/>
+  <rect x="92" y="116" width="536" height="488" rx="36" fill="#fff"/>
+  <path d="M190 222h340M190 330h270M190 438h310" stroke="#6323a5" stroke-width="24" stroke-linecap="round"/>
+  <circle cx="532" cy="330" r="34" fill="#f4c34f"/>
+  <path d="M360 540c0-58 76-54 76-104 0-30-26-52-62-52-34 0-58 17-74 45" fill="none" stroke="#006f72" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="360" cy="596" r="14" fill="#f46b4f"/>
+</svg>
