@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export type HeroCarouselSlide = {
   caption: string;
@@ -11,6 +11,14 @@ export type HeroCarouselSlide = {
 
 export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current === slides.length - 1 ? 0 : current + 1));
+    }, 6000);
+
+    return () => window.clearInterval(timer);
+  }, [slides.length]);
 
   const showPrevious = () => {
     setActiveIndex((current) => (current === 0 ? slides.length - 1 : current - 1));
@@ -35,6 +43,19 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
         <button type="button" aria-label="Next slide" onClick={showNext}>
           <span aria-hidden="true">&gt;</span>
         </button>
+      </div>
+      <div className="carousel-dots" aria-label="Choose carousel slide">
+        {slides.map((slide, index) => (
+          <button
+            type="button"
+            aria-label={`Show slide ${index + 1}: ${slide.caption}`}
+            aria-current={index === activeIndex}
+            onClick={() => setActiveIndex(index)}
+            key={slide.caption}
+          >
+            <span>{index + 1}</span>
+          </button>
+        ))}
       </div>
     </div>
   );

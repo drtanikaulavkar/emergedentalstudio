@@ -2,6 +2,20 @@ import {groq} from "next-sanity";
 import {client} from "./client";
 import {pages, services, siteSettings, type PageContent, type Service, type SiteSettings} from "@/lib/siteData";
 
+const localServiceBySlug = new Map(services.map((service) => [service.slug, service]));
+
+function withLocalServiceImages(service: Service): Service {
+  const localService = localServiceBySlug.get(service.slug);
+
+  return localService
+    ? {
+        ...service,
+        imageSrc: localService.imageSrc,
+        imageAlt: service.imageAlt || localService.imageAlt
+      }
+    : service;
+}
+
 const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
   title,
   description,
@@ -77,7 +91,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 export async function getServices(): Promise<Service[]> {
   try {
     const data = await client.fetch<Service[] | null>(servicesQuery, {}, {next: {revalidate: 60}});
-    return data?.length ? data : services;
+    return data?.length ? data.map(withLocalServiceImages) : services;
   } catch {
     return services;
   }
@@ -86,7 +100,7 @@ export async function getServices(): Promise<Service[]> {
 export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
   try {
     const data = await client.fetch<Service | null>(serviceQuery, {slug}, {next: {revalidate: 60}});
-    return data || services.find((service) => service.slug === slug);
+    return data ? withLocalServiceImages(data) : services.find((service) => service.slug === slug);
   } catch {
     return services.find((service) => service.slug === slug);
   }

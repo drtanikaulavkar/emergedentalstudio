@@ -139,7 +139,7 @@ export default async function HomePage() {
 
       <section className="section reviews-section">
         <div className="container">
-          <SectionHeader title="Google reviews" />
+          <SectionHeader title="Google reviews">Hear what our patients have to say about us</SectionHeader>
           <Script src="https://apps.elfsight.com/p/platform.js" strategy="lazyOnload" />
           <div className="reviews-widget">
             <div className="elfsight-app-ff647765-4f7b-4dc5-bd88-b5235109b9ca" />
@@ -180,14 +180,14 @@ export default async function HomePage() {
             <div className="hours-list">
               {settings.hours.map((hour) => (
                 <p key={`${hour.days}-${hour.label}`}>
-                  <strong>{hour.days}</strong>
-                  <span>{hour.label}</span>
+                  <strong className="hours-day">{hour.days}</strong>
+                  <span className="hours-time">{hour.label}</span>
                 </p>
               ))}
               {settings.closedDays.map((day) => (
                 <p key={day}>
-                  <strong>{day}</strong>
-                  <span>Closed</span>
+                  <strong className="hours-day">{day}</strong>
+                  <span className="hours-time">Closed</span>
                 </p>
               ))}
             </div>

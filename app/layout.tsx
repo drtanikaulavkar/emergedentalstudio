@@ -1,5 +1,5 @@
 import type {Metadata} from "next";
-import {Poppins} from "next/font/google";
+import {Libre_Baskerville, Nunito_Sans} from "next/font/google";
 import "./globals.css";
 import {Footer} from "@/components/Footer";
 import {Header} from "@/components/Header";
@@ -7,10 +7,18 @@ import {JsonLd} from "@/components/JsonLd";
 import {formatAddress} from "@/lib/siteData";
 import {getSiteSettings} from "@/lib/sanity/queries";
 
-const poppins = Poppins({
+const libreBaskerville = Libre_Baskerville({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap"
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-heading"
+});
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-body"
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -64,7 +72,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
 
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={`${libreBaskerville.variable} ${nunitoSans.variable}`}>
         <Header settings={settings} />
         <JsonLd data={jsonLd} />
         {children}
