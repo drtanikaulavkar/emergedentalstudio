@@ -253,13 +253,15 @@ p {
 }
 
 .hero-carousel {
-  aspect-ratio: auto;
   background: #fff;
   border-radius: 8px;
   box-shadow: var(--shadow);
-  height: clamp(340px, calc(100vh - 250px), 520px);
+  aspect-ratio: 16 / 9;
+  height: min(52vh, 560px);
+  min-height: 360px;
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 .carousel-slide {
@@ -277,7 +279,8 @@ p {
 .carousel-slide img {
   display: block;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: var(--slide-focal-point, center);
   width: 100%;
 }
 
@@ -302,6 +305,7 @@ p {
   padding: 0 16px;
   pointer-events: none;
   position: absolute;
+  z-index: 3;
 }
 
 .carousel-controls button {
@@ -831,6 +835,16 @@ p {
     min-height: auto;
   }
 
+  .hero-carousel {
+    aspect-ratio: 4 / 3;
+    height: auto;
+    min-height: 0;
+  }
+
+  .carousel-slide img {
+    object-position: var(--slide-mobile-focal-point, var(--slide-focal-point, center));
+  }
+
   .service-grid,
   .pathway-grid,
   .testimonial-grid,
@@ -880,11 +894,12 @@ p {
   }
 
   .hero-carousel {
-    height: clamp(220px, 36vh, 300px);
+    aspect-ratio: 3 / 4;
   }
 
   .carousel-slide figcaption {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
+    line-height: 1.22;
     padding: 14px 16px;
   }
 
@@ -898,8 +913,9 @@ p {
   }
 
   .carousel-dots {
-    bottom: 12px;
+    bottom: auto;
     right: 12px;
+    top: 12px;
   }
 
   .carousel-dots button {

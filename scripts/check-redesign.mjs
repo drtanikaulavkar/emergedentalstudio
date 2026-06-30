@@ -53,7 +53,10 @@ assert.match(css, /img\s*{[\s\S]*height:\s*auto;/, "global image styles should p
 assert.match(css, /\.reviews-widget \.es-widget-title-container[\s\S]*display:\s*none !important/, "Elfsight's injected Testimonials title should be hidden");
 assert.match(css, /\.section-header h2[\s\S]*white-space:\s*nowrap/, "section headings should stay on one line on wider viewports");
 assert.match(css, /\.hero \.section-kicker[\s\S]*font-size:\s*clamp\(0\.82rem/, "hero top heading should be smaller");
-assert.match(css, /\.carousel-slide img[\s\S]*object-fit:\s*contain/, "carousel images should show the complete folder photos instead of cropping");
+assert.match(css, /\.hero-carousel[\s\S]*width:\s*100%/, "carousel should fill the available hero width");
+assert.match(css, /\.carousel-slide img[\s\S]*object-fit:\s*cover/, "carousel images should crop to fill the frame without side blank space");
+assert.match(css, /\.carousel-slide img[\s\S]*object-position:\s*var\(--slide-focal-point/, "carousel images should use per-slide focal points for intentional cropping");
+assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.carousel-dots\s*{[\s\S]*top:\s*12px/, "mobile carousel dots should move away from the caption");
 assert.match(css, /\.contact-card h2[\s\S]*white-space:\s*normal/, "contact heading should wrap inside the white box");
 assert.match(css, /\.contact-card > p:not\(\.section-kicker\)[\s\S]*overflow-wrap:\s*anywhere/, "contact subheading should wrap inside the white box");
 assert.match(css, /\.hero-booking[\s\S]*background:\s*var\(--coral\)/, "hero CTA should use a stronger accent color");

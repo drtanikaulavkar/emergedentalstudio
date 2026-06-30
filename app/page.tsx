@@ -12,17 +12,23 @@ const carouselSlides = [
   {
     caption: "Personalised smile and implant care",
     src: "/images/home-carousel-1.jpg",
-    alt: "Dental care in progress at Emerge Dental Studio"
+    alt: "Dental care in progress at Emerge Dental Studio",
+    focalPoint: "50% 58%",
+    mobileFocalPoint: "54% 58%"
   },
   {
     caption: "Advanced. Gentle. Trusted.",
     src: "/images/home-carousel-2.jpg",
-    alt: "Modern dental treatment room at Emerge Dental Studio"
+    alt: "Modern dental treatment room at Emerge Dental Studio",
+    focalPoint: "50% 60%",
+    mobileFocalPoint: "48% 58%"
   },
   {
     caption: "Expert dentistry for your smile.",
     src: "/images/home-carousel-3.jpg",
-    alt: "Emerge Dental Studio team and clinic care"
+    alt: "Emerge Dental Studio team and clinic care",
+    focalPoint: "54% 56%",
+    mobileFocalPoint: "52% 58%"
   }
 ];
 
