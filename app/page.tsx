@@ -99,9 +99,7 @@ export default async function HomePage() {
       </section>
 
       <section className="container section services-section">
-        <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
-          {servicesIntro?.body}
-        </SectionHeader>
+        <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"} />
         <div className="grid service-grid">
           {services.slice(0, 6).map((service) => (
             <ServiceCard key={service.slug} service={service} />

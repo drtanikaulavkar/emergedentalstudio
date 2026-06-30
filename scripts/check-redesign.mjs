@@ -12,6 +12,8 @@ assert.match(layout, /Libre_Baskerville/, "headings should use a serif Google fo
 assert.match(layout, /Nunito_Sans/, "body and subcontent should use a sans serif Google font");
 assert.match(css, /--font-heading/, "CSS should expose a serif heading font variable");
 assert.match(css, /--font-body/, "CSS should expose a sans serif body font variable");
+assert.match(css, /\.carousel-slide figcaption[\s\S]*font-family:\s*var\(--font-heading\)/, "carousel captions should use the serif heading font");
+assert.match(css, /\.carousel-slide figcaption[\s\S]*font-size:\s*clamp\(1\.3rem/, "carousel captions should be slightly larger");
 assert.match(page, /Personalised smile and implant care/, "carousel should include the first requested caption");
 assert.match(page, /Advanced\. Gentle\. Trusted\./, "carousel should include the second requested caption");
 assert.match(page, /Expert dentistry for your smile\./, "carousel should include the third requested caption");
@@ -29,6 +31,7 @@ assert.match(page, /Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%2
 assert.match(page, /Book online/, "hero should keep one Book online CTA");
 assert.doesNotMatch(page, /Why choose a prosthodontist/, "old right-side prosthodontist panel should be removed from the hero");
 assert.doesNotMatch(page, /pathway-section|Choose the path that fits your smile/, "choose-path section should be removed");
+assert.doesNotMatch(page, /servicesIntro\?\.body/, "services section should not render the supporting subheading");
 assert.match(serviceCard, /Image from "next\/image"/, "service cards should render related images");
 assert.match(serviceCard, /service\.imageSrc/, "service cards should use a service image source");
 assert.match(page, /Hear what our patients have to say about us/, "reviews section should use the requested supporting line");
@@ -49,6 +52,10 @@ assert.match(css, /prefers-reduced-motion:\s*reduce/, "global styles should resp
 assert.match(css, /img\s*{[\s\S]*height:\s*auto;/, "global image styles should preserve aspect ratio");
 assert.match(css, /\.reviews-widget \.es-widget-title-container[\s\S]*display:\s*none !important/, "Elfsight's injected Testimonials title should be hidden");
 assert.match(css, /\.section-header h2[\s\S]*white-space:\s*nowrap/, "section headings should stay on one line on wider viewports");
+assert.match(css, /\.hero \.section-kicker[\s\S]*font-size:\s*clamp\(0\.82rem/, "hero top heading should be smaller");
+assert.match(css, /\.carousel-slide img[\s\S]*object-fit:\s*contain/, "carousel images should show the complete folder photos instead of cropping");
+assert.match(css, /\.contact-card h2[\s\S]*white-space:\s*normal/, "contact heading should wrap inside the white box");
+assert.match(css, /\.contact-card > p:not\(\.section-kicker\)[\s\S]*overflow-wrap:\s*anywhere/, "contact subheading should wrap inside the white box");
 assert.match(css, /\.hero-booking[\s\S]*background:\s*var\(--coral\)/, "hero CTA should use a stronger accent color");
 assert.match(css, /\.hours-list p[\s\S]*grid-template-columns:\s*1fr/, "contact timing rows should stack day and time inside the same white box");
 assert.match(css, /\.faq-list summary[\s\S]*font-weight:\s*400/, "FAQ questions should use normal text weight");

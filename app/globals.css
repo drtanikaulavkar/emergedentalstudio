@@ -149,8 +149,8 @@ main {
 
 .hero .section-kicker {
   color: var(--teal);
-  font-size: clamp(0.98rem, 1.8vw, 1.25rem);
-  line-height: 1.25;
+  font-size: clamp(0.82rem, 1.25vw, 1rem);
+  line-height: 1.2;
   margin: 0;
 }
 
@@ -254,9 +254,10 @@ p {
 
 .hero-carousel {
   aspect-ratio: auto;
+  background: #fff;
   border-radius: 8px;
   box-shadow: var(--shadow);
-  height: clamp(380px, calc(100vh - 260px), 560px);
+  height: clamp(340px, calc(100vh - 250px), 520px);
   overflow: hidden;
   position: relative;
 }
@@ -276,22 +277,19 @@ p {
 .carousel-slide img {
   display: block;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
-}
-
-.carousel-slide:first-child img {
-  object-position: 50% 58%;
 }
 
 .carousel-slide figcaption {
   background: linear-gradient(90deg, rgba(24, 19, 31, 0.82), rgba(24, 19, 31, 0.2));
   bottom: 0;
   color: #fff;
-  font-size: clamp(1.05rem, 2vw, 1.45rem);
-  font-weight: 800;
+  font-family: var(--font-heading), Georgia, serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 700;
   left: 0;
-  padding: 18px 20px;
+  padding: 20px 22px;
   position: absolute;
   right: 0;
 }
@@ -557,7 +555,18 @@ p {
   border-radius: 8px;
   display: grid;
   gap: 18px;
+  min-width: 0;
   padding: clamp(24px, 5vw, 44px);
+}
+
+.contact-card h2 {
+  font-size: clamp(1.35rem, 2.35vw, 2rem);
+  white-space: normal;
+}
+
+.contact-card > p:not(.section-kicker) {
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
 }
 
 .contact-actions {
@@ -871,11 +880,11 @@ p {
   }
 
   .hero-carousel {
-    height: clamp(240px, 39vh, 330px);
+    height: clamp(220px, 36vh, 300px);
   }
 
   .carousel-slide figcaption {
-    font-size: 1rem;
+    font-size: 1.15rem;
     padding: 14px 16px;
   }
 
