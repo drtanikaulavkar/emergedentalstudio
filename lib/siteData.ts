@@ -193,7 +193,7 @@ export const services: Service[] = [
     summary: "Permanent replacement options for missing teeth using carefully planned implant treatment.",
     description:
       "Dental implants are artificial tooth roots placed in the jawbone to support a crown, bridge, or denture. They are designed to restore appearance, chewing confidence, and long-term oral function.",
-    imageSrc: "/images/service-dental-implants.svg",
+    imageSrc: "/images/service-dental-implants.jpg",
     imageAlt: "Dental implant consultation at Emerge Dental Studio",
     highlights: [
       "Natural-looking replacement for one or more missing teeth",
@@ -228,7 +228,7 @@ export const services: Service[] = [
     summary: "Smile-focused treatments including whitening, veneers, bonding, reshaping, and smile design.",
     description:
       "Cosmetic dentistry improves the appearance of teeth, gums, and bite while supporting confident, healthy smiles.",
-    imageSrc: "/images/service-cosmetic-dentistry.svg",
+    imageSrc: "/images/service-cosmetic-dentistry.jpg",
     imageAlt: "Cosmetic dentistry smile consultation",
     highlights: [
       "Teeth whitening for a brighter smile",
@@ -263,7 +263,7 @@ export const services: Service[] = [
     summary: "Traditional braces and clear aligners for straighter teeth and improved bite alignment.",
     description:
       "Braces and aligners help correct misaligned teeth, bite concerns, and jaw alignment issues for children, teens, and adults.",
-    imageSrc: "/images/service-braces-aligners.svg",
+    imageSrc: "/images/service-braces-aligners.jpg",
     imageAlt: "Clear aligner and braces consultation",
     highlights: [
       "Metal braces",
@@ -297,7 +297,7 @@ export const services: Service[] = [
     summary: "Gentle preventive and restorative dental care for children from infancy through adolescence.",
     description:
       "Pediatric dentistry focuses on children's oral health, early prevention, calm education, and age-appropriate treatment.",
-    imageSrc: "/images/service-pediatric-dentistry.svg",
+    imageSrc: "/images/service-pediatric-dentistry.jpg",
     imageAlt: "Pediatric dental care for children",
     highlights: [
       "Regular oral examinations",
@@ -331,7 +331,7 @@ export const services: Service[] = [
     summary: "Endodontic treatment to save infected or damaged teeth and relieve pain.",
     description:
       "Root canal treatment removes infected pulp from inside the tooth, cleans the canals, and seals the space to help preserve the natural tooth.",
-    imageSrc: "/images/service-root-canal.svg",
+    imageSrc: "/images/service-root-canal.jpg",
     imageAlt: "Root canal treatment planning",
     highlights: [
       "Relieves tooth pain caused by infection",
@@ -366,7 +366,7 @@ export const services: Service[] = [
     summary: "Complete, partial, and implant-supported dentures to restore missing teeth.",
     description:
       "Dentures are custom-made removable prosthetic devices that replace missing teeth and surrounding tissues.",
-    imageSrc: "/images/service-dentures.svg",
+    imageSrc: "/images/service-dentures.jpg",
     imageAlt: "Denture consultation",
     highlights: [
       "Complete dentures",

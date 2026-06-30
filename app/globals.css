@@ -90,6 +90,7 @@ img {
 .header-cta,
 .button,
 .booking-form button {
+  align-items: center;
   background: var(--brand);
   border: 0;
   border-radius: 8px;
@@ -124,16 +125,17 @@ main {
 }
 
 .hero {
-  align-items: center;
+  align-items: stretch;
   display: grid;
-  gap: clamp(24px, 4vw, 52px);
-  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
+  gap: clamp(14px, 2.2vw, 22px);
+  grid-template-columns: 1fr;
   min-height: calc(100vh - 78px);
   padding-block: clamp(22px, 4vw, 42px);
 }
 
 .hero-copy {
-  align-self: center;
+  align-self: end;
+  max-width: 100%;
 }
 
 .section-kicker,
@@ -143,6 +145,13 @@ main {
   font-weight: 900;
   letter-spacing: 0;
   margin: 0 0 10px;
+}
+
+.hero .section-kicker {
+  color: var(--teal);
+  font-size: clamp(0.98rem, 1.8vw, 1.25rem);
+  line-height: 1.25;
+  margin: 0;
 }
 
 h1,
@@ -161,6 +170,15 @@ h1 {
 
 h2 {
   font-size: clamp(1.65rem, 3vw, 2.5rem);
+}
+
+.section-header h2,
+.rich-text h2,
+.faq-layout h2,
+.contact-card h2 {
+  font-size: clamp(1.35rem, 3vw, 2.5rem);
+  max-width: 100%;
+  white-space: nowrap;
 }
 
 h3 {
@@ -218,33 +236,32 @@ p {
 }
 
 .hero-media {
-  align-self: center;
+  align-content: start;
+  align-self: stretch;
   display: grid;
-  gap: 14px;
+  gap: 16px;
+  min-width: 0;
 }
 
 .hero-carousel {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: auto;
   border-radius: 8px;
   box-shadow: var(--shadow);
+  height: clamp(380px, calc(100vh - 260px), 560px);
   overflow: hidden;
   position: relative;
 }
 
 .carousel-slide {
-  animation: carouselFade 12s infinite;
   inset: 0;
   margin: 0;
   opacity: 0;
   position: absolute;
+  transition: opacity 320ms ease;
 }
 
-.carousel-slide:nth-child(2) {
-  animation-delay: 4s;
-}
-
-.carousel-slide:nth-child(3) {
-  animation-delay: 8s;
+.carousel-slide[data-active="true"] {
+  opacity: 1;
 }
 
 .carousel-slide img {
@@ -252,6 +269,10 @@ p {
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+
+.carousel-slide:first-child img {
+  object-position: 50% 58%;
 }
 
 .carousel-slide figcaption {
@@ -266,20 +287,54 @@ p {
   right: 0;
 }
 
-.hero-booking {
-  justify-self: start;
+.carousel-controls {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: space-between;
+  padding: 0 16px;
+  pointer-events: none;
+  position: absolute;
 }
 
-@keyframes carouselFade {
-  0%,
-  30% {
-    opacity: 1;
-  }
+.carousel-controls button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 0;
+  border-radius: 999px;
+  color: var(--brand);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 1.35rem;
+  font-weight: 900;
+  height: 46px;
+  justify-content: center;
+  pointer-events: auto;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+  width: 46px;
+}
 
-  36%,
-  100% {
-    opacity: 0;
-  }
+.carousel-controls button:hover {
+  background: var(--brand);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.button.secondary.hero-booking {
+  align-self: start;
+  background: var(--coral);
+  font-size: 1.08rem;
+  justify-self: start;
+  min-height: 54px;
+  padding: 14px 24px;
+}
+
+.button.secondary.hero-booking:hover {
+  background: #d94731;
 }
 
 .doctor-section {
@@ -296,12 +351,15 @@ p {
 
 .section-header {
   margin: 0 auto 24px;
-  max-width: 760px;
+  max-width: 100%;
   text-align: center;
 }
 
 .section-header p:not(.eyebrow) {
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 14px;
+  max-width: 760px;
 }
 
 .grid {
@@ -403,7 +461,14 @@ p {
   align-items: stretch;
   display: grid;
   gap: 26px;
+}
+
+.faq-layout {
   grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+}
+
+.contact-home {
+  grid-template-columns: minmax(420px, 0.85fr) minmax(0, 1.15fr);
 }
 
 .faq-image {
@@ -469,10 +534,32 @@ p {
   gap: 8px;
 }
 
+.hours-list p,
+.footer-hour {
+  align-items: baseline;
+  display: flex;
+  font-size: clamp(0.82rem, 1.3vw, 0.98rem);
+  gap: 16px;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.hours-list p span,
+.footer-hour span {
+  color: var(--muted);
+  text-align: right;
+}
+
+.hours-list strong::after,
+.footer-hour strong::after {
+  content: ":";
+}
+
 .map-embed {
   border: 0;
   border-radius: 8px;
-  min-height: 360px;
+  height: 100%;
+  min-height: 420px;
   width: 100%;
 }
 
@@ -648,6 +735,15 @@ p {
   margin-top: 8px;
 }
 
+.site-footer .footer-hour {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.site-footer .footer-hour strong,
+.site-footer .footer-hour span {
+  color: inherit;
+}
+
 @media (max-width: 920px) {
   .site-header {
     align-items: flex-start;
@@ -718,19 +814,60 @@ p {
   }
 
   .hero {
-    padding-block: 44px;
+    padding-block: 18px;
+  }
+
+  .hero-carousel {
+    height: clamp(240px, 39vh, 330px);
+  }
+
+  .carousel-slide figcaption {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+
+  .carousel-controls {
+    padding: 0 10px;
+  }
+
+  .carousel-controls button {
+    height: 40px;
+    width: 40px;
+  }
+
+  .button.secondary.hero-booking {
+    min-height: 52px;
+    padding: 10px 20px;
   }
 
   h1 {
     font-size: 2.15rem;
   }
 
-  .service-card,
+  .section-header h2,
+  .rich-text h2,
+  .faq-layout h2,
+  .contact-card h2 {
+    font-size: clamp(1.05rem, 4.45vw, 1.42rem);
+  }
+
   .pathway-card,
   .info-card,
   .booking-form,
   .detail-block {
     padding: 20px;
+  }
+
+  .service-card {
+    padding: 0;
+  }
+
+  .contact-card {
+    padding: 22px;
+  }
+
+  .map-embed {
+    min-height: 300px;
   }
 }
 

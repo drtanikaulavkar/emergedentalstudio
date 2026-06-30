@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import type {Metadata} from "next";
+import {HeroCarousel} from "@/components/HeroCarousel";
 import {SectionHeader} from "@/components/SectionHeader";
 import {ServiceCard} from "@/components/ServiceCard";
 import {doctor, formatAddress} from "@/lib/siteData";
@@ -10,18 +11,18 @@ import {getPageBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries"
 const carouselSlides = [
   {
     caption: "Personalised smile and implant care",
-    src: "/images/hero-smile-care.svg",
-    alt: "Personalised smile and implant care at Emerge Dental Studio"
+    src: "/images/home-carousel-1.jpg",
+    alt: "Dental care in progress at Emerge Dental Studio"
   },
   {
     caption: "Advanced. Gentle. Trusted.",
-    src: "/images/hero-advanced-gentle.svg",
-    alt: "Advanced gentle trusted dental care"
+    src: "/images/home-carousel-2.jpg",
+    alt: "Modern dental treatment room at Emerge Dental Studio"
   },
   {
     caption: "Expert dentistry for your smile.",
-    src: "/images/hero-expert-dentistry.svg",
-    alt: "Expert dentistry for your smile"
+    src: "/images/home-carousel-3.jpg",
+    alt: "Emerge Dental Studio team and clinic care"
   }
 ];
 
@@ -87,19 +88,10 @@ export default async function HomePage() {
     <main>
       <section className="container hero">
         <div className="hero-copy">
-          <p className="section-kicker">Implants, cosmetic dentistry, and prosthodontic care in Indiranagar</p>
-          <h1>{page.heroTitle}</h1>
-          <p>{page.heroText}</p>
+          <p className="section-kicker">Dental implants, cosmetic dentistry, and prosthodontic care in Indiranagar, Bengaluru</p>
         </div>
         <aside className="hero-media" aria-label="Emerge Dental Studio highlights">
-          <div className="hero-carousel">
-            {carouselSlides.map((slide) => (
-              <figure className="carousel-slide" key={slide.caption}>
-                <Image src={slide.src} alt={slide.alt} width={1200} height={675} priority={slide === carouselSlides[0]} />
-                <figcaption>{slide.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <HeroCarousel slides={carouselSlides} />
           <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
             Book online
           </a>
@@ -126,10 +118,10 @@ export default async function HomePage() {
         <div className="container split">
           <Image
             className="doctor-photo"
-            src="/images/dr-tanisha-kaulavkar.jpg"
+            src="/images/dr-tanisha-home.jpg"
             alt="Dr. Tanisha Kaulavkar"
-            width={600}
-            height={800}
+            width={918}
+            height={1224}
           />
           <div className="rich-text">
             <p className="section-kicker">Meet the doctor</p>
@@ -147,7 +139,7 @@ export default async function HomePage() {
 
       <section className="section reviews-section">
         <div className="container">
-          <SectionHeader eyebrow="Google reviews" title="What patients say about Emerge" />
+          <SectionHeader title="Google reviews" />
           <Script src="https://apps.elfsight.com/p/platform.js" strategy="lazyOnload" />
           <div className="reviews-widget">
             <div className="elfsight-app-ff647765-4f7b-4dc5-bd88-b5235109b9ca" />
@@ -157,7 +149,7 @@ export default async function HomePage() {
 
       <section className="container section faq-section">
         <div className="faq-layout">
-          <Image className="faq-image" src="/images/faq-placeholder.svg" alt="Dental appointment FAQ illustration" width={720} height={720} />
+          <Image className="faq-image" src="/images/home-faq.jpg" alt="Emerge Dental Studio consultation space" width={1004} height={1318} />
           <div>
             <p className="section-kicker">Before you visit</p>
             <h2>Frequently asked questions</h2>
@@ -188,12 +180,14 @@ export default async function HomePage() {
             <div className="hours-list">
               {settings.hours.map((hour) => (
                 <p key={`${hour.days}-${hour.label}`}>
-                  <strong>{hour.days}</strong>: {hour.label}
+                  <strong>{hour.days}</strong>
+                  <span>{hour.label}</span>
                 </p>
               ))}
               {settings.closedDays.map((day) => (
                 <p key={day}>
-                  <strong>{day}</strong>: Closed
+                  <strong>{day}</strong>
+                  <span>Closed</span>
                 </p>
               ))}
             </div>

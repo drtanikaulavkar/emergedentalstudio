@@ -17,11 +17,15 @@ export function Footer({settings}: {settings: SiteSettings}) {
       <div>
         <h2>Hours</h2>
         {settings.hours.map((hour) => (
-          <p key={`${hour.days}-${hour.label}`}>
-            {hour.days}: {hour.label}
+          <p className="footer-hour" key={`${hour.days}-${hour.label}`}>
+            <strong>{hour.days}</strong>
+            <span>{hour.label}</span>
           </p>
         ))}
-        <p>Sunday: Closed</p>
+        <p className="footer-hour">
+          <strong>Sunday</strong>
+          <span>Closed</span>
+        </p>
       </div>
       <div>
         <h2>Explore</h2>
