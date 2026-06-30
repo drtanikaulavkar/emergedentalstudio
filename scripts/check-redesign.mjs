@@ -14,9 +14,9 @@ assert.match(css, /--font-heading/, "CSS should expose a serif heading font vari
 assert.match(css, /--font-body/, "CSS should expose a sans serif body font variable");
 assert.match(css, /\.carousel-slide figcaption[\s\S]*font-family:\s*var\(--font-heading\)/, "carousel captions should use the serif heading font");
 assert.match(css, /\.carousel-slide figcaption[\s\S]*font-size:\s*clamp\(1\.3rem/, "carousel captions should be slightly larger");
-assert.match(page, /Personalised smile and implant care/, "carousel should include the first requested caption");
+assert.match(page, /Personalized Smile & Implant care/, "carousel should include the first requested caption");
 assert.match(page, /Advanced\. Gentle\. Trusted\./, "carousel should include the second requested caption");
-assert.match(page, /Expert dentistry for your smile\./, "carousel should include the third requested caption");
+assert.match(page, /Expert care for every smile/, "carousel should include the third requested caption");
 assert.match(heroCarousel, /className="hero-carousel"/, "hero should include a landscape carousel");
 assert.match(heroCarousel, /setInterval/, "carousel should auto-advance so all three images are visibly used");
 assert.match(heroCarousel, /carousel-dots/, "carousel should expose controls for all three slides");
@@ -56,6 +56,9 @@ assert.match(css, /\.hero \.section-kicker[\s\S]*font-size:\s*clamp\(0\.82rem/, 
 assert.match(css, /\.hero-carousel[\s\S]*width:\s*100%/, "carousel should fill the available hero width");
 assert.match(css, /\.carousel-slide img[\s\S]*object-fit:\s*cover/, "carousel images should crop to fill the frame without side blank space");
 assert.match(css, /\.carousel-slide img[\s\S]*object-position:\s*var\(--slide-focal-point/, "carousel images should use per-slide focal points for intentional cropping");
+assert.match(css, /\.carousel-dots button[\s\S]*height:\s*30px[\s\S]*width:\s*30px/, "carousel dots should have an easy click target");
+assert.match(css, /\.carousel-dots button::before[\s\S]*background:\s*rgba\(255,\s*255,\s*255,\s*0\.72\)/, "carousel controls should use small white dot indicators");
+assert.match(css, /\.carousel-dots button span[\s\S]*display:\s*none/, "carousel dot numbers should be visually hidden");
 assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.carousel-dots\s*{[\s\S]*top:\s*12px/, "mobile carousel dots should move away from the caption");
 assert.match(css, /\.contact-card h2[\s\S]*white-space:\s*normal/, "contact heading should wrap inside the white box");
 assert.match(css, /\.contact-card > p:not\(\.section-kicker\)[\s\S]*overflow-wrap:\s*anywhere/, "contact subheading should wrap inside the white box");

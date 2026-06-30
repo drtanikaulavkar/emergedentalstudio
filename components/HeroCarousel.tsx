@@ -67,7 +67,7 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
             onClick={() => setActiveIndex(index)}
             key={slide.caption}
           >
-            <span>{index + 1}</span>
+            <span aria-hidden="true" />
           </button>
         ))}
       </div>

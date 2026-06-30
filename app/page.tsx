@@ -10,7 +10,7 @@ import {getPageBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries"
 
 const carouselSlides = [
   {
-    caption: "Personalised smile and implant care",
+    caption: "Personalized Smile & Implant care",
     src: "/images/home-carousel-1.jpg",
     alt: "Dental care in progress at Emerge Dental Studio",
     focalPoint: "50% 58%",
@@ -24,7 +24,7 @@ const carouselSlides = [
     mobileFocalPoint: "48% 58%"
   },
   {
-    caption: "Expert dentistry for your smile.",
+    caption: "Expert care for every smile",
     src: "/images/home-carousel-3.jpg",
     alt: "Emerge Dental Studio team and clinic care",
     focalPoint: "54% 56%",
