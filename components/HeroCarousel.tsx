@@ -23,14 +23,6 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
     return () => window.clearInterval(timer);
   }, [slides.length]);
 
-  const showPrevious = () => {
-    setActiveIndex((current) => (current === 0 ? slides.length - 1 : current - 1));
-  };
-
-  const showNext = () => {
-    setActiveIndex((current) => (current === slides.length - 1 ? 0 : current + 1));
-  };
-
   return (
     <div className="hero-carousel" aria-roledescription="carousel" aria-label="Emerge Dental Studio homepage images">
       {slides.map((slide, index) => (
@@ -50,14 +42,6 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
           <figcaption>{slide.caption}</figcaption>
         </figure>
       ))}
-      <div className="carousel-controls" aria-label="Carousel controls">
-        <button type="button" aria-label="Previous slide" onClick={showPrevious}>
-          <span aria-hidden="true">&lt;</span>
-        </button>
-        <button type="button" aria-label="Next slide" onClick={showNext}>
-          <span aria-hidden="true">&gt;</span>
-        </button>
-      </div>
       <div className="carousel-dots" aria-label="Choose carousel slide">
         {slides.map((slide, index) => (
           <button

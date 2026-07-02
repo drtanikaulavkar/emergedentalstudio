@@ -74,6 +74,86 @@ const faqs = [
   }
 ];
 
+const whyChooseItems = [
+  {
+    title: "Individualized & Family Dental Care",
+    icon: "family"
+  },
+  {
+    title: "Certified Dentists & Advanced Equipment",
+    icon: "certified"
+  },
+  {
+    title: "Digital X-rays & Digital Impressions",
+    icon: "digital"
+  },
+  {
+    title: "Affordable & Transparent Pricing",
+    icon: "pricing"
+  },
+  {
+    title: "Hygienic & Comfortable Environment",
+    icon: "hygiene"
+  },
+  {
+    title: "Lift access & Gender neutral restroom",
+    icon: "access"
+  }
+] as const;
+
+type WhyChooseIconName = (typeof whyChooseItems)[number]["icon"];
+
+function WhyChooseIcon({name}: {name: WhyChooseIconName}) {
+  return (
+    <svg viewBox="0 0 48 48" role="img" aria-label="" focusable="false">
+      {name === "family" ? (
+        <>
+          <circle cx="19" cy="18" r="5" />
+          <circle cx="31" cy="18" r="5" />
+          <path d="M11 35c2.2-6 13.8-6 16 0" />
+          <path d="M21 35c2.2-6 13.8-6 16 0" />
+        </>
+      ) : null}
+      {name === "certified" ? (
+        <>
+          <path d="M24 7l14 6v10c0 9-5.8 15.2-14 18-8.2-2.8-14-9-14-18V13l14-6z" />
+          <path d="M17 24l5 5 10-11" />
+        </>
+      ) : null}
+      {name === "digital" ? (
+        <>
+          <rect x="12" y="12" width="24" height="20" rx="3" />
+          <path d="M17 26l6-8 5 7 3-4" />
+          <path d="M18 38h12" />
+          <path d="M24 32v6" />
+        </>
+      ) : null}
+      {name === "pricing" ? (
+        <>
+          <path d="M10 14h28v20H10z" />
+          <path d="M16 24h16" />
+          <path d="M16 29h10" />
+          <circle cx="33" cy="19" r="3" />
+        </>
+      ) : null}
+      {name === "hygiene" ? (
+        <>
+          <path d="M24 8l3.2 8.8L36 20l-8.8 3.2L24 32l-3.2-8.8L12 20l8.8-3.2L24 8z" />
+          <path d="M36 30l1.5 4.5L42 36l-4.5 1.5L36 42l-1.5-4.5L30 36l4.5-1.5L36 30z" />
+        </>
+      ) : null}
+      {name === "access" ? (
+        <>
+          <path d="M17 34V16" />
+          <path d="M11 22l6-6 6 6" />
+          <circle cx="32" cy="15" r="4" />
+          <path d="M26 38v-8c0-4 12-4 12 0v8" />
+        </>
+      ) : null}
+    </svg>
+  );
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("home");
   return {
@@ -137,6 +217,25 @@ export default async function HomePage() {
             <Link className="button ghost" href="/about">
               Read more
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section why-choose-section">
+        <div className="container why-choose-layout">
+          <div className="why-choose-heading">
+            <p className="section-kicker">Why choose us</p>
+            <h2>Why Choose Our Dental Clinic in Bengaluru?</h2>
+          </div>
+          <div className="why-choose-grid" aria-label="Reasons to choose Emerge Dental Studio">
+            {whyChooseItems.map((item) => (
+              <article className="why-choose-item" key={item.title}>
+                <span className="why-choose-icon" aria-hidden="true">
+                  <WhyChooseIcon name={item.icon} />
+                </span>
+                <h3>{item.title}</h3>
+              </article>
+            ))}
           </div>
         </div>
       </section>

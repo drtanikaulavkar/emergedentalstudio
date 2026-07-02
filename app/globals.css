@@ -80,6 +80,7 @@ img {
 .header-cta:focus-visible,
 .service-card a:focus-visible,
 .pathway-card:focus-visible,
+.carousel-dots button:focus-visible,
 .booking-form input:focus-visible,
 .booking-form textarea:focus-visible,
 .booking-form button:focus-visible {
@@ -297,44 +298,6 @@ p {
   right: 0;
 }
 
-.carousel-controls {
-  align-items: center;
-  display: flex;
-  inset: 0 0 56px;
-  justify-content: space-between;
-  padding: 0 16px;
-  pointer-events: none;
-  position: absolute;
-  z-index: 3;
-}
-
-.carousel-controls button {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.92);
-  border: 0;
-  border-radius: 999px;
-  color: var(--brand);
-  cursor: pointer;
-  display: inline-flex;
-  font: inherit;
-  font-size: 1.35rem;
-  font-weight: 900;
-  height: 46px;
-  justify-content: center;
-  pointer-events: auto;
-  transition:
-    background 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-  width: 46px;
-}
-
-.carousel-controls button:hover {
-  background: var(--brand);
-  color: #fff;
-  transform: translateY(-1px);
-}
-
 .carousel-dots {
   align-items: center;
   bottom: 16px;
@@ -395,6 +358,74 @@ p {
 
 .doctor-section {
   background: #fff;
+}
+
+.why-choose-section {
+  background: linear-gradient(180deg, #fff 0%, var(--surface) 100%);
+  padding-block: clamp(34px, 5vw, 56px);
+}
+
+.why-choose-layout {
+  display: grid;
+  gap: clamp(20px, 3vw, 34px);
+}
+
+.why-choose-heading {
+  max-width: 780px;
+}
+
+.why-choose-heading h2 {
+  font-size: clamp(1.65rem, 3vw, 2.45rem);
+}
+
+.why-choose-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.why-choose-item {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 13px;
+  grid-template-columns: 50px minmax(0, 1fr);
+  min-height: 94px;
+  padding: 16px;
+}
+
+.why-choose-icon {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(0, 111, 114, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(24, 19, 31, 0.08);
+  color: var(--teal);
+  display: inline-flex;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
+}
+
+.why-choose-icon svg {
+  display: block;
+  fill: none;
+  height: 32px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  width: 32px;
+}
+
+.why-choose-item h3 {
+  color: var(--ink);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  font-weight: 900;
+  line-height: 1.25;
 }
 
 .section {
@@ -865,6 +896,10 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .why-choose-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .cta-band {
     grid-template-columns: 1fr;
   }
@@ -916,15 +951,6 @@ p {
     padding: 14px 16px;
   }
 
-  .carousel-controls {
-    padding: 0 10px;
-  }
-
-  .carousel-controls button {
-    height: 40px;
-    width: 40px;
-  }
-
   .carousel-dots {
     bottom: auto;
     right: 12px;
@@ -947,6 +973,7 @@ p {
 
   .section-header h2,
   .rich-text h2,
+  .why-choose-heading h2,
   .faq-layout h2,
   .contact-card h2 {
     font-size: clamp(1.05rem, 4.45vw, 1.42rem);
@@ -961,6 +988,19 @@ p {
 
   .service-card {
     padding: 0;
+  }
+
+  .why-choose-section {
+    padding-block: 30px;
+  }
+
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-choose-item {
+    min-height: 82px;
+    padding: 13px;
   }
 
   .contact-card {
