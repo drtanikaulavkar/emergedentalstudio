@@ -730,8 +730,16 @@ p {
   padding-block: clamp(56px, 8vw, 96px);
 }
 
+.contact-hero {
+  padding-block: clamp(28px, 4vw, 48px);
+}
+
 .page-hero h1 {
   max-width: 880px;
+}
+
+.contact-hero h1 {
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
 }
 
 .page-hero p:not(.eyebrow) {
