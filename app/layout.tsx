@@ -5,7 +5,7 @@ import {Footer} from "@/components/Footer";
 import {Header} from "@/components/Header";
 import {JsonLd} from "@/components/JsonLd";
 import {formatAddress} from "@/lib/siteData";
-import {getSiteSettings} from "@/lib/sanity/queries";
+import {getServices, getSiteSettings} from "@/lib/sanity/queries";
 
 const libreBaskerville = Libre_Baskerville({
   subsets: ["latin"],
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({children}: {children: React.ReactNode}) {
-  const settings = await getSiteSettings();
+  const [settings, services] = await Promise.all([getSiteSettings(), getServices()]);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dentist",
@@ -73,7 +73,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
   return (
     <html lang="en">
       <body className={`${libreBaskerville.variable} ${nunitoSans.variable}`}>
-        <Header settings={settings} />
+        <Header settings={settings} services={services} />
         <JsonLd data={jsonLd} />
         {children}
         <Footer settings={settings} />
