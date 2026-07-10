@@ -116,7 +116,7 @@ export const siteSettings: SiteSettings = {
     }
   ],
   closedDays: ["Sunday"],
-  serviceAreas: ["Indiranagar", "Koramangala", "Jayanagar", "Whitefield", "Domlur", "Ulsoor"],
+  serviceAreas: ["Indiranagar", "Koramangala", "Domlur", "Ulsoor", "Cambridge layout"],
   testimonials: [
     {
       name: "Ananya R.",
@@ -204,8 +204,7 @@ export const pages: Record<string, PageContent> = {
     seoDescription:
       "Contact Emerge Dental Studio in Indiranagar, Bengaluru. Book a dental appointment by WhatsApp, phone, or online booking.",
     heroTitle: "Book an appointment at Emerge Dental Studio",
-    heroText:
-      "Share your name and treatment need, and the form will open a prefilled WhatsApp message to the clinic.",
+    heroText: "",
     sections: []
   }
 };

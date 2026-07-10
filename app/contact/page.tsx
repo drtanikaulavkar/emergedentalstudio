@@ -4,6 +4,8 @@ import {BookingForm} from "@/components/BookingForm";
 import {formatAddress} from "@/lib/siteData";
 import {getPageBySlug, getSiteSettings} from "@/lib/sanity/queries";
 
+const contactServiceAreas = ["Indiranagar", "Koramangala", "Domlur", "Ulsoor", "Cambridge layout"];
+
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("contact");
   return {
@@ -20,11 +22,10 @@ export default async function ContactPage() {
 
   return (
     <main>
-      <section className="page-hero">
+      <section className="page-hero contact-hero">
         <div className="container">
           <p className="eyebrow">Contact</p>
           <h1>{page.heroTitle}</h1>
-          <p>{page.heroText}</p>
         </div>
       </section>
       <section className="container section contact-grid">
@@ -58,7 +59,7 @@ export default async function ContactPage() {
         <div>
           <BookingForm settings={settings} />
           <ul className="service-area-list" aria-label="Nearby service areas">
-            {settings.serviceAreas.map((area) => (
+            {contactServiceAreas.map((area) => (
               <li key={area}>{area}</li>
             ))}
           </ul>
