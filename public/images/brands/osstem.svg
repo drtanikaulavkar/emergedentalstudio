@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title">
+  <title id="title">Osstem</title>
+  <rect width="320" height="120" rx="16" fill="#ffffff"/>
+  <circle cx="76" cy="60" r="24" fill="#ddf5ee" stroke="#006f72" stroke-width="6"/>
+  <text x="184" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#6323a5">Osstem</text>
+</svg>
