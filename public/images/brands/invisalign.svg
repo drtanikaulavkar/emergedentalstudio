@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title">
+  <title id="title">Invisalign</title>
+  <rect width="320" height="120" rx="16" fill="#ffffff"/>
+  <path d="M56 58c27-18 61-18 88 0" fill="none" stroke="#006f72" stroke-width="8" stroke-linecap="round"/>
+  <text x="214" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="800" fill="#6323a5">Invisalign</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title">
+  <title id="title">Nobel Biocare</title>
+  <rect width="320" height="120" rx="16" fill="#ffffff"/>
+  <path d="M78 35h38v50H78z" fill="#f4c34f"/>
+  <path d="M90 47h14v26H90z" fill="#ffffff"/>
+  <text x="200" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="800" fill="#6323a5">Nobel</text>
+  <text x="200" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#006f72">Biocare</text>
+</svg>

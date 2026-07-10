@@ -4,14 +4,24 @@ import {pages, services, siteSettings, type PageContent, type Service, type Site
 
 const localServiceBySlug = new Map(services.map((service) => [service.slug, service]));
 
-function withLocalServiceImages(service: Service): Service {
+function withLocalServiceContent(service: Service): Service {
   const localService = localServiceBySlug.get(service.slug);
 
   return localService
     ? {
+        ...localService,
         ...service,
-        imageSrc: localService.imageSrc,
-        imageAlt: service.imageAlt || localService.imageAlt
+        imageSrc: service.imageSrc || localService.imageSrc,
+        imageAlt: service.imageAlt || localService.imageAlt,
+        highlights: service.highlights?.length ? service.highlights : localService.highlights,
+        benefits: service.benefits?.length ? service.benefits : localService.benefits,
+        process: service.process?.length ? service.process : localService.process,
+        aftercare: service.aftercare?.length ? service.aftercare : localService.aftercare,
+        brands: service.brands?.length ? service.brands : localService.brands,
+        beforeAfter: service.beforeAfter?.length ? service.beforeAfter : localService.beforeAfter,
+        sections: service.sections?.length ? service.sections : localService.sections,
+        faqs: service.faqs?.length ? service.faqs : localService.faqs,
+        relatedServices: service.relatedServices?.length ? service.relatedServices : localService.relatedServices
       }
     : service;
 }
@@ -41,7 +51,14 @@ const servicesQuery = groq`*[_type == "service"] | order(orderRank asc, title as
   imageSrc,
   imageAlt,
   highlights,
-  sections[]{title, items},
+  benefits,
+  process[]{title, body},
+  aftercare,
+  brands[]{name, logoSrc, logoAlt},
+  beforeAfter[]{title, beforeImageSrc, beforeImageAlt, afterImageSrc, afterImageAlt, caption},
+  sections[]{title, intro, items},
+  faqs[]{question, answer},
+  relatedServices,
   image
 }`;
 
@@ -54,7 +71,14 @@ const serviceQuery = groq`*[_type == "service" && slug.current == $slug][0]{
   imageSrc,
   imageAlt,
   highlights,
-  sections[]{title, items},
+  benefits,
+  process[]{title, body},
+  aftercare,
+  brands[]{name, logoSrc, logoAlt},
+  beforeAfter[]{title, beforeImageSrc, beforeImageAlt, afterImageSrc, afterImageAlt, caption},
+  sections[]{title, intro, items},
+  faqs[]{question, answer},
+  relatedServices,
   image
 }`;
 
@@ -91,7 +115,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 export async function getServices(): Promise<Service[]> {
   try {
     const data = await client.fetch<Service[] | null>(servicesQuery, {}, {next: {revalidate: 60}});
-    return data?.length ? data.map(withLocalServiceImages) : services;
+    return data?.length ? data.map(withLocalServiceContent) : services;
   } catch {
     return services;
   }
@@ -100,7 +124,7 @@ export async function getServices(): Promise<Service[]> {
 export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
   try {
     const data = await client.fetch<Service | null>(serviceQuery, {slug}, {next: {revalidate: 60}});
-    return data ? withLocalServiceImages(data) : services.find((service) => service.slug === slug);
+    return data ? withLocalServiceContent(data) : services.find((service) => service.slug === slug);
   } catch {
     return services.find((service) => service.slug === slug);
   }

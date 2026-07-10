@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">Before treatment placeholder</title>
+  <rect width="640" height="420" fill="#f0f7f3"/>
+  <path d="M130 214c92 92 288 92 380 0" fill="none" stroke="#5c5666" stroke-width="20" stroke-linecap="round"/>
+  <path d="M195 216h250" stroke="#fbfcf8" stroke-width="54" stroke-linecap="round"/>
+  <path d="M232 190v58M282 182v72M332 182v72M382 190v58" stroke="#dbe5dd" stroke-width="8" stroke-linecap="round"/>
+  <text x="320" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#18131f">Before</text>
+</svg>

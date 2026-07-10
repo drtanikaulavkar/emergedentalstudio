@@ -1,0 +1,421 @@
+.servicesHero {
+  background: linear-gradient(145deg, var(--surface), #fff 58%, var(--mint));
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(54px, 8vw, 94px);
+}
+
+.servicesHeroInner {
+  display: grid;
+  gap: clamp(22px, 4vw, 44px);
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
+}
+
+.servicesHero h1,
+.serviceHero h1,
+.serviceSection h2,
+.finalCta h2 {
+  text-wrap: balance;
+}
+
+.servicesHero p,
+.serviceHero p,
+.serviceIntro,
+.sectionIntro,
+.caseCaption,
+.faqAnswer,
+.finalCta p {
+  text-wrap: pretty;
+}
+
+.servicesHeroCard {
+  align-self: end;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.servicesHeroCard strong {
+  color: var(--brand);
+  display: block;
+  font-size: clamp(1.4rem, 4vw, 2.8rem);
+  line-height: 1;
+}
+
+.servicesGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.serviceCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  overflow: hidden;
+}
+
+.serviceCard img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+}
+
+.serviceCardBody {
+  display: grid;
+  gap: 11px;
+  padding: 18px;
+}
+
+.serviceCardBody h2 {
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: 1.12rem;
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+.serviceCardBody a {
+  color: var(--brand);
+  font-weight: 900;
+}
+
+.serviceHero {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(38px, 7vw, 74px);
+}
+
+.serviceHeroGrid {
+  align-items: stretch;
+  display: grid;
+  gap: clamp(24px, 4vw, 46px);
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+}
+
+.serviceHero h1 {
+  font-size: clamp(2.6rem, 7vw, 5.15rem);
+  max-width: 12ch;
+}
+
+.serviceIntro {
+  color: #4f485b;
+  font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+  line-height: 1.6;
+  margin-top: 20px;
+  max-width: 680px;
+}
+
+.heroAction {
+  background: var(--coral);
+  border-radius: 8px;
+  color: #fff;
+  display: inline-flex;
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  font-weight: 900;
+  justify-content: center;
+  margin-top: 26px;
+  min-height: 56px;
+  padding: 15px 24px;
+}
+
+.heroImage {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.serviceLayout {
+  align-items: start;
+  display: grid;
+  gap: clamp(22px, 4vw, 36px);
+  grid-template-columns: minmax(210px, 0.28fr) minmax(0, 1fr);
+  padding-block: clamp(34px, 6vw, 68px);
+}
+
+.pageGuide {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  position: sticky;
+  top: 104px;
+}
+
+.pageGuide strong {
+  color: var(--ink);
+  font-size: 1.08rem;
+}
+
+.pageGuide a {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.serviceContent {
+  display: grid;
+  gap: clamp(30px, 5vw, 46px);
+}
+
+.serviceSection {
+  display: grid;
+  gap: 16px;
+  scroll-margin-top: 110px;
+}
+
+.serviceSection h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.45rem);
+}
+
+.benefitsList {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  columns: 2;
+  font-size: clamp(1rem, 1.7vw, 1.12rem);
+  font-weight: 900;
+  line-height: 1.45;
+  margin: 0;
+  padding: 20px 24px 12px 42px;
+}
+
+.benefitsList li {
+  break-inside: avoid;
+  margin: 0 0 12px;
+}
+
+.processList {
+  display: grid;
+  gap: 10px;
+}
+
+.processStep {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  padding: 16px;
+}
+
+.stepNumber {
+  align-items: center;
+  background: var(--coral);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-weight: 900;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
+}
+
+.processStep h3,
+.sectionCard h3,
+.caseCard h3,
+.faqCard h3 {
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 900;
+}
+
+.processStep p,
+.sectionCard p,
+.sectionCard li,
+.aftercareList li {
+  color: #4f485b;
+  font-size: 1rem;
+}
+
+.aftercareList,
+.sectionList {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aftercareList li,
+.sectionCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.brandGrid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.brandCard {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  min-height: 96px;
+  padding: 16px;
+}
+
+.brandCard img {
+  max-height: 64px;
+  object-fit: contain;
+}
+
+.brandCard span {
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.beforeAfterGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.caseCard,
+.faqCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.caseImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.caseImagePanel {
+  position: relative;
+}
+
+.caseImagePanel img {
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.caseLabel {
+  background: rgba(24, 19, 31, 0.78);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  left: 10px;
+  padding: 4px 8px;
+  position: absolute;
+  top: 10px;
+}
+
+.caseBody,
+.faqCard {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+}
+
+.sectionCards,
+.faqGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.sectionCard {
+  display: grid;
+  gap: 10px;
+}
+
+.sectionCard ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.relatedGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.relatedPill {
+  background: var(--mint);
+  border: 1px solid #cce8e3;
+  border-radius: 999px;
+  color: #176c6e;
+  font-weight: 900;
+  padding: 9px 13px;
+}
+
+.finalCta {
+  align-items: center;
+  background: var(--brand);
+  color: #fff;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: clamp(24px, 5vw, 42px);
+}
+
+.finalCta h2,
+.finalCta p {
+  color: #fff;
+}
+
+.finalCta p {
+  margin-top: 10px;
+}
+
+.finalCta .heroAction {
+  background: #fff;
+  color: var(--brand);
+  margin-top: 0;
+}
+
+@media (max-width: 920px) {
+  .servicesHeroInner,
+  .serviceHeroGrid,
+  .serviceLayout,
+  .finalCta {
+    grid-template-columns: 1fr;
+  }
+
+  .heroImage {
+    min-height: 280px;
+  }
+
+  .pageGuide {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .benefitsList {
+    columns: 1;
+  }
+
+  .heroAction {
+    width: 100%;
+  }
+}

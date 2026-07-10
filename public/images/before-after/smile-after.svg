@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title">
+  <title id="title">After treatment placeholder</title>
+  <rect width="640" height="420" fill="#ddf5ee"/>
+  <path d="M124 204c98 104 294 104 392 0" fill="none" stroke="#6323a5" stroke-width="20" stroke-linecap="round"/>
+  <path d="M188 204h264" stroke="#ffffff" stroke-width="62" stroke-linecap="round"/>
+  <path d="M238 178v70M288 172v82M338 172v82M388 178v70" stroke="#dbe5dd" stroke-width="7" stroke-linecap="round"/>
+  <text x="320" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#18131f">After</text>
+</svg>
