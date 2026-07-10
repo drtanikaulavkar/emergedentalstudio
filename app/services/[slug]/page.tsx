@@ -8,8 +8,13 @@ export async function generateStaticParams() {
   return services.map((service) => ({slug: service.slug}));
 }
 
-export async function generateMetadata({params}: {params: {slug: string}}): Promise<Metadata> {
-  const service = await getServiceBySlug(params.slug);
+type ServicePageProps = {
+  params: Promise<{slug: string}>;
+};
+
+export async function generateMetadata({params}: ServicePageProps): Promise<Metadata> {
+  const {slug} = await params;
+  const service = await getServiceBySlug(slug);
 
   if (!service) {
     return {};
@@ -21,8 +26,9 @@ export async function generateMetadata({params}: {params: {slug: string}}): Prom
   };
 }
 
-export default async function ServiceDetailPage({params}: {params: {slug: string}}) {
-  const service = await getServiceBySlug(params.slug);
+export default async function ServiceDetailPage({params}: ServicePageProps) {
+  const {slug} = await params;
+  const service = await getServiceBySlug(slug);
 
   if (!service) {
     notFound();
