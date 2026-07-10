@@ -1,0 +1,130 @@
+.serviceDropdown {
+  position: relative;
+}
+
+.serviceTrigger {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-weight: inherit;
+  gap: 6px;
+  padding: 0;
+  position: relative;
+  transition: color 160ms var(--ease-out-quart, ease);
+}
+
+.serviceTrigger:hover,
+.serviceDropdown:focus-within .serviceTrigger,
+.serviceDropdown:hover .serviceTrigger {
+  color: var(--brand);
+}
+
+.serviceTrigger::before {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  content: "";
+  order: 2;
+  transition: transform 160ms var(--ease-out-quart, ease);
+}
+
+.serviceTrigger::after {
+  background: var(--coral);
+  border-radius: 999px;
+  bottom: -7px;
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms var(--ease-out-quart, ease);
+  width: 100%;
+}
+
+.serviceTrigger[aria-expanded="true"]::before,
+.serviceDropdown:focus-within .serviceTrigger::before,
+.serviceDropdown:hover .serviceTrigger::before {
+  transform: rotate(180deg);
+}
+
+.serviceTrigger[aria-expanded="true"]::after,
+.serviceDropdown:focus-within .serviceTrigger::after,
+.serviceDropdown:hover .serviceTrigger::after {
+  transform: scaleX(1);
+}
+
+.serviceMenu {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 2px;
+  left: 50%;
+  min-width: 280px;
+  opacity: 0;
+  padding: 10px;
+  pointer-events: none;
+  position: absolute;
+  top: calc(100% + 16px);
+  transform: translate(-50%, 8px);
+  transition:
+    opacity 160ms var(--ease-out-quart, ease),
+    transform 160ms var(--ease-out-quart, ease);
+  z-index: 30;
+}
+
+.serviceMenu::before {
+  bottom: 100%;
+  content: "";
+  height: 18px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.serviceDropdown:hover .serviceMenu,
+.serviceDropdown:focus-within .serviceMenu,
+.serviceMenu[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.serviceMenu a {
+  border-radius: 7px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 900;
+  line-height: 1.2;
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+.serviceMenu a::after {
+  display: none;
+}
+
+.serviceMenu a:is(:hover, :focus-visible) {
+  background: var(--surface);
+  color: var(--brand);
+}
+
+@media (max-width: 920px) {
+  .serviceMenu {
+    left: 0;
+    max-width: min(86vw, 340px);
+    transform: translateY(8px);
+  }
+
+  .serviceDropdown:hover .serviceMenu,
+  .serviceDropdown:focus-within .serviceMenu,
+  .serviceMenu[data-open="true"] {
+    transform: translateY(0);
+  }
+}
