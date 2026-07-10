@@ -84,3 +84,11 @@ test("configured brand and before-after modules match requested services", () =>
     }
   }
 });
+
+test("service page heading scale stays readable beside approved body copy", () => {
+  const css = readFileSync(join(process.cwd(), "app", "services", "services.module.css"), "utf8");
+
+  assert.match(css, /\.serviceHero h1\s*\{[^}]*font-size:\s*clamp\(2\.2rem,\s*5vw,\s*3\.85rem\)/s);
+  assert.match(css, /\.serviceSection h2\s*\{[^}]*font-size:\s*clamp\(1\.45rem,\s*2\.4vw,\s*2\.05rem\)/s);
+  assert.match(css, /\.finalCta h2\s*\{[^}]*font-size:\s*clamp\(1\.45rem,\s*2\.4vw,\s*2\.05rem\)/s);
+});

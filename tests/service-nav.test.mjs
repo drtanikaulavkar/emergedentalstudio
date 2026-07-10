@@ -15,3 +15,16 @@ test("header exposes services as a dropdown of direct service links", () => {
   assert.match(layout, /getServices/);
   assert.match(layout, /<Header settings=\{settings\} services=\{services\}/);
 });
+
+test("services dropdown closes from outside interactions and service selection", () => {
+  const header = readFileSync("components/Header.tsx", "utf8");
+
+  assert.match(header, /useRef/);
+  assert.match(header, /servicesDropdownRef/);
+  assert.match(header, /pointerdown/);
+  assert.match(header, /contains\(event\.target as Node\)/);
+  assert.match(header, /event\.key === "Escape"/);
+  assert.match(header, /onPointerDown=\{\(\) => setIsServicesOpen\(false\)\}/);
+  assert.doesNotMatch(header, /onMouseEnter/);
+  assert.doesNotMatch(header, /onMouseLeave/);
+});
