@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import type {Service, SiteSettings} from "@/lib/siteData";
 import styles from "./Header.module.css";
 
 export function Header({settings, services}: {settings: SiteSettings; services: Pick<Service, "title" | "slug">[]}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const servicesDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let animationFrame = 0;
@@ -43,6 +44,30 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
     };
   }, []);
 
+  useEffect(() => {
+    const closeFromOutsidePointer = (event: PointerEvent) => {
+      const dropdown = servicesDropdownRef.current;
+
+      if (dropdown && event.target instanceof Node && !dropdown.contains(event.target as Node)) {
+        setIsServicesOpen(false);
+      }
+    };
+
+    const closeFromEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsServicesOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeFromOutsidePointer);
+    document.addEventListener("keydown", closeFromEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeFromOutsidePointer);
+      document.removeEventListener("keydown", closeFromEscape);
+    };
+  }, []);
+
   return (
     <header className="site-header" data-scrolled={isScrolled}>
       <Link className="brand" href="/" aria-label={`${settings.clinicName} home`}>
@@ -53,13 +78,12 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
         <Link href="/about">About</Link>
         <div
           className={styles.serviceDropdown}
+          ref={servicesDropdownRef}
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) {
               setIsServicesOpen(false);
             }
           }}
-          onMouseEnter={() => setIsServicesOpen(true)}
-          onMouseLeave={() => setIsServicesOpen(false)}
         >
           <button
             className={styles.serviceTrigger}
@@ -77,6 +101,7 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
                 key={service.slug}
                 role="menuitem"
                 onClick={() => setIsServicesOpen(false)}
+                onPointerDown={() => setIsServicesOpen(false)}
               >
                 {service.title}
               </Link>
