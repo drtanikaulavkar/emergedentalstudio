@@ -11,6 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "test:homepage-motion": "node --test tests/homepage-motion.test.mjs",
+    "test:impeccable-wrapper": "node --test tests/impeccable-wrapper.test.mjs",
     "verify:runtime": "node scripts/verify-runtime-config.mjs",
     "verify:sanity-keys": "node scripts/verify-sanity-keys.mjs",
     "sanity:seed": "node scripts/seed-sanity.mjs"

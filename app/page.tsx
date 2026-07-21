@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 import type {Metadata} from "next";
+import type {CSSProperties} from "react";
 import {HeroCarousel} from "@/components/HeroCarousel";
 import {SectionHeader} from "@/components/SectionHeader";
 import {ServiceCard} from "@/components/ServiceCard";
@@ -105,7 +106,7 @@ type WhyChooseIconName = (typeof whyChooseItems)[number]["icon"];
 
 function WhyChooseIcon({name}: {name: WhyChooseIconName}) {
   return (
-    <svg viewBox="0 0 48 48" role="img" aria-label="" focusable="false">
+    <svg className="why-choose-icon-path" viewBox="0 0 48 48" role="img" aria-label="" focusable="false">
       {name === "family" ? (
         <>
           <circle cx="19" cy="18" r="5" />
@@ -186,9 +187,9 @@ export default async function HomePage() {
 
       <section className="container section services-section">
         <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"} />
-        <div className="grid service-grid">
-          {services.slice(0, 6).map((service) => (
-            <ServiceCard key={service.slug} service={service} />
+        <div className="grid service-grid motion-sequence">
+          {services.slice(0, 6).map((service, index) => (
+            <ServiceCard key={service.slug} service={service} style={{"--i": index} as CSSProperties} />
           ))}
         </div>
         <div className="actions">
@@ -227,9 +228,9 @@ export default async function HomePage() {
             <p className="section-kicker">Why choose us</p>
             <h2>Why Choose Our Dental Clinic in Bengaluru?</h2>
           </div>
-          <div className="why-choose-grid" aria-label="Reasons to choose Emerge Dental Studio">
-            {whyChooseItems.map((item) => (
-              <article className="why-choose-item" key={item.title}>
+          <div className="why-choose-grid motion-sequence" aria-label="Reasons to choose Emerge Dental Studio">
+            {whyChooseItems.map((item, index) => (
+              <article className="why-choose-item" key={item.title} style={{"--i": index} as CSSProperties}>
                 <span className="why-choose-icon" aria-hidden="true">
                   <WhyChooseIcon name={item.icon} />
                 </span>
