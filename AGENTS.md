@@ -19,6 +19,22 @@ This repository contains the Next.js 14 App Router website for Emerge Dental Stu
 4. Run `pnpm dev`.
 5. Open the website at `http://localhost:3000` and the Studio at `http://localhost:3000/studio`.
 
+## Git and GitHub Workflow
+
+When the user asks to "push to git", "push to GitHub", "push the changes", or similar, treat that as a request to integrate the intended changes into the `main` branch and push `main` to the GitHub remote. Do not leave the work only on a feature branch unless the user explicitly asks for a branch or pull request instead.
+
+Before merging or pushing, verify the intended diff, avoid including unrelated local changes, run the relevant checks, and make sure the pushed history contains the user-requested files.
+
+## Architecture and Design Context for LLMs
+
+- App routes live in `app/` and use the Next.js App Router. `app/layout.tsx` fetches site settings and services, then renders the shared `Header`, JSON-LD, page content, and `Footer`.
+- Most routes are server components that call helpers from `lib/sanity/queries.ts`. Those helpers prefer published Sanity content but fall back to local data from `lib/siteData.ts`, so keep fallback content complete when adding or changing CMS-backed fields.
+- Shared UI belongs in `components/`. Route-specific styles can use local CSS modules, but the main visual system, layout utilities, responsive behavior, and motion rules currently live in `app/globals.css`.
+- Sanity schema changes belong in `sanity/schemas/` and should stay aligned with the TypeScript data shapes in `lib/siteData.ts` and the GROQ projections in `lib/sanity/queries.ts`.
+- Product and brand direction lives in `PRODUCT.md`: fresh, modern, energetic, confident, human, and not a sterile corporate hospital template.
+- Maintain WCAG AA as the accessibility baseline. Preserve clear focus states, readable type, large touch targets, responsive layouts, and reduced-motion support when adding visual polish or animation.
+- For agent context, `AGENTS.md` gives architecture and workflow rules, `PRODUCT.md` gives audience and design intent, and `docs/source/website-services.md` is source copy rather than implementation guidance.
+
 ## Sanity Content Model
 
 - `siteSettings` controls the clinic name, contact details, hours, booking links, logo, and testimonials.
