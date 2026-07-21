@@ -18,8 +18,7 @@
 }
 
 .serviceTrigger:hover,
-.serviceDropdown:focus-within .serviceTrigger,
-.serviceDropdown:hover .serviceTrigger {
+.serviceTrigger:focus-visible {
   color: var(--brand);
 }
 
@@ -46,15 +45,11 @@
   width: 100%;
 }
 
-.serviceTrigger[aria-expanded="true"]::before,
-.serviceDropdown:focus-within .serviceTrigger::before,
-.serviceDropdown:hover .serviceTrigger::before {
+.serviceTrigger[aria-expanded="true"]::before {
   transform: rotate(180deg);
 }
 
-.serviceTrigger[aria-expanded="true"]::after,
-.serviceDropdown:focus-within .serviceTrigger::after,
-.serviceDropdown:hover .serviceTrigger::after {
+.serviceTrigger[aria-expanded="true"]::after {
   transform: scaleX(1);
 }
 
@@ -88,8 +83,6 @@
   right: 0;
 }
 
-.serviceDropdown:hover .serviceMenu,
-.serviceDropdown:focus-within .serviceMenu,
 .serviceMenu[data-open="true"] {
   opacity: 1;
   pointer-events: auto;
@@ -122,8 +115,6 @@
     transform: translateY(8px);
   }
 
-  .serviceDropdown:hover .serviceMenu,
-  .serviceDropdown:focus-within .serviceMenu,
   .serviceMenu[data-open="true"] {
     transform: translateY(0);
   }

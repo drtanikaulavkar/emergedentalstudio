@@ -208,7 +208,7 @@ img {
 .brand:focus-visible,
 .button:focus-visible,
 .header-cta:focus-visible,
-.service-card a:focus-visible,
+.service-card:focus-visible,
 .pathway-card:focus-visible,
 .carousel-dots button:focus-visible,
 .carousel-toggle:focus-visible,
@@ -325,7 +325,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.15rem, 4vw, 3.75rem);
+  font-size: clamp(2rem, 3.6vw, 3.35rem);
   line-height: 1.06;
   max-width: 13.5ch;
 }
@@ -770,8 +770,7 @@ p {
 
 .service-card .eyebrow,
 .service-card h3,
-.service-card p:not(.eyebrow),
-.service-card a {
+.service-card p:not(.eyebrow) {
   margin-left: 18px;
   margin-right: 18px;
 }
@@ -781,32 +780,8 @@ p {
 }
 
 .service-card p:not(.eyebrow) {
-  margin-top: 10px;
-}
-
-.service-card a {
-  color: var(--brand);
-  display: inline-flex;
-  font-weight: 900;
   margin-bottom: 18px;
-  margin-top: 16px;
-  transition:
-    color 160ms var(--ease-out-quart),
-    transform 160ms var(--ease-out-quart);
-}
-
-.service-card a::after {
-  content: "->";
-  margin-left: 6px;
-  transition: transform 160ms var(--ease-out-quart);
-}
-
-.service-card:is(:hover, :focus-within) a {
-  color: var(--teal);
-}
-
-.service-card:is(:hover, :focus-within) a::after {
-  transform: translateX(3px);
+  margin-top: 10px;
 }
 
 .motion-sequence > * {

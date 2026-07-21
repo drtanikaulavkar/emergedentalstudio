@@ -18,13 +18,25 @@ test("header exposes services as a dropdown of direct service links", () => {
 
 test("services dropdown closes from outside interactions and service selection", () => {
   const header = readFileSync("components/Header.tsx", "utf8");
+  const css = readFileSync("components/Header.module.css", "utf8");
 
   assert.match(header, /useRef/);
   assert.match(header, /servicesDropdownRef/);
+  assert.match(header, /const closeServicesDropdown = useCallback\(\(\) => \{/);
+  assert.match(header, /const openServicesDropdown = useCallback\(\(\) => \{/);
+  assert.match(header, /onPointerEnter=\{openServicesDropdown\}/);
+  assert.match(header, /onPointerLeave=\{closeServicesDropdown\}/);
   assert.match(header, /pointerdown/);
   assert.match(header, /contains\(event\.target as Node\)/);
   assert.match(header, /event\.key === "Escape"/);
-  assert.match(header, /onPointerDown=\{\(\) => setIsServicesOpen\(false\)\}/);
+  assert.match(header, /onClick=\{closeServicesDropdown\}/);
+  assert.doesNotMatch(header, /onPointerDown=\{\(event\) => \{/);
+  assert.doesNotMatch(header, /event\.currentTarget\.blur\(\)/);
+  assert.match(css, /\.serviceMenu\[data-open="true"\]/);
+  assert.doesNotMatch(header, /isServicesClosing/);
+  assert.doesNotMatch(css, /\.serviceDropdown:hover \.serviceMenu/);
+  assert.doesNotMatch(css, /\.serviceDropdown:focus-within \.serviceMenu/);
+  assert.doesNotMatch(css, /data-closing/);
   assert.doesNotMatch(header, /onMouseEnter/);
   assert.doesNotMatch(header, /onMouseLeave/);
 });

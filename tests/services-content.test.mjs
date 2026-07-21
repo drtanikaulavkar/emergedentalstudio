@@ -87,8 +87,18 @@ test("configured brand and before-after modules match requested services", () =>
 
 test("service page heading scale stays readable beside approved body copy", () => {
   const css = readFileSync(join(process.cwd(), "app", "services", "services.module.css"), "utf8");
+  const globalCss = readFileSync(join(process.cwd(), "app", "globals.css"), "utf8");
 
-  assert.match(css, /\.serviceHero h1\s*\{[^}]*font-size:\s*clamp\(2\.2rem,\s*5vw,\s*3\.85rem\)/s);
+  assert.match(globalCss, /h1\s*\{[^}]*font-size:\s*clamp\(2rem,\s*3\.6vw,\s*3\.35rem\)/s);
+  assert.match(css, /\.serviceHeroGrid\s*\{[^}]*align-items:\s*center/s);
+  assert.match(css, /\.serviceHeroGrid\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)\s*minmax\(280px,\s*0\.78fr\)/s);
+  assert.match(css, /\.serviceHero h1\s*\{[^}]*font-size:\s*clamp\(2rem,\s*4\.2vw,\s*3\.35rem\)/s);
+  assert.match(css, /\.serviceIntro\s*\{[^}]*font-size:\s*clamp\(0\.98rem,\s*1\.25vw,\s*1\.08rem\)/s);
+  assert.match(css, /\.heroImage\s*\{[^}]*aspect-ratio:\s*16 \/ 10/s);
+  assert.match(css, /\.heroImage\s*\{[^}]*height:\s*min\(34vw,\s*420px\)/s);
+  assert.match(css, /\.heroImage\s*\{[^}]*max-height:\s*420px/s);
+  assert.match(css, /\.heroImage\s*\{[^}]*min-height:\s*300px/s);
+  assert.match(css, /@media \(max-width: 920px\)[\s\S]*\.heroImage\s*\{[^}]*height:\s*auto/s);
   assert.match(css, /\.serviceSection h2\s*\{[^}]*font-size:\s*clamp\(1\.45rem,\s*2\.4vw,\s*2\.05rem\)/s);
   assert.match(css, /\.finalCta h2\s*\{[^}]*font-size:\s*clamp\(1\.45rem,\s*2\.4vw,\s*2\.05rem\)/s);
 });

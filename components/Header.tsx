@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import type {Service, SiteSettings} from "@/lib/siteData";
 import styles from "./Header.module.css";
 
@@ -10,6 +10,14 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
+
+  const closeServicesDropdown = useCallback(() => {
+    setIsServicesOpen(false);
+  }, []);
+
+  const openServicesDropdown = useCallback(() => {
+    setIsServicesOpen(true);
+  }, []);
 
   useEffect(() => {
     let animationFrame = 0;
@@ -49,13 +57,13 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
       const dropdown = servicesDropdownRef.current;
 
       if (dropdown && event.target instanceof Node && !dropdown.contains(event.target as Node)) {
-        setIsServicesOpen(false);
+        closeServicesDropdown();
       }
     };
 
     const closeFromEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsServicesOpen(false);
+        closeServicesDropdown();
       }
     };
 
@@ -66,7 +74,7 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
       document.removeEventListener("pointerdown", closeFromOutsidePointer);
       document.removeEventListener("keydown", closeFromEscape);
     };
-  }, []);
+  }, [closeServicesDropdown]);
 
   return (
     <header className="site-header" data-scrolled={isScrolled}>
@@ -79,9 +87,11 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
         <div
           className={styles.serviceDropdown}
           ref={servicesDropdownRef}
+          onPointerEnter={openServicesDropdown}
+          onPointerLeave={closeServicesDropdown}
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) {
-              setIsServicesOpen(false);
+              closeServicesDropdown();
             }
           }}
         >
@@ -90,7 +100,8 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
             type="button"
             aria-expanded={isServicesOpen}
             aria-haspopup="menu"
-            onClick={() => setIsServicesOpen((current) => !current)}
+            onClick={openServicesDropdown}
+            onFocus={openServicesDropdown}
           >
             Services
           </button>
@@ -100,8 +111,7 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
                 href={`/services/${service.slug}`}
                 key={service.slug}
                 role="menuitem"
-                onClick={() => setIsServicesOpen(false)}
-                onPointerDown={() => setIsServicesOpen(false)}
+                onClick={closeServicesDropdown}
               >
                 {service.title}
               </Link>

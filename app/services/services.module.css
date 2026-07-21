@@ -89,21 +89,21 @@
 }
 
 .serviceHeroGrid {
-  align-items: stretch;
+  align-items: center;
   display: grid;
   gap: clamp(24px, 4vw, 46px);
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
 }
 
 .serviceHero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.85rem);
+  font-size: clamp(2rem, 4.2vw, 3.35rem);
   max-width: 14ch;
 }
 
 .serviceIntro {
   color: #4f485b;
-  font-size: clamp(1.05rem, 1.8vw, 1.22rem);
-  line-height: 1.6;
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+  line-height: 1.55;
   margin-top: 20px;
   max-width: 680px;
 }
@@ -122,10 +122,12 @@
 }
 
 .heroImage {
+  aspect-ratio: 16 / 10;
   border-radius: 8px;
   box-shadow: var(--shadow);
-  height: 100%;
-  min-height: 380px;
+  height: min(34vw, 420px);
+  max-height: 420px;
+  min-height: 300px;
   object-fit: cover;
   width: 100%;
 }
@@ -406,6 +408,7 @@
   }
 
   .heroImage {
+    height: auto;
     min-height: 280px;
   }
 
