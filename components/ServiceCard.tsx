@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import type {CSSProperties} from "react";
 import type {Service} from "@/lib/siteData";
 
-export function ServiceCard({service}: {service: Service}) {
+export function ServiceCard({service, style}: {service: Service; style?: CSSProperties}) {
   return (
-    <article className="service-card">
+    <article className="service-card" style={style}>
       <Image className="service-card-image" src={service.imageSrc} alt={service.imageAlt} width={720} height={420} />
       <p className="eyebrow">{service.eyebrow}</p>
       <h3>{service.title}</h3>
