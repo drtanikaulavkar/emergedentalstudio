@@ -210,8 +210,6 @@ img {
 .header-cta:focus-visible,
 .service-card:focus-visible,
 .pathway-card:focus-visible,
-.carousel-dots button:focus-visible,
-.carousel-toggle:focus-visible,
 .booking-form input:focus-visible,
 .booking-form textarea:focus-visible,
 .booking-form button:focus-visible {
@@ -279,17 +277,25 @@ main {
 }
 
 .hero {
-  align-items: stretch;
+  align-items: end;
   display: grid;
-  gap: clamp(14px, 2.2vw, 22px);
-  grid-template-columns: 1fr;
-  min-height: calc(100vh - 78px);
-  padding-block: clamp(22px, 4vw, 42px);
+  isolation: isolate;
+  min-height: calc(100svh - 78px);
+  overflow: hidden;
+  padding: 0;
+  position: relative;
 }
 
 .hero-copy {
   align-self: end;
-  max-width: 100%;
+  display: grid;
+  gap: 18px;
+  grid-area: 1 / 1;
+  margin-bottom: clamp(42px, 8vh, 88px);
+  max-width: 1180px;
+  position: relative;
+  width: 100%;
+  z-index: 2;
 }
 
 .section-kicker,
@@ -302,10 +308,11 @@ main {
 }
 
 .hero .section-kicker {
-  color: var(--teal);
+  color: rgba(255, 255, 255, 0.88);
   font-size: clamp(0.82rem, 1.25vw, 1rem);
   line-height: 1.2;
   margin: 0;
+  max-width: 720px;
 }
 
 h1,
@@ -354,9 +361,10 @@ p {
 }
 
 .hero-copy > p:not(.eyebrow):not(.section-kicker) {
-  font-size: 1rem;
-  margin-top: 16px;
-  max-width: 560px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 1.8vw, 1.22rem);
+  margin: 0;
+  max-width: 620px;
 }
 
 .actions {
@@ -370,7 +378,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 4px;
 }
 
 .proof-list {
@@ -398,59 +406,24 @@ p {
   height: 9px;
 }
 
-.hero-media {
-  align-content: start;
-  align-self: stretch;
-  display: grid;
-  gap: 16px;
-  min-width: 0;
-}
-
 .hero-carousel {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  aspect-ratio: 16 / 9;
-  height: min(52vh, 560px);
-  min-height: 360px;
+  background: var(--ink);
+  grid-area: 1 / 1;
+  height: 100%;
   overflow: hidden;
   position: relative;
   width: 100%;
 }
 
-.carousel-toggle {
-  background: rgba(24, 19, 31, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 999px;
-  color: #fff;
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.82rem;
-  font-weight: 900;
-  left: 16px;
-  min-height: 36px;
-  padding: 7px 12px;
+.hero-carousel::after {
+  background:
+    linear-gradient(90deg, rgba(24, 19, 31, 0.76) 0%, rgba(24, 19, 31, 0.44) 42%, rgba(24, 19, 31, 0.16) 100%),
+    linear-gradient(0deg, rgba(24, 19, 31, 0.68) 0%, rgba(24, 19, 31, 0) 48%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
   position: absolute;
-  top: 16px;
-  transition:
-    background 160ms var(--ease-out-quart),
-    transform 160ms var(--ease-out-quart);
-  z-index: 4;
-}
-
-.carousel-toggle:is(:hover, :focus-visible) {
-  background: rgba(24, 19, 31, 0.9);
-  transform: translateY(-1px);
-}
-
-.carousel-toggle:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.carousel-toggle:disabled {
-  cursor: default;
-  opacity: 0.86;
-  transform: none;
+  z-index: 2;
 }
 
 .carousel-slide {
@@ -486,26 +459,12 @@ p {
   transform: scale(1);
 }
 
-.carousel-slide figcaption {
-  background: linear-gradient(90deg, rgba(24, 19, 31, 0.82), rgba(24, 19, 31, 0.2));
-  bottom: 0;
+.hero h1 {
   color: #fff;
-  font-family: var(--font-heading), Georgia, serif;
-  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
-  font-weight: 700;
-  left: 0;
-  padding: 20px 22px;
-  position: absolute;
-  right: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 420ms var(--ease-out-quart),
-    transform 420ms var(--ease-out-quart);
-}
-
-.carousel-slide[data-active="true"] figcaption {
-  opacity: 1;
-  transform: translateY(0);
+  font-size: clamp(2.45rem, 6.6vw, 5.8rem);
+  line-height: 0.98;
+  max-width: 12ch;
+  text-wrap: balance;
 }
 
 .carousel-progress {
@@ -534,51 +493,6 @@ p {
   to {
     transform: scaleX(1);
   }
-}
-
-.carousel-dots {
-  align-items: center;
-  bottom: 16px;
-  display: flex;
-  gap: 2px;
-  justify-content: center;
-  position: absolute;
-  right: 16px;
-  z-index: 2;
-}
-
-.carousel-dots button {
-  align-items: center;
-  background: transparent;
-  border: 0;
-  border-radius: 999px;
-  cursor: pointer;
-  display: inline-flex;
-  height: 30px;
-  justify-content: center;
-  padding: 0;
-  width: 30px;
-}
-
-.carousel-dots button::before {
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 999px;
-  box-shadow: 0 1px 6px rgba(24, 19, 31, 0.22);
-  content: "";
-  height: 8px;
-  transition:
-    background 180ms ease,
-    transform 180ms var(--ease-out-quart);
-  width: 8px;
-}
-
-.carousel-dots button[aria-current="true"]::before {
-  background: #fff;
-  transform: scale(1.35);
-}
-
-.carousel-dots button span {
-  display: none;
 }
 
 .button.secondary.hero-booking {
@@ -1257,16 +1171,6 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .hero {
-    min-height: auto;
-  }
-
-  .hero-carousel {
-    aspect-ratio: 4 / 3;
-    height: auto;
-    min-height: 0;
-  }
-
   .carousel-slide img {
     object-position: var(--slide-mobile-focal-point, var(--slide-focal-point, center));
   }
@@ -1320,28 +1224,17 @@ p {
   }
 
   .hero {
-    padding-block: 18px;
+    min-height: calc(100svh - 112px);
   }
 
-  .hero-carousel {
-    aspect-ratio: 3 / 4;
+  .hero-copy {
+    gap: 14px;
+    margin-bottom: clamp(32px, 7vh, 58px);
   }
 
-  .carousel-slide figcaption {
-    font-size: 1.12rem;
-    line-height: 1.22;
-    padding: 14px 16px;
-  }
-
-  .carousel-dots {
-    bottom: auto;
-    right: 12px;
-    top: 12px;
-  }
-
-  .carousel-dots button {
-    height: 30px;
-    width: 30px;
+  .hero h1 {
+    font-size: clamp(2.3rem, 14vw, 4.1rem);
+    max-width: 10.8ch;
   }
 
   .button.secondary.hero-booking {

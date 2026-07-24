@@ -9,20 +9,25 @@ const page = readFileSync(resolve(root, "app", "page.tsx"), "utf8");
 const carousel = readFileSync(resolve(root, "components", "HeroCarousel.tsx"), "utf8");
 const header = readFileSync(resolve(root, "components", "Header.tsx"), "utf8");
 
-test("homepage carousel has pause state, progress timing, and accessible inactive slides", () => {
+test("homepage carousel fills the hero without visible manual controls", () => {
   assert.match(carousel, /isPointerPaused/);
   assert.match(carousel, /isFocusPaused/);
-  assert.match(carousel, /isRotationPaused/);
-  assert.match(carousel, /const isPaused = prefersReducedMotion \|\| isPointerPaused \|\| isFocusPaused \|\| isRotationPaused/);
+  assert.doesNotMatch(carousel, /isRotationPaused/);
+  assert.match(carousel, /const isPaused = prefersReducedMotion \|\| isPointerPaused \|\| isFocusPaused/);
   assert.match(carousel, /onMouseEnter=\{\(\) => setIsPointerPaused\(true\)\}/);
   assert.match(carousel, /onFocus=\{\(\) => setIsFocusPaused\(true\)\}/);
   assert.match(carousel, /data-paused=\{isPaused\}/);
-  assert.match(carousel, /carousel-toggle/);
-  assert.match(carousel, /aria-pressed=\{prefersReducedMotion \|\| isRotationPaused\}/);
-  assert.match(carousel, /disabled=\{prefersReducedMotion\}/);
+  assert.doesNotMatch(carousel, /carousel-toggle/);
+  assert.doesNotMatch(carousel, /carousel-dots/);
   assert.match(carousel, /carousel-progress/);
   assert.match(carousel, /key=\{`\$\{activeIndex\}-\$\{isPaused \? "paused" : "running"\}`\}/);
   assert.match(carousel, /aria-hidden=\{index !== activeIndex\}/);
+  assert.match(page, /<h1>\{page\.heroTitle\}<\/h1>/);
+  assert.match(page, /className="hero-actions"/);
+  assert.match(css, /\.hero\s*\{[^}]*min-height:\s*calc\(100svh - 78px\)/s);
+  assert.match(css, /\.hero-carousel\s*\{[^}]*height:\s*100%/s);
+  assert.doesNotMatch(css, /\.carousel-toggle/);
+  assert.doesNotMatch(css, /\.carousel-dots/);
   assert.match(css, /\.carousel-progress/);
   assert.match(css, /animation:\s*carousel-progress 6000ms linear/);
 });

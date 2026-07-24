@@ -173,15 +173,17 @@ export default async function HomePage() {
 
   return (
     <main>
-      <section className="container hero">
-        <div className="hero-copy">
+      <section className="hero" aria-label="Emerge Dental Studio highlights">
+        <HeroCarousel slides={carouselSlides} />
+        <aside className="container hero-copy">
           <p className="section-kicker">Dental implants, cosmetic dentistry, and prosthodontic care in Indiranagar, Bengaluru</p>
-        </div>
-        <aside className="hero-media" aria-label="Emerge Dental Studio highlights">
-          <HeroCarousel slides={carouselSlides} />
-          <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
-            Book online
-          </a>
+          <h1>{page.heroTitle}</h1>
+          <p>{page.heroText}</p>
+          <div className="hero-actions">
+            <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+              Book online
+            </a>
+          </div>
         </aside>
       </section>
 
