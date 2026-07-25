@@ -91,4 +91,4 @@
 - [x] Start or reuse `localhost:3000`.
 - [x] Check the homepage, services directory, and representative treatment pages at 1440x900, 1280x720, 390x844, and 320x800.
 - [x] Check FAQ disclosure states, hero balance, section rhythm, overlap, overflow, focus states, and reduced-motion behavior.
-- [ ] Review the final diff, commit the intended files, merge into `main`, and push `main` to GitHub.
+- [x] Review the final diff, commit the intended files, merge into `main`, and push `main` to GitHub.
