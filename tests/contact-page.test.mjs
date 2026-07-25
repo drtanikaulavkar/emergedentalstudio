@@ -34,7 +34,8 @@ test("contact page opens with a compact hero and no explanatory subheading", () 
   assert.doesNotMatch(contactPage, /<p>\{page\.heroText\}<\/p>/);
   assert.match(contactPage, /className="page-hero contact-hero"/);
   assert.match(contactPage, /const contactServiceAreas = \[/);
-  assert.match(contactPage, /Sunday: By appointment only/);
+  assert.match(contactPage, /<p>Sunday<\/p>/);
+  assert.match(contactPage, /<p>By appointment only<\/p>/);
   assert.doesNotMatch(contactPage, /Sunday: Closed/);
   assert.doesNotMatch(contactPage, /settings\.serviceAreas\.map/);
   assert.match(css, /\.contact-hero\s*\{[^}]*padding-block:\s*clamp\(28px,\s*4vw,\s*48px\)/s);
@@ -47,6 +48,8 @@ test("Sunday is listed as by appointment only across shared site settings", () =
 
   assert.match(footer, /By appointment only/);
   assert.match(page, /By appointment only/);
+  assert.match(footer, /10:00 AM to 1:00 PM/);
+  assert.match(footer, /4:00 PM to 8:00 PM/);
   assert.doesNotMatch(footer, /<strong className="hours-day">Sunday<\/strong>\s*<span className="hours-time">Closed<\/span>/);
   assert.doesNotMatch(page, /<strong className="hours-day">Sunday<\/strong>\s*<span className="hours-time">Closed<\/span>/);
 });

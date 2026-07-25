@@ -23,19 +23,29 @@ export function ServicesCarousel({services}: {services: Service[]}) {
 
   return (
     <div className="services-carousel">
-      <div className="services-carousel-controls" aria-label="Navigate featured services">
-        <button type="button" aria-label="Previous services" onClick={() => scrollRail(-1)}>
-          <span aria-hidden="true">&lt;</span>
-        </button>
-        <button type="button" aria-label="Next services" onClick={() => scrollRail(1)}>
-          <span aria-hidden="true">&gt;</span>
-        </button>
+      <button
+        className="services-carousel-arrow services-carousel-arrow-prev"
+        type="button"
+        aria-label="Previous services"
+        onClick={() => scrollRail(-1)}
+      >
+        <span aria-hidden="true">&lt;</span>
+      </button>
+      <div className="services-carousel-viewport">
+        <div className="services-carousel-rail motion-sequence" ref={railRef}>
+          {services.map((service, index) => (
+            <ServiceCard key={service.slug} service={service} style={{"--i": index} as CSSProperties} />
+          ))}
+        </div>
       </div>
-      <div className="services-carousel-rail motion-sequence" ref={railRef}>
-        {services.map((service, index) => (
-          <ServiceCard key={service.slug} service={service} style={{"--i": index} as CSSProperties} />
-        ))}
-      </div>
+      <button
+        className="services-carousel-arrow services-carousel-arrow-next"
+        type="button"
+        aria-label="Next services"
+        onClick={() => scrollRail(1)}
+      >
+        <span aria-hidden="true">&gt;</span>
+      </button>
     </div>
   );
 }

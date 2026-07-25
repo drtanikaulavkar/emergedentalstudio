@@ -16,12 +16,11 @@ export function Footer({settings}: {settings: SiteSettings}) {
       </div>
       <div>
         <h2>Hours</h2>
-        {settings.hours.map((hour) => (
-          <p className="footer-hour" key={`${hour.days}-${hour.label}`}>
-            <strong className="hours-day">{hour.days}</strong>
-            <span className="hours-time">{hour.label}</span>
-          </p>
-        ))}
+        <p className="footer-hour">
+          <strong className="hours-day">Monday to Saturday</strong>
+          <span className="hours-time">10:00 AM to 1:00 PM</span>
+          <span className="hours-time">4:00 PM to 8:00 PM</span>
+        </p>
         <p className="footer-hour">
           <strong className="hours-day">Sunday</strong>
           <span className="hours-time">By appointment only</span>

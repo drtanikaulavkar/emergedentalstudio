@@ -21,7 +21,12 @@ test("homepage carousel fills the hero without visible manual controls", () => {
   assert.doesNotMatch(carousel, /carousel-dots/);
   assert.doesNotMatch(carousel, /carousel-progress/);
   assert.match(carousel, /aria-hidden=\{index !== activeIndex\}/);
-  assert.match(page, /Beautiful Smiles\. Built on Precision\./);
+  assert.match(page, /className="hero-title-line">Beautiful Smiles\.<\/span>/);
+  assert.match(page, /className="hero-title-line">Built on Precision\.<\/span>/);
+  assert.match(page, /className="hero-subtitle-line">Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru\.<\/span>/);
+  assert.match(page, /className="hero-subtitle-line">From smile makeovers to routine care, designed around you\.<\/span>/);
+  assert.match(page, /className="hero-caption-copy"/);
+  assert.match(page, /className="button secondary hero-booking"/);
   assert.doesNotMatch(page, /Dental implants, cosmetic dentistry, and prosthodontic care in Indiranagar, Bengaluru/);
   assert.match(page, /className="hero-caption"/);
   assert.match(css, /\.hero\s*\{[^}]*min-height:\s*calc\(100svh - 78px\)/s);
@@ -39,17 +44,33 @@ test("homepage sections reflect the requested content structure", () => {
   assert.match(page, /"braces-aligners"/);
   assert.match(page, /"root-canal-treatment"/);
   assert.match(page, /<ServicesCarousel services=\{featuredServices\} \/>/);
+  assert.match(page, /<SectionHeader eyebrow="Services" title=\{servicesIntro\?\.title \|\| "Care for every stage of your smile"\}>\s*\{servicesIntro\?\.body\}\s*<\/SectionHeader>/);
   assert.match(page, /<p className="section-kicker">Facilities<\/p>/);
   assert.match(page, /<h2>Why choose us\?<\/h2>/);
-  assert.match(page, /24\+/);
-  assert.match(page, /15000\+/);
+  assert.match(page, /Individualized & Family Dental Care/);
+  assert.match(page, /Certified Dentists & Advanced Equipment/);
+  assert.match(page, /Digital X-rays & Digital Impressions/);
+  assert.match(page, /Affordable & Transparent Pricing/);
+  assert.match(page, /Hygienic & Comfortable Environment/);
+  assert.match(page, /Lift access & Gender neutral restroom/);
+  assert.doesNotMatch(page, /Years Of Experience/);
+  assert.doesNotMatch(page, /15000\+/);
+  assert.doesNotMatch(css, /background:\s*#fbf5ee/);
+  assert.doesNotMatch(css, /\.why-choose-item\s*\{[^}]*border-right/s);
+  assert.match(css, /\.why-choose-section\s*\{[^}]*linear-gradient\(180deg,\s*#fff 0%,\s*var\(--surface\) 100%\)/s);
   assert.match(page, /<SectionHeader eyebrow="Hear what our patients have to say about us" title="Patients reviews"/);
   assert.match(page, /<SectionHeader eyebrow="Smile gallery" title="Results that speak"/);
   assert.match(page, /gallery-section/);
   assert.match(page, /Visit us at/);
   assert.match(page, /Get directions/);
+  assert.match(page, /contact-primary-actions/);
+  assert.match(page, /contact-secondary-actions/);
+  assert.match(page, /Monday to Saturday/);
+  assert.match(page, /10:00 AM to 1:00 PM/);
+  assert.match(page, /4:00 PM to 8:00 PM/);
   assert.match(page, /Sunday/);
   assert.match(page, /By appointment only/);
+  assert.doesNotMatch(page, /settings\.hours\.map/);
   assert.doesNotMatch(page, /How do I book an appointment\?/);
   assert.doesNotMatch(page, /What are the timings of the dental clinic\?/);
 });
@@ -68,9 +89,23 @@ test("homepage has focused micro-interactions for navigation, calls to action, s
   assert.match(css, /\.site-header\[data-scrolled="true"\]/);
   assert.match(css, /\.button:is\(:hover, :focus-visible\)/);
   assert.match(css, /\.service-card:is\(:hover, :focus-within\)/);
+  assert.match(css, /\.services-carousel\s*\{[^}]*grid-template-columns:\s*44px minmax\(0,\s*1fr\) 44px/s);
+  assert.match(css, /\.services-carousel-rail\s*\{[^}]*scrollbar-width:\s*none/s);
+  assert.match(css, /\.services-carousel-rail::-webkit-scrollbar\s*\{[^}]*display:\s*none/s);
+  assert.match(css, /\.doctor-photo\s*\{[^}]*aspect-ratio:\s*3 \/ 4/s);
   assert.match(css, /\.faq-list details::details-content/);
   assert.match(css, /interpolate-size:\s*allow-keywords/);
   assert.match(css, /\.faq-list summary::after/);
+});
+
+test("homepage has a pinned WhatsApp shortcut", () => {
+  const layout = readFileSync(resolve(root, "app", "layout.tsx"), "utf8");
+
+  assert.match(layout, /className="floating-whatsapp"/);
+  assert.match(layout, /https:\/\/wa\.me\/\$\{settings\.whatsappNumber\}/);
+  assert.match(css, /\.floating-whatsapp\s*\{[^}]*position:\s*fixed/s);
+  assert.match(css, /\.floating-whatsapp\s*\{[^}]*bottom:\s*clamp\(18px,\s*4vw,\s*30px\)/s);
+  assert.match(css, /\.floating-whatsapp\s*\{[^}]*right:\s*clamp\(18px,\s*4vw,\s*30px\)/s);
 });
 
 test("reduced motion disables autoplay and progress animations", () => {

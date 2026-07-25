@@ -45,6 +45,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({children}: {children: React.ReactNode}) {
   const [settings, services] = await Promise.all([getSiteSettings(), getServices()]);
+  const whatsappMessage = "Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%21";
+  const whatsappUrl = `https://wa.me/${settings.whatsappNumber}?text=${whatsappMessage}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dentist",
@@ -77,6 +79,9 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         <JsonLd data={jsonLd} />
         {children}
         <Footer settings={settings} />
+        <a className="floating-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+          <span className="floating-whatsapp-label">WhatsApp</span>
+        </a>
       </body>
     </html>
   );

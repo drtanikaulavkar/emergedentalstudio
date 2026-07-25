@@ -40,12 +40,11 @@ export default async function ContactPage() {
           </div>
           <div>
             <h2>Hours</h2>
-            {settings.hours.map((hour) => (
-              <p key={`${hour.days}-${hour.label}`}>
-                {hour.days}: {hour.label}
-              </p>
-            ))}
-            <p>Sunday: By appointment only</p>
+            <p>Monday to Saturday</p>
+            <p>10:00 AM to 1:00 PM</p>
+            <p>4:00 PM to 8:00 PM</p>
+            <p>Sunday</p>
+            <p>By appointment only</p>
           </div>
           <div className="actions">
             <a className="button secondary" href={directionsUrl} target="_blank" rel="noreferrer">

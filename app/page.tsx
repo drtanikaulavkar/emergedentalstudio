@@ -77,24 +77,28 @@ const featuredServiceSlugs = [
 
 const whyChooseItems = [
   {
-    metric: "24+",
-    title: "Years Of Experience",
-    icon: "certified"
-  },
-  {
-    metric: "15000+",
-    title: "Happy Patients",
+    title: "Individualized & Family Dental Care",
     icon: "family"
   },
   {
-    metric: "Advanced",
-    title: "Digital Dentistry",
+    title: "Certified Dentists & Advanced Equipment",
+    icon: "certified"
+  },
+  {
+    title: "Digital X-rays & Digital Impressions",
     icon: "digital"
   },
   {
-    metric: "International",
-    title: "Sterilization Protocols",
+    title: "Affordable & Transparent Pricing",
+    icon: "pricing"
+  },
+  {
+    title: "Hygienic & Comfortable Environment",
     icon: "hygiene"
+  },
+  {
+    title: "Lift access & Gender neutral restroom",
+    icon: "access"
   }
 ] as const;
 
@@ -125,10 +129,26 @@ function WhyChooseIcon({name}: {name: WhyChooseIconName}) {
           <path d="M24 32v6" />
         </>
       ) : null}
+      {name === "pricing" ? (
+        <>
+          <path d="M10 14h28v20H10z" />
+          <path d="M16 24h16" />
+          <path d="M16 29h10" />
+          <circle cx="33" cy="19" r="3" />
+        </>
+      ) : null}
       {name === "hygiene" ? (
         <>
           <path d="M24 8l3.2 8.8L36 20l-8.8 3.2L24 32l-3.2-8.8L12 20l8.8-3.2L24 8z" />
           <path d="M36 30l1.5 4.5L42 36l-4.5 1.5L36 42l-1.5-4.5L30 36l4.5-1.5L36 30z" />
+        </>
+      ) : null}
+      {name === "access" ? (
+        <>
+          <path d="M17 34V16" />
+          <path d="M11 22l6-6 6 6" />
+          <circle cx="32" cy="15" r="4" />
+          <path d="M26 38v-8c0-4 12-4 12 0v8" />
         </>
       ) : null}
     </svg>
@@ -161,19 +181,27 @@ export default async function HomePage() {
         <HeroCarousel slides={carouselSlides} />
         <aside className="container hero-copy">
           <div className="hero-caption">
-            <div>
-              <h1>Beautiful Smiles. Built on Precision.</h1>
-              <p>Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru. From smile makeovers to routine care, every treatment is designed around you.</p>
+            <div className="hero-caption-copy">
+              <h1>
+                <span className="hero-title-line">Beautiful Smiles.</span>
+                <span className="hero-title-line">Built on Precision.</span>
+              </h1>
+              <p>
+                <span className="hero-subtitle-line">Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru.</span>
+                <span className="hero-subtitle-line">From smile makeovers to routine care, designed around you.</span>
+              </p>
+              <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+                Book online
+              </a>
             </div>
-            <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
-              Book online
-            </a>
           </div>
         </aside>
       </section>
 
       <section className="container section services-section">
-        <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"} />
+        <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
+          {servicesIntro?.body}
+        </SectionHeader>
         <ServicesCarousel services={featuredServices} />
         <div className="actions">
           <Link className="button ghost" href="/services">
@@ -217,10 +245,7 @@ export default async function HomePage() {
                 <span className="why-choose-icon" aria-hidden="true">
                   <WhyChooseIcon name={item.icon} />
                 </span>
-                <div>
-                  <h3>{item.metric}</h3>
-                  <p>{item.title}</p>
-                </div>
+                <h3>{item.title}</h3>
               </article>
             ))}
           </div>
@@ -286,21 +311,24 @@ export default async function HomePage() {
             <h2>Visit us at</h2>
             <p>{formatAddress(settings)}</p>
             <div className="contact-actions">
-              <a href={directionsUrl} target="_blank" rel="noreferrer">
-                Get directions
-              </a>
-              <a href={`tel:${settings.phone}`}>{settings.phone}</a>
-              <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
-                WhatsApp booking
-              </a>
+              <div className="contact-primary-actions">
+                <a href={directionsUrl} target="_blank" rel="noreferrer">
+                  Get directions
+                </a>
+              </div>
+              <div className="contact-secondary-actions">
+                <a href={`tel:${settings.phone}`}>{settings.phone}</a>
+                <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+                  WhatsApp booking
+                </a>
+              </div>
             </div>
-            <div className="hours-list">
-              {settings.hours.map((hour) => (
-                <p key={`${hour.days}-${hour.label}`}>
-                  <strong className="hours-day">{hour.days}</strong>
-                  <span className="hours-time">{hour.label}</span>
-                </p>
-              ))}
+            <div className="hours-list clinic-hours">
+              <p>
+                <strong className="hours-day">Monday to Saturday</strong>
+                <span className="hours-time">10:00 AM to 1:00 PM</span>
+                <span className="hours-time">4:00 PM to 8:00 PM</span>
+              </p>
               {settings.closedDays.filter((day) => day !== "Sunday").map((day) => (
                 <p key={day}>
                   <strong className="hours-day">{day}</strong>
