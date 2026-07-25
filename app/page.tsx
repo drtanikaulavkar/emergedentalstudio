@@ -191,7 +191,7 @@ export default async function HomePage() {
                 <span className="hero-subtitle-line">From smile makeovers to routine care, designed around you.</span>
               </p>
               <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
-                Book online
+                Book a Consultation
               </a>
             </div>
           </div>
@@ -200,7 +200,6 @@ export default async function HomePage() {
 
       <section className="container section services-section">
         <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
-          {servicesIntro?.body}
         </SectionHeader>
         <ServicesCarousel services={featuredServices} />
         <div className="actions">
@@ -308,7 +307,7 @@ export default async function HomePage() {
         <div className="container contact-home">
           <div className="contact-card">
             <p className="section-kicker">Contact us</p>
-            <h2>Visit us at</h2>
+            <h2>Visit us</h2>
             <p>{formatAddress(settings)}</p>
             <div className="contact-actions">
               <div className="contact-primary-actions">
