@@ -8,6 +8,7 @@ const css = readFileSync(resolve(root, "app", "globals.css"), "utf8");
 const page = readFileSync(resolve(root, "app", "page.tsx"), "utf8");
 const carousel = readFileSync(resolve(root, "components", "HeroCarousel.tsx"), "utf8");
 const header = readFileSync(resolve(root, "components", "Header.tsx"), "utf8");
+const whyChooseIcon = readFileSync(resolve(root, "components", "WhyChooseIcon.tsx"), "utf8");
 
 test("homepage carousel fills the hero without visible manual controls", () => {
   assert.match(carousel, /isPointerPaused/);
@@ -44,7 +45,7 @@ test("homepage sections reflect the requested content structure", () => {
   assert.match(page, /"braces-aligners"/);
   assert.match(page, /"root-canal-treatment"/);
   assert.match(page, /<ServicesCarousel services=\{featuredServices\} \/>/);
-  assert.match(page, /<SectionHeader eyebrow="Services" title=\{servicesIntro\?\.title \|\| "Care for every stage of your smile"\}>\s*\{servicesIntro\?\.body\}\s*<\/SectionHeader>/);
+  assert.match(page, /<SectionHeader eyebrow="Services" title=\{servicesIntro\?\.title \|\| "Care for every stage of your smile"\}>\s*<\/SectionHeader>/);
   assert.match(page, /<p className="section-kicker">Facilities<\/p>/);
   assert.match(page, /<h2>Why choose us\?<\/h2>/);
   assert.match(page, /Individualized & Family Dental Care/);
@@ -57,11 +58,12 @@ test("homepage sections reflect the requested content structure", () => {
   assert.doesNotMatch(page, /15000\+/);
   assert.doesNotMatch(css, /background:\s*#fbf5ee/);
   assert.doesNotMatch(css, /\.why-choose-item\s*\{[^}]*border-right/s);
-  assert.match(css, /\.why-choose-section\s*\{[^}]*linear-gradient\(180deg,\s*#fff 0%,\s*var\(--surface\) 100%\)/s);
+  assert.match(css, /\.why-choose-section\s*\{[^}]*background:\s*var\(--surface\)/s);
   assert.match(page, /<SectionHeader eyebrow="Hear what our patients have to say about us" title="Patients reviews"/);
   assert.match(page, /<SectionHeader eyebrow="Smile gallery" title="Results that speak"/);
   assert.match(page, /gallery-section/);
-  assert.match(page, /Visit us at/);
+  assert.match(page, /<h2>Visit us<\/h2>/);
+  assert.doesNotMatch(page, /Visit us at/);
   assert.match(page, /Get directions/);
   assert.match(page, /contact-primary-actions/);
   assert.match(page, /contact-secondary-actions/);
@@ -78,7 +80,7 @@ test("homepage sections reflect the requested content structure", () => {
 test("homepage exposes semantic hooks for staged motion without hiding content", () => {
   assert.match(page, /motion-sequence/);
   assert.match(page, /style=\{\{\s*"--i": index/);
-  assert.match(page, /why-choose-icon-path/);
+  assert.match(whyChooseIcon, /why-choose-icon-path/);
   assert.match(css, /\.motion-sequence/);
   assert.doesNotMatch(css, /\.motion-sequence[^{]*\{[^}]*opacity:\s*0/);
 });
@@ -92,10 +94,10 @@ test("homepage has focused micro-interactions for navigation, calls to action, s
   assert.match(css, /\.services-carousel\s*\{[^}]*grid-template-columns:\s*44px minmax\(0,\s*1fr\) 44px/s);
   assert.match(css, /\.services-carousel-rail\s*\{[^}]*scrollbar-width:\s*none/s);
   assert.match(css, /\.services-carousel-rail::-webkit-scrollbar\s*\{[^}]*display:\s*none/s);
-  assert.match(css, /\.doctor-photo\s*\{[^}]*aspect-ratio:\s*3 \/ 4/s);
+  assert.match(css, /\.doctor-photo\s*\{[^}]*aspect-ratio:\s*4 \/ 5/s);
   assert.match(css, /\.faq-list details::details-content/);
   assert.match(css, /interpolate-size:\s*allow-keywords/);
-  assert.match(css, /\.faq-list summary::after/);
+  assert.match(css, /\.faq-item\[open\] \.faq-chevron/);
 });
 
 test("homepage has a pinned WhatsApp shortcut", () => {

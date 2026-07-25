@@ -1,5 +1,6 @@
 "use client";
 
+import {ChevronLeft, ChevronRight} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 import type {CSSProperties} from "react";
 import type {Service} from "@/lib/siteData";
@@ -54,12 +55,12 @@ export function ServicesCarousel({services}: {services: Service[]}) {
         data-visible={canGoBack}
         onClick={() => scrollRail(-1)}
       >
-        <span aria-hidden="true">&lt;</span>
+        <ChevronLeft aria-hidden="true" />
       </button>
       <div className="services-carousel-viewport">
         <div className="services-carousel-rail motion-sequence" ref={railRef}>
           {services.map((service, index) => (
-            <ServiceCard key={service.slug} service={service} style={{"--i": index} as CSSProperties} />
+            <ServiceCard key={service.slug} service={service} index={index} style={{"--i": index} as CSSProperties} />
           ))}
         </div>
       </div>
@@ -69,7 +70,7 @@ export function ServicesCarousel({services}: {services: Service[]}) {
         aria-label="Next services"
         onClick={() => scrollRail(1)}
       >
-        <span aria-hidden="true">&gt;</span>
+        <ChevronRight aria-hidden="true" />
       </button>
     </div>
   );

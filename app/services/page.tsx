@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
-import Image from "next/image";
-import Link from "next/link";
+import {CalendarDays} from "lucide-react";
+import {ServiceCard} from "@/components/ServiceCard";
+import {Button} from "@/components/ui/button";
 import {getPageBySlug, getServices} from "@/lib/sanity/queries";
 import styles from "./services.module.css";
 
@@ -18,38 +19,35 @@ export default async function ServicesPage() {
 
   return (
     <main>
-      <section className="page-hero">
+      <section className={styles.servicesHero}>
         <div className={`container ${styles.servicesHeroInner}`}>
-          <div>
-            <p className="eyebrow">Services</p>
+          <div className={styles.servicesHeroCopy}>
+            <p className="eyebrow">Treatment library</p>
             <h1>{page.heroTitle}</h1>
             <p>{page.heroText}</p>
+            <Button asChild size="lg" className={styles.servicesHeroAction}>
+              <a href="#treatments">
+                <CalendarDays aria-hidden="true" />
+                Explore treatments
+              </a>
+            </Button>
           </div>
-          <div className={styles.servicesHeroCard}>
-            <strong>{services.length}</strong>
-            <p>Complete treatment guides with benefits, process, aftercare, FAQs, and a direct WhatsApp enquiry path.</p>
+          <div className={styles.servicesHeroIndex} aria-label={`${services.length} treatment guides`}>
+            <strong>{String(services.length).padStart(2, "0")}</strong>
+            <span>Treatment guides</span>
+            <p>Benefits, process, aftercare, answers, and a clear next step.</p>
           </div>
         </div>
       </section>
-      <section className="container section">
-        <div className="section-header">
-          <p className="eyebrow">Services</p>
+      <section className={`container section ${styles.servicesDirectory}`} id="treatments">
+        <div className={`section-header ${styles.servicesDirectoryHeader}`}>
+          <p className="eyebrow">Find your treatment</p>
           <h2>{intro?.title || "Choose the care you need"}</h2>
           {intro?.body ? <p>{intro.body}</p> : null}
         </div>
         <div className={styles.servicesGrid}>
-          {services.map((service) => (
-            <article className={styles.serviceCard} key={service.slug}>
-              <Image src={service.imageSrc} alt={service.imageAlt} width={720} height={420} />
-              <div className={styles.serviceCardBody}>
-                <p className="eyebrow">{service.eyebrow}</p>
-                <h2>{service.title}</h2>
-                <p>{service.summary}</p>
-                <Link href={`/services/${service.slug}`} aria-label={`Read more about ${service.title}`}>
-                  View treatment guide
-                </Link>
-              </div>
-            </article>
+          {services.map((service, index) => (
+            <ServiceCard service={service} index={index} key={service.slug} />
           ))}
         </div>
       </section>

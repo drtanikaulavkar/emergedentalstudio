@@ -1,7 +1,9 @@
 node_modules
 .next
 out
+output
 .vercel
 .env*.local
 .env
 *.log
+*.tsbuildinfo

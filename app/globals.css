@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
 :root {
   --palette-orchid: #a763ae;
   --palette-lavender: #b19ac8;
@@ -17,7 +20,8 @@
 
   --ink: var(--palette-plum);
   --muted: color-mix(in srgb, var(--palette-plum) 76%, var(--palette-white));
-  --brand: var(--palette-orchid);
+  --action: color-mix(in srgb, var(--palette-orchid) 72%, var(--palette-plum));
+  --brand: var(--action);
   --brand-soft: var(--palette-lavender);
   --teal: color-mix(in srgb, var(--palette-sage) 76%, var(--palette-plum));
   --mint: color-mix(in srgb, var(--palette-sage) 28%, var(--palette-white));
@@ -27,6 +31,8 @@
   --surface: color-mix(in srgb, var(--palette-lavender) 19%, var(--palette-white));
   --shell: color-mix(in srgb, var(--palette-lavender) 7%, var(--palette-white));
   --line: color-mix(in srgb, var(--palette-lavender) 58%, var(--palette-white));
+  --surface-strong: color-mix(in srgb, var(--palette-lavender) 34%, var(--palette-white));
+  --ink-soft: color-mix(in srgb, var(--palette-plum) 82%, var(--palette-white));
   --white: var(--palette-white);
   --font-heading: "Manrope", Arial, sans-serif;
   --font-body: "Manrope", Arial, sans-serif;
@@ -259,6 +265,7 @@ img {
   display: inline-flex;
   font-size: 0.96rem;
   font-weight: 600;
+  gap: 8px;
   justify-content: center;
   min-height: 44px;
   padding: 11px 18px;
@@ -327,8 +334,10 @@ main {
 }
 
 .hero-caption {
+  border-left: 3px solid var(--palette-sage);
   display: block;
   max-width: min(100%, 520px);
+  padding-left: clamp(14px, 2vw, 22px);
 }
 
 .hero-caption-copy {
@@ -517,8 +526,9 @@ p {
 }
 
 .button.secondary.hero-booking {
-  background: var(--coral);
-  box-shadow: 0 14px 28px rgb(var(--palette-bronze-rgb) / 0.24);
+  background: var(--palette-sage);
+  box-shadow: 0 14px 28px rgb(var(--palette-sage-rgb) / 0.26);
+  color: var(--palette-plum);
   font-size: 1.02rem;
   justify-self: start;
   min-height: 50px;
@@ -526,17 +536,33 @@ p {
   white-space: nowrap;
 }
 
+.hero-booking svg,
+.header-cta svg,
+.button svg,
+.contact-actions svg,
+.doctor-credential svg {
+  flex: 0 0 auto;
+  height: 1em;
+  stroke-width: 2;
+  width: 1em;
+}
+
 .button.secondary.hero-booking:is(:hover, :focus-visible) {
-  background: color-mix(in srgb, var(--palette-bronze) 88%, var(--palette-plum));
-  box-shadow: 0 18px 32px rgb(var(--palette-bronze-rgb) / 0.3);
+  background: var(--palette-sage);
+  box-shadow: 0 18px 32px rgb(var(--palette-sage-rgb) / 0.32);
+  color: var(--palette-plum);
 }
 
 .doctor-section {
-  background: linear-gradient(180deg, rgb(var(--palette-white-rgb) / 0.68), rgb(var(--palette-lavender-rgb) / 0.2));
+  background:
+    linear-gradient(100deg, rgb(var(--palette-orchid-rgb) / 0.1), transparent 42%),
+    var(--palette-plum);
+  min-height: calc(100svh - 80px);
+  padding-block: clamp(24px, 4vw, 42px);
 }
 
 .why-choose-section {
-  background: linear-gradient(180deg, rgb(var(--palette-white-rgb) / 0.72) 0%, var(--surface) 100%);
+  background: var(--surface);
   padding-block: clamp(34px, 5vw, 56px);
 }
 
@@ -561,8 +587,9 @@ p {
 
 .why-choose-item {
   align-items: center;
-  background: rgb(var(--palette-white-rgb) / 0.82);
-  border: 1px solid var(--line);
+  background: rgb(var(--palette-white-rgb) / 0.58);
+  border: 0;
+  border-top: 3px solid rgb(var(--palette-sage-rgb) / 0.72);
   border-radius: 8px;
   display: grid;
   gap: 13px;
@@ -578,18 +605,17 @@ p {
 
 .why-choose-item:is(:hover, :focus-within) {
   background: var(--shell);
-  border-color: rgb(var(--palette-sage-rgb) / 0.5);
   box-shadow: 0 10px 22px rgb(var(--palette-plum-rgb) / 0.08);
   transform: translateY(-2px);
 }
 
 .why-choose-icon {
   align-items: center;
-  background: var(--shell);
-  border: 1px solid rgb(var(--palette-sage-rgb) / 0.34);
+  background: var(--palette-plum);
+  border: 1px solid var(--palette-plum);
   border-radius: 8px;
   box-shadow: 0 8px 18px rgb(var(--palette-plum-rgb) / 0.08);
-  color: var(--teal);
+  color: var(--palette-sage);
   display: inline-flex;
   height: 50px;
   justify-content: center;
@@ -607,7 +633,7 @@ p {
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 3;
+  stroke-width: 2;
   width: 32px;
 }
 
@@ -647,6 +673,7 @@ p {
 
 .services-section {
   align-content: center;
+  background: rgb(var(--palette-white-rgb) / 0.42);
   display: grid;
   min-height: calc(100svh - 80px);
   padding-block: clamp(22px, 3.2vw, 38px);
@@ -695,7 +722,7 @@ p {
   align-items: center;
   background: var(--brand);
   border: 0;
-  border-radius: 8px;
+  border-radius: 999px;
   color: var(--white);
   cursor: pointer;
   display: inline-flex;
@@ -710,6 +737,12 @@ p {
   width: 42px;
 }
 
+.services-carousel-arrow svg {
+  height: 20px;
+  stroke-width: 2.2;
+  width: 20px;
+}
+
 .services-carousel-arrow:disabled,
 .services-carousel-arrow[data-visible="false"] {
   opacity: 0;
@@ -717,7 +750,7 @@ p {
 }
 
 .services-carousel-arrow:is(:hover, :focus-visible) {
-  background: var(--teal);
+  background: var(--action);
   transform: translateY(-1px);
 }
 
@@ -752,7 +785,8 @@ p {
 }
 
 .service-card {
-  min-height: 204px;
+  background: var(--shell);
+  min-height: 270px;
   overflow: hidden;
   padding: 0;
   transform: translateY(0);
@@ -770,7 +804,7 @@ p {
 
 .service-card-image {
   display: block;
-  height: 116px;
+  height: 138px;
   object-fit: cover;
   transition: transform 420ms var(--ease-out-quint);
   width: 100%;
@@ -780,22 +814,65 @@ p {
   transform: scale(1.035);
 }
 
-.service-card .eyebrow,
-.service-card h3,
-.service-card p:not(.eyebrow) {
-  margin-left: 16px;
-  margin-right: 16px;
+.service-card-content {
+  display: grid;
+  gap: 8px;
+  padding: 12px 15px 14px;
+}
+
+.service-card-meta {
+  align-items: center;
+  display: flex;
+  gap: 9px;
+  justify-content: space-between;
 }
 
 .service-card .eyebrow {
-  margin-top: 13px;
+  font-size: 0.72rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.service-card p:not(.eyebrow) {
-  font-size: 0.86rem;
-  line-height: 1.42;
-  margin-bottom: 14px;
-  margin-top: 8px;
+.service-card-index {
+  color: var(--coral);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.service-card h3 {
+  font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  min-height: 2.24em;
+}
+
+.service-card-summary {
+  display: -webkit-box;
+  font-size: 0.8rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.35;
+  overflow: hidden;
+}
+
+.service-card-affordance {
+  align-items: center;
+  color: var(--brand);
+  display: inline-flex;
+  font-size: 0.76rem;
+  font-weight: 700;
+  gap: 5px;
+  margin-top: 1px;
+}
+
+.service-card-affordance svg {
+  height: 14px;
+  transition: transform 180ms var(--ease-out-quart);
+  width: 14px;
+}
+
+.service-card:is(:hover, :focus-visible) .service-card-affordance svg {
+  transform: translate(2px, -2px);
 }
 
 .motion-sequence > * {
@@ -816,7 +893,7 @@ p {
 }
 
 .split {
-  align-items: stretch;
+  align-items: center;
   display: grid;
   gap: 20px;
   grid-template-columns: minmax(260px, 0.72fr) minmax(320px, 1.08fr);
@@ -827,19 +904,55 @@ p {
   border-radius: 8px;
   box-shadow: var(--shadow);
   height: 100%;
-  max-height: 440px;
+  max-height: min(500px, 70svh);
   object-fit: cover;
   object-position: center 18%;
   width: 100%;
 }
 
 .rich-text {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid rgb(var(--palette-lavender-rgb) / 0.52);
+  border-radius: 0;
   display: grid;
-  gap: 11px;
-  padding: clamp(20px, 3vw, 30px);
+  gap: 14px;
+  padding: clamp(18px, 3vw, 34px);
+}
+
+.doctor-section .section-kicker {
+  color: var(--palette-sage);
+}
+
+.doctor-section h2,
+.doctor-section .rich-text > p {
+  color: var(--white);
+}
+
+.doctor-section .rich-text > p:not(.section-kicker) {
+  color: rgb(var(--palette-white-rgb) / 0.78);
+}
+
+.doctor-credential {
+  align-items: center;
+  display: flex;
+  font-weight: 700;
+  gap: 9px;
+}
+
+.doctor-credential svg {
+  color: var(--palette-sage);
+}
+
+.doctor-section .button.ghost {
+  border-color: rgb(var(--palette-lavender-rgb) / 0.7);
+  color: var(--white);
+  justify-self: start;
+}
+
+.doctor-section .button.ghost:is(:hover, :focus-visible) {
+  background: rgb(var(--palette-white-rgb) / 0.1);
+  border-color: var(--white);
 }
 
 .reviews-section {
@@ -884,26 +997,32 @@ p {
   width: 100%;
 }
 
+.faq-accordion,
 .faq-list {
   display: grid;
-  gap: 10px;
+  gap: 0;
   margin-top: 22px;
 }
 
+.faq-item,
 .faq-list details {
-  background: var(--shell);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  background: transparent;
+  border-bottom: 1px solid var(--line);
   interpolate-size: allow-keywords;
-  padding: 14px 16px;
   transition:
-    border-color 180ms var(--ease-out-quart),
-    box-shadow 180ms var(--ease-out-quart);
+    background 180ms var(--ease-out-quart),
+    border-color 180ms var(--ease-out-quart);
 }
 
-.faq-list details[open] {
-  border-color: rgb(var(--palette-sage-rgb) / 0.5);
-  box-shadow: 0 8px 18px rgb(var(--palette-plum-rgb) / 0.07);
+.faq-item:first-child,
+.faq-list details:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.faq-item:is(:hover, [open]),
+.faq-list details:is(:hover, [open]) {
+  background: rgb(var(--palette-lavender-rgb) / 0.1);
+  border-color: rgb(var(--palette-sage-rgb) / 0.74);
 }
 
 .faq-list details::details-content {
@@ -921,32 +1040,39 @@ p {
   opacity: 1;
 }
 
+.faq-item summary,
 .faq-list summary {
   align-items: center;
   color: var(--ink);
   cursor: pointer;
-  display: flex;
-  gap: 16px;
-  font-weight: 400;
-  justify-content: space-between;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 34px minmax(0, 1fr) 24px;
   list-style: none;
+  min-height: 64px;
+  padding: 14px 12px;
 }
 
 .faq-list summary::-webkit-details-marker {
   display: none;
 }
 
-.faq-list summary::after {
-  color: var(--teal);
-  content: "+";
-  flex: 0 0 auto;
-  font-size: 1.25rem;
-  font-weight: 900;
-  line-height: 1;
-  transform: rotate(0deg);
-  transition:
-    color 180ms var(--ease-out-quart),
-    transform 180ms var(--ease-out-quart);
+.faq-question-number {
+  color: var(--brand);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.faq-question {
+  font-size: clamp(0.94rem, 1.35vw, 1.05rem);
+  font-weight: 750;
+}
+
+.faq-chevron {
+  color: var(--brand);
+  height: 19px;
+  transition: color 180ms var(--ease-out-quart), transform 180ms var(--ease-out-quart);
+  width: 19px;
 }
 
 .faq-list summary:focus-visible {
@@ -954,13 +1080,20 @@ p {
   outline-offset: 5px;
 }
 
-.faq-list details[open] summary::after {
+.faq-item[open] .faq-chevron,
+.faq-list details[open] .faq-chevron {
   color: var(--coral);
-  transform: rotate(45deg);
+  transform: rotate(180deg);
 }
 
+.faq-answer {
+  padding: 0 48px 18px 58px;
+}
+
+.faq-answer p,
 .faq-list p {
-  margin-top: 10px;
+  color: var(--ink-soft);
+  max-width: 66ch;
 }
 
 .contact-section {
@@ -1069,10 +1202,14 @@ p {
 }
 
 .contact-actions a {
+  align-items: center;
   background: var(--brand);
   border-radius: 8px;
   color: var(--white);
   font-weight: 600;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
   padding: 10px 14px;
   transition:
     background 160ms var(--ease-out-quart),
@@ -1095,7 +1232,7 @@ p {
 }
 
 .contact-actions a:is(:hover, :focus-visible) {
-  background: var(--teal);
+  background: var(--action);
 }
 
 .hours-list {
@@ -1123,8 +1260,11 @@ p {
 }
 
 .hours-day {
+  align-items: center;
   color: var(--ink);
+  display: flex;
   font-weight: 900;
+  gap: 7px;
 }
 
 .hours-time {
@@ -1482,13 +1622,14 @@ p {
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
-    min-height: 40px;
+    min-height: 44px;
     padding: 9px 13px;
     width: auto;
   }
 
   .nav-links {
-    gap: 20px;
+    flex-wrap: nowrap;
+    gap: 16px;
     grid-column: 1 / -1;
     grid-row: 2;
     order: initial;
@@ -1498,6 +1639,12 @@ p {
 
   .hero {
     min-height: calc(100svh - 112px);
+  }
+
+  .services-section,
+  .doctor-section,
+  .contact-section {
+    min-height: auto;
   }
 
   .hero-copy {
@@ -1528,6 +1675,10 @@ p {
 
   h1 {
     font-size: 2.15rem;
+  }
+
+  .section-header h2 {
+    white-space: normal;
   }
 
   .section-header h2,
@@ -1588,12 +1739,12 @@ p {
 
   .services-carousel {
     gap: 8px;
-    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
   }
 
   .services-carousel-arrow {
-    height: 38px;
-    width: 38px;
+    height: 44px;
+    width: 44px;
   }
 
   .gallery-card {
@@ -1624,6 +1775,37 @@ p {
   }
 }
 
+@media (max-width: 360px) {
+  .site-header {
+    gap: 10px;
+    padding-inline: 12px;
+  }
+
+  .brand img {
+    width: 134px;
+  }
+
+  .header-cta {
+    font-size: 0.82rem;
+    padding-inline: 10px;
+  }
+
+  .nav-links {
+    font-size: 0.78rem;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .contact-secondary-actions {
+    flex-wrap: wrap;
+  }
+
+  .contact-secondary-actions a {
+    flex: 1 1 100%;
+    min-height: 44px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1631,6 +1813,11 @@ p {
 
   .motion-sequence > * {
     animation-delay: 0ms !important;
+  }
+
+  .faq-item,
+  .faq-item .faq-chevron {
+    transition: none !important;
   }
 
   *,

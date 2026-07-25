@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
+import {ArrowRight, ArrowUpRight, BadgeCheck, CalendarDays, Clock3, MapPin, MessageCircle, Phone} from "lucide-react";
 import type {Metadata} from "next";
 import type {CSSProperties} from "react";
+import {FaqAccordion} from "@/components/FaqAccordion";
+import {HeroCaptionReveal} from "@/components/HeroCaptionReveal";
 import {HeroCarousel} from "@/components/HeroCarousel";
 import {SectionHeader} from "@/components/SectionHeader";
 import {ServicesCarousel} from "@/components/ServicesCarousel";
+import {Button} from "@/components/ui/button";
+import {WhyChooseIcon, type WhyChooseIconName} from "@/components/WhyChooseIcon";
 import {doctor, formatAddress} from "@/lib/siteData";
 import {getPageBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries";
 
@@ -100,60 +105,7 @@ const whyChooseItems = [
     title: "Lift access & Gender neutral restroom",
     icon: "access"
   }
-] as const;
-
-type WhyChooseIconName = (typeof whyChooseItems)[number]["icon"];
-
-function WhyChooseIcon({name}: {name: WhyChooseIconName}) {
-  return (
-    <svg className="why-choose-icon-path" viewBox="0 0 48 48" role="img" aria-label="" focusable="false">
-      {name === "family" ? (
-        <>
-          <circle cx="19" cy="18" r="5" />
-          <circle cx="31" cy="18" r="5" />
-          <path d="M11 35c2.2-6 13.8-6 16 0" />
-          <path d="M21 35c2.2-6 13.8-6 16 0" />
-        </>
-      ) : null}
-      {name === "certified" ? (
-        <>
-          <path d="M24 7l14 6v10c0 9-5.8 15.2-14 18-8.2-2.8-14-9-14-18V13l14-6z" />
-          <path d="M17 24l5 5 10-11" />
-        </>
-      ) : null}
-      {name === "digital" ? (
-        <>
-          <rect x="12" y="12" width="24" height="20" rx="3" />
-          <path d="M17 26l6-8 5 7 3-4" />
-          <path d="M18 38h12" />
-          <path d="M24 32v6" />
-        </>
-      ) : null}
-      {name === "pricing" ? (
-        <>
-          <path d="M10 14h28v20H10z" />
-          <path d="M16 24h16" />
-          <path d="M16 29h10" />
-          <circle cx="33" cy="19" r="3" />
-        </>
-      ) : null}
-      {name === "hygiene" ? (
-        <>
-          <path d="M24 8l3.2 8.8L36 20l-8.8 3.2L24 32l-3.2-8.8L12 20l8.8-3.2L24 8z" />
-          <path d="M36 30l1.5 4.5L42 36l-4.5 1.5L36 42l-1.5-4.5L30 36l4.5-1.5L36 30z" />
-        </>
-      ) : null}
-      {name === "access" ? (
-        <>
-          <path d="M17 34V16" />
-          <path d="M11 22l6-6 6 6" />
-          <circle cx="32" cy="15" r="4" />
-          <path d="M26 38v-8c0-4 12-4 12 0v8" />
-        </>
-      ) : null}
-    </svg>
-  );
-}
+] satisfies {title: string; icon: WhyChooseIconName}[];
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("home");
@@ -181,19 +133,24 @@ export default async function HomePage() {
         <HeroCarousel slides={carouselSlides} />
         <aside className="container hero-copy">
           <div className="hero-caption">
-            <div className="hero-caption-copy">
-              <h1>
-                <span className="hero-title-line">Beautiful Smiles.</span>
-                <span className="hero-title-line">Built on Precision.</span>
-              </h1>
-              <p>
-                <span className="hero-subtitle-line">Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru.</span>
-                <span className="hero-subtitle-line">From smile makeovers to routine care, designed around you.</span>
-              </p>
-              <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
-                Book a Consultation
-              </a>
-            </div>
+            <HeroCaptionReveal>
+              <div className="hero-caption-copy">
+                <h1>
+                  <span className="hero-title-line">Beautiful Smiles.</span>
+                  <span className="hero-title-line">Built on Precision.</span>
+                </h1>
+                <p>
+                  <span className="hero-subtitle-line">Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru.</span>
+                  <span className="hero-subtitle-line">From smile makeovers to routine care, designed around you.</span>
+                </p>
+                <Button asChild className="button secondary hero-booking" size="lg" variant="warm">
+                  <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+                    <CalendarDays aria-hidden="true" />
+                    Book a Consultation
+                  </a>
+                </Button>
+              </div>
+            </HeroCaptionReveal>
           </div>
         </aside>
       </section>
@@ -203,9 +160,12 @@ export default async function HomePage() {
         </SectionHeader>
         <ServicesCarousel services={featuredServices} />
         <div className="actions">
-          <Link className="button ghost" href="/services">
-            View all services
-          </Link>
+          <Button asChild className="button ghost" variant="outline">
+            <Link href="/services">
+              View all services
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -221,13 +181,17 @@ export default async function HomePage() {
           <div className="rich-text">
             <p className="section-kicker">Meet the doctor</p>
             <h2>{doctor.name}</h2>
-            <p>
+            <p className="doctor-credential">
+              <BadgeCheck aria-hidden="true" />
               {doctor.role} - {doctor.qualifications}
             </p>
             <p>{doctor.intro}</p>
-            <Link className="button ghost" href="/about">
-              Read more
-            </Link>
+            <Button asChild className="button ghost doctor-link" variant="outline">
+              <Link href="/about">
+                Meet Dr. Tanisha
+                <ArrowUpRight aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -291,14 +255,7 @@ export default async function HomePage() {
           <div>
             <p className="section-kicker">Before you visit</p>
             <h2>Frequently asked questions</h2>
-            <div className="faq-list">
-              {faqs.map((faq) => (
-                <details key={faq.question}>
-                  <summary>{faq.question}</summary>
-                  <p>{faq.answer}</p>
-                </details>
-              ))}
-            </div>
+            <FaqAccordion items={faqs} defaultOpenFirst />
           </div>
         </div>
       </section>
@@ -312,19 +269,27 @@ export default async function HomePage() {
             <div className="contact-actions">
               <div className="contact-primary-actions">
                 <a href={directionsUrl} target="_blank" rel="noreferrer">
+                  <MapPin aria-hidden="true" />
                   Get directions
                 </a>
               </div>
               <div className="contact-secondary-actions">
-                <a href={`tel:${settings.phone}`}>{settings.phone}</a>
+                <a href={`tel:${settings.phone}`}>
+                  <Phone aria-hidden="true" />
+                  {settings.phone}
+                </a>
                 <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+                  <MessageCircle aria-hidden="true" />
                   WhatsApp booking
                 </a>
               </div>
             </div>
             <div className="hours-list clinic-hours">
               <p>
-                <strong className="hours-day">Monday to Saturday</strong>
+                <strong className="hours-day">
+                  <Clock3 aria-hidden="true" />
+                  Monday to Saturday
+                </strong>
                 <span className="hours-time">10:00 AM to 1:00 PM</span>
                 <span className="hours-time">4:00 PM to 8:00 PM</span>
               </p>

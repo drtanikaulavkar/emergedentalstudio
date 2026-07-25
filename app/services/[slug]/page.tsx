@@ -2,6 +2,9 @@ import type {Metadata} from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {notFound} from "next/navigation";
+import {ArrowUpRight, Check, MessageCircle} from "lucide-react";
+import {FaqAccordion} from "@/components/FaqAccordion";
+import {Button} from "@/components/ui/button";
 import {getServiceBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries";
 import styles from "../services.module.css";
 
@@ -54,15 +57,29 @@ export default async function ServiceDetailPage({params}: ServicePageProps) {
     <main>
       <section className={styles.serviceHero}>
         <div className={`container ${styles.serviceHeroGrid}`}>
-          <div>
+          <div className={styles.serviceHeroCopy}>
             <p className="eyebrow">{service.eyebrow}</p>
             <h1>{service.title}</h1>
             <p className={styles.serviceIntro}>{service.description}</p>
-            <a className={styles.heroAction} href={whatsappHref} target="_blank" rel="noreferrer">
-              Enquire on WhatsApp
-            </a>
+            <ul className={styles.serviceHighlights}>
+              {service.highlights.slice(0, 3).map((highlight) => (
+                <li key={highlight}>
+                  <Check aria-hidden="true" />
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+            <Button asChild size="lg" className={styles.heroAction}>
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                <MessageCircle aria-hidden="true" />
+                Enquire on WhatsApp
+              </a>
+            </Button>
           </div>
-          <Image className={styles.heroImage} src={service.imageSrc} alt={service.imageAlt} width={960} height={720} priority />
+          <div className={styles.heroImageFrame}>
+            <Image className={styles.heroImage} src={service.imageSrc} alt={service.imageAlt} width={960} height={720} priority />
+            <span className={styles.heroImageLabel}>Personalised care at Emerge</span>
+          </div>
         </div>
       </section>
 
@@ -173,15 +190,9 @@ export default async function ServiceDetailPage({params}: ServicePageProps) {
           ) : null}
 
           <section className={styles.serviceSection} id="faqs">
+            <p className={styles.sectionLabel}>Questions, answered</p>
             <h2>Frequently Asked Questions</h2>
-            <div className={styles.faqGrid}>
-              {service.faqs.map((faq) => (
-                <article className={styles.faqCard} key={faq.question}>
-                  <h3>{faq.question}</h3>
-                  <p className={styles.faqAnswer}>{faq.answer}</p>
-                </article>
-              ))}
-            </div>
+            <FaqAccordion items={service.faqs} defaultOpenFirst />
           </section>
 
           {relatedServices.length ? (
@@ -189,8 +200,12 @@ export default async function ServiceDetailPage({params}: ServicePageProps) {
               <h2>Related Services</h2>
               <div className={styles.relatedGrid}>
                 {relatedServices.map((item) => (
-                  <Link className={styles.relatedPill} href={`/services/${item.slug}`} key={item.slug}>
-                    {item.title}
+                  <Link className={styles.relatedLink} href={`/services/${item.slug}`} key={item.slug}>
+                    <span>
+                      <small>{item.eyebrow}</small>
+                      {item.title}
+                    </span>
+                    <ArrowUpRight aria-hidden="true" />
                   </Link>
                 ))}
               </div>
@@ -205,9 +220,12 @@ export default async function ServiceDetailPage({params}: ServicePageProps) {
             <h2>Want to know if {service.title.toLowerCase()} is right for you?</h2>
             <p>Send a quick WhatsApp enquiry and the clinic can guide you to the right next step.</p>
           </div>
-          <a className={styles.heroAction} href={whatsappHref} target="_blank" rel="noreferrer">
-            Enquire on WhatsApp
-          </a>
+          <Button asChild size="lg" className={styles.heroAction}>
+            <a href={whatsappHref} target="_blank" rel="noreferrer">
+              <MessageCircle aria-hidden="true" />
+              Enquire on WhatsApp
+            </a>
+          </Button>
         </div>
       </section>
     </main>
