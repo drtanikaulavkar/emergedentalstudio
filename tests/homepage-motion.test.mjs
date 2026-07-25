@@ -19,17 +19,39 @@ test("homepage carousel fills the hero without visible manual controls", () => {
   assert.match(carousel, /data-paused=\{isPaused\}/);
   assert.doesNotMatch(carousel, /carousel-toggle/);
   assert.doesNotMatch(carousel, /carousel-dots/);
-  assert.match(carousel, /carousel-progress/);
-  assert.match(carousel, /key=\{`\$\{activeIndex\}-\$\{isPaused \? "paused" : "running"\}`\}/);
+  assert.doesNotMatch(carousel, /carousel-progress/);
   assert.match(carousel, /aria-hidden=\{index !== activeIndex\}/);
-  assert.match(page, /<h1>\{page\.heroTitle\}<\/h1>/);
-  assert.match(page, /className="hero-actions"/);
+  assert.match(page, /Beautiful Smiles\. Built on Precision\./);
+  assert.doesNotMatch(page, /Dental implants, cosmetic dentistry, and prosthodontic care in Indiranagar, Bengaluru/);
+  assert.match(page, /className="hero-caption"/);
   assert.match(css, /\.hero\s*\{[^}]*min-height:\s*calc\(100svh - 78px\)/s);
   assert.match(css, /\.hero-carousel\s*\{[^}]*height:\s*100%/s);
   assert.doesNotMatch(css, /\.carousel-toggle/);
   assert.doesNotMatch(css, /\.carousel-dots/);
-  assert.match(css, /\.carousel-progress/);
-  assert.match(css, /animation:\s*carousel-progress 6000ms linear/);
+  assert.doesNotMatch(css, /\.carousel-progress/);
+  assert.match(carousel, /\}, 4000\)/);
+});
+
+test("homepage sections reflect the requested content structure", () => {
+  assert.match(page, /const featuredServiceSlugs = \[/);
+  assert.match(page, /"dental-implants"/);
+  assert.match(page, /"cosmetic-dentistry"/);
+  assert.match(page, /"braces-aligners"/);
+  assert.match(page, /"root-canal-treatment"/);
+  assert.match(page, /<ServicesCarousel services=\{featuredServices\} \/>/);
+  assert.match(page, /<p className="section-kicker">Facilities<\/p>/);
+  assert.match(page, /<h2>Why choose us\?<\/h2>/);
+  assert.match(page, /24\+/);
+  assert.match(page, /15000\+/);
+  assert.match(page, /<SectionHeader eyebrow="Hear what our patients have to say about us" title="Patients reviews"/);
+  assert.match(page, /<SectionHeader eyebrow="Smile gallery" title="Results that speak"/);
+  assert.match(page, /gallery-section/);
+  assert.match(page, /Visit us at/);
+  assert.match(page, /Get directions/);
+  assert.match(page, /Sunday/);
+  assert.match(page, /By appointment only/);
+  assert.doesNotMatch(page, /How do I book an appointment\?/);
+  assert.doesNotMatch(page, /What are the timings of the dental clinic\?/);
 });
 
 test("homepage exposes semantic hooks for staged motion without hiding content", () => {
@@ -55,5 +77,5 @@ test("reduced motion disables autoplay and progress animations", () => {
   assert.match(carousel, /prefers-reduced-motion: reduce/);
   assert.match(carousel, /if \(prefersReducedMotion \|\| isPaused\) \{\s*return;\s*\}/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
-  assert.match(css, /\.carousel-progress[^{]*\{[^}]*display:\s*none/s);
+  assert.doesNotMatch(css, /\.carousel-progress/);
 });

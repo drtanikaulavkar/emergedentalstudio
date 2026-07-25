@@ -36,7 +36,7 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
 
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current === slides.length - 1 ? 0 : current + 1));
-    }, 6000);
+    }, 4000);
 
     return () => window.clearInterval(timer);
   }, [isPaused, prefersReducedMotion, slides.length]);
@@ -76,7 +76,6 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
           <Image src={slide.src} alt={slide.alt} width={1600} height={1000} priority={index === 0} sizes="100vw" />
         </figure>
       ))}
-      <span className="carousel-progress" key={`${activeIndex}-${isPaused ? "paused" : "running"}`} aria-hidden="true" />
     </div>
   );
 }

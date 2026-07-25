@@ -5,7 +5,7 @@ import type {Metadata} from "next";
 import type {CSSProperties} from "react";
 import {HeroCarousel} from "@/components/HeroCarousel";
 import {SectionHeader} from "@/components/SectionHeader";
-import {ServiceCard} from "@/components/ServiceCard";
+import {ServicesCarousel} from "@/components/ServicesCarousel";
 import {doctor, formatAddress} from "@/lib/siteData";
 import {getPageBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries";
 
@@ -35,11 +35,6 @@ const carouselSlides = [
 
 const faqs = [
   {
-    question: "How do I book an appointment?",
-    answer:
-      "You can book an appointment through WhatsApp, the online booking link, or by calling us directly on +91 82968 01240."
-  },
-  {
     question: "Do you offer emergency dental services?",
     answer:
       "Yes. Emerge Dental Studio provides same-day emergency appointments for issues like tooth trauma, broken teeth, and extreme toothaches."
@@ -67,38 +62,39 @@ const faqs = [
     question: "What payment options do you offer?",
     answer:
       "We accept cash, credit card, debit card, Paytm, Google Pay, PhonePe, CRED, and other UPI payment methods."
-  },
-  {
-    question: "What are the timings of the dental clinic?",
-    answer:
-      "The clinic is open from 10 AM to 1 PM and 4 PM to 8 PM, Monday through Saturday. The clinic is closed on Sundays."
   }
+];
+
+const featuredServiceSlugs = [
+  "dental-implants",
+  "cosmetic-dentistry",
+  "braces-aligners",
+  "root-canal-treatment",
+  "pediatric-dentistry",
+  "teeth-cleaning-whitening",
+  "crowns-bridges"
 ];
 
 const whyChooseItems = [
   {
-    title: "Individualized & Family Dental Care",
-    icon: "family"
-  },
-  {
-    title: "Certified Dentists & Advanced Equipment",
+    metric: "24+",
+    title: "Years Of Experience",
     icon: "certified"
   },
   {
-    title: "Digital X-rays & Digital Impressions",
+    metric: "15000+",
+    title: "Happy Patients",
+    icon: "family"
+  },
+  {
+    metric: "Advanced",
+    title: "Digital Dentistry",
     icon: "digital"
   },
   {
-    title: "Affordable & Transparent Pricing",
-    icon: "pricing"
-  },
-  {
-    title: "Hygienic & Comfortable Environment",
+    metric: "International",
+    title: "Sterilization Protocols",
     icon: "hygiene"
-  },
-  {
-    title: "Lift access & Gender neutral restroom",
-    icon: "access"
   }
 ] as const;
 
@@ -129,26 +125,10 @@ function WhyChooseIcon({name}: {name: WhyChooseIconName}) {
           <path d="M24 32v6" />
         </>
       ) : null}
-      {name === "pricing" ? (
-        <>
-          <path d="M10 14h28v20H10z" />
-          <path d="M16 24h16" />
-          <path d="M16 29h10" />
-          <circle cx="33" cy="19" r="3" />
-        </>
-      ) : null}
       {name === "hygiene" ? (
         <>
           <path d="M24 8l3.2 8.8L36 20l-8.8 3.2L24 32l-3.2-8.8L12 20l8.8-3.2L24 8z" />
           <path d="M36 30l1.5 4.5L42 36l-4.5 1.5L36 42l-1.5-4.5L30 36l4.5-1.5L36 30z" />
-        </>
-      ) : null}
-      {name === "access" ? (
-        <>
-          <path d="M17 34V16" />
-          <path d="M11 22l6-6 6 6" />
-          <circle cx="32" cy="15" r="4" />
-          <path d="M26 38v-8c0-4 12-4 12 0v8" />
         </>
       ) : null}
     </svg>
@@ -166,8 +146,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const [settings, services, page] = await Promise.all([getSiteSettings(), getServices(), getPageBySlug("home")]);
   const servicesIntro = page.sections[0];
+  const featuredServices = featuredServiceSlugs
+    .map((slug) => services.find((service) => service.slug === slug))
+    .filter((service): service is (typeof services)[number] => Boolean(service));
   const bookingMessage = "Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%21";
   const whatsappBookingUrl = `https://wa.me/${settings.whatsappNumber}?text=${bookingMessage}`;
+  const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Emerge%20Dental%20Studio%20Indiranagar%20Bengaluru";
   const mapsUrl =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0059496583885!2d77.63272917520163!3d12.971470887343878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17258ff3f73d%3A0xa4f9b26340b29668!2sEmerge%20Dental%20Studio%20%7C%20Dentist%2C%20Prosthodontist%20%7C%207th%20Main%2C%20Indiranagar!5e0!3m2!1sen!2sin!4v1682962797284!5m2!1sen!2sin";
 
@@ -176,10 +160,11 @@ export default async function HomePage() {
       <section className="hero" aria-label="Emerge Dental Studio highlights">
         <HeroCarousel slides={carouselSlides} />
         <aside className="container hero-copy">
-          <p className="section-kicker">Dental implants, cosmetic dentistry, and prosthodontic care in Indiranagar, Bengaluru</p>
-          <h1>{page.heroTitle}</h1>
-          <p>{page.heroText}</p>
-          <div className="hero-actions">
+          <div className="hero-caption">
+            <div>
+              <h1>Beautiful Smiles. Built on Precision.</h1>
+              <p>Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru. From smile makeovers to routine care, every treatment is designed around you.</p>
+            </div>
             <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
               Book online
             </a>
@@ -189,11 +174,7 @@ export default async function HomePage() {
 
       <section className="container section services-section">
         <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"} />
-        <div className="grid service-grid motion-sequence">
-          {services.slice(0, 6).map((service, index) => (
-            <ServiceCard key={service.slug} service={service} style={{"--i": index} as CSSProperties} />
-          ))}
-        </div>
+        <ServicesCarousel services={featuredServices} />
         <div className="actions">
           <Link className="button ghost" href="/services">
             View all services
@@ -227,8 +208,8 @@ export default async function HomePage() {
       <section className="section why-choose-section">
         <div className="container why-choose-layout">
           <div className="why-choose-heading">
-            <p className="section-kicker">Why choose us</p>
-            <h2>Why Choose Our Dental Clinic in Bengaluru?</h2>
+            <p className="section-kicker">Facilities</p>
+            <h2>Why choose us?</h2>
           </div>
           <div className="why-choose-grid motion-sequence" aria-label="Reasons to choose Emerge Dental Studio">
             {whyChooseItems.map((item, index) => (
@@ -236,7 +217,10 @@ export default async function HomePage() {
                 <span className="why-choose-icon" aria-hidden="true">
                   <WhyChooseIcon name={item.icon} />
                 </span>
-                <h3>{item.title}</h3>
+                <div>
+                  <h3>{item.metric}</h3>
+                  <p>{item.title}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -245,11 +229,35 @@ export default async function HomePage() {
 
       <section className="section reviews-section">
         <div className="container">
-          <SectionHeader title="Google reviews">Hear what our patients have to say about us</SectionHeader>
+          <SectionHeader eyebrow="Hear what our patients have to say about us" title="Patients reviews" />
           <Script src="https://apps.elfsight.com/p/platform.js" strategy="lazyOnload" />
           <div className="reviews-widget">
             <div className="elfsight-app-ff647765-4f7b-4dc5-bd88-b5235109b9ca" />
           </div>
+        </div>
+      </section>
+
+      <section className="container section gallery-section">
+        <SectionHeader eyebrow="Smile gallery" title="Results that speak" />
+        <div className="gallery-grid">
+          <article className="gallery-card">
+            <div className="before-after-preview">
+              <Image src="/images/before-after/smile-before.svg" alt="Before smile makeover placeholder" width={360} height={240} />
+              <Image src="/images/before-after/smile-after.svg" alt="After smile makeover placeholder" width={360} height={240} />
+            </div>
+            <h3>Before-after smile transformations</h3>
+            <p>Placeholders for cosmetic, implant, and restorative treatment results.</p>
+          </article>
+          <article className="gallery-card video-placeholder">
+            <span className="video-play" aria-hidden="true" />
+            <h3>Patient testimonial videos</h3>
+            <p>Space reserved for short patient stories and treatment experience videos.</p>
+          </article>
+          <article className="gallery-card video-placeholder">
+            <span className="video-play" aria-hidden="true" />
+            <h3>Smile makeover walkthroughs</h3>
+            <p>Placeholders for future reels showing planning, design, and final smiles.</p>
+          </article>
         </div>
       </section>
 
@@ -275,9 +283,12 @@ export default async function HomePage() {
         <div className="container contact-home">
           <div className="contact-card">
             <p className="section-kicker">Contact us</p>
-            <h2>Visit Emerge Dental Studio</h2>
+            <h2>Visit us at</h2>
             <p>{formatAddress(settings)}</p>
             <div className="contact-actions">
+              <a href={directionsUrl} target="_blank" rel="noreferrer">
+                Get directions
+              </a>
               <a href={`tel:${settings.phone}`}>{settings.phone}</a>
               <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
                 WhatsApp booking
@@ -290,12 +301,16 @@ export default async function HomePage() {
                   <span className="hours-time">{hour.label}</span>
                 </p>
               ))}
-              {settings.closedDays.map((day) => (
+              {settings.closedDays.filter((day) => day !== "Sunday").map((day) => (
                 <p key={day}>
                   <strong className="hours-day">{day}</strong>
                   <span className="hours-time">Closed</span>
                 </p>
               ))}
+              <p>
+                <strong className="hours-day">Sunday</strong>
+                <span className="hours-time">By appointment only</span>
+              </p>
             </div>
           </div>
           <iframe

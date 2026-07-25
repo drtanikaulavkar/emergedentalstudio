@@ -24,12 +24,13 @@ export function Footer({settings}: {settings: SiteSettings}) {
         ))}
         <p className="footer-hour">
           <strong className="hours-day">Sunday</strong>
-          <span className="hours-time">Closed</span>
+          <span className="hours-time">By appointment only</span>
         </p>
       </div>
       <div>
         <h2>Explore</h2>
         <Link href="/services">Services</Link>
+        <Link href="/blogs">Blogs</Link>
         <Link href="/about">About Dr. Tanisha</Link>
         <Link href="/contact">Book an appointment</Link>
       </div>

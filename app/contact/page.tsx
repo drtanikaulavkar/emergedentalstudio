@@ -45,7 +45,7 @@ export default async function ContactPage() {
                 {hour.days}: {hour.label}
               </p>
             ))}
-            <p>Sunday: Closed</p>
+            <p>Sunday: By appointment only</p>
           </div>
           <div className="actions">
             <a className="button secondary" href={directionsUrl} target="_blank" rel="noreferrer">

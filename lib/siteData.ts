@@ -115,7 +115,7 @@ export const siteSettings: SiteSettings = {
       label: "4:00 PM - 8:00 PM"
     }
   ],
-  closedDays: ["Sunday"],
+  closedDays: [],
   serviceAreas: ["Indiranagar", "Koramangala", "Domlur", "Ulsoor", "Cambridge layout"],
   testimonials: [
     {
@@ -156,9 +156,9 @@ export const pages: Record<string, PageContent> = {
     seoTitle: "Best Dentist Near Me in Bengaluru | Emerge Dental Studio",
     seoDescription:
       "Looking for a trusted dentist in Bengaluru? Emerge Dental Studio offers preventive, cosmetic, implant, orthodontic, pediatric, and restorative dental care.",
-    heroTitle: "Smile and implant care, made personal",
+    heroTitle: "Beautiful Smiles. Built on Precision.",
     heroText:
-      "Modern prosthodontic, implant, and cosmetic dental care in Indiranagar with clear guidance from consultation to confident smile.",
+      "Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru. From smile makeovers to routine care, every treatment is designed around you.",
     sections: [
       {
         title: "Care for every stage of your smile",

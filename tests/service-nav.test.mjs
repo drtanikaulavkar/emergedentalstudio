@@ -11,6 +11,7 @@ test("header exposes services as a dropdown of direct service links", () => {
   assert.match(header, /aria-haspopup="menu"/);
   assert.match(header, /className=\{styles\.serviceMenu\}/);
   assert.match(header, /href=\{`\/services\/\$\{service\.slug\}`\}/);
+  assert.match(header, /href="\/blogs"/);
   assert.doesNotMatch(header, /\{href:\s*"\/services",\s*label:\s*"Services"\}/);
   assert.match(layout, /getServices/);
   assert.match(layout, /<Header settings=\{settings\} services=\{services\}/);

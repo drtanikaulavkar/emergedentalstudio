@@ -118,6 +118,7 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
             ))}
           </div>
         </div>
+        <Link href="/blogs">Blogs</Link>
         <Link href="/contact">Contact</Link>
       </nav>
       <a className="header-cta" href={`https://wa.me/${settings.whatsappNumber}`} target="_blank" rel="noreferrer">
