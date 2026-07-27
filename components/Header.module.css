@@ -109,14 +109,27 @@
 }
 
 @media (max-width: 920px) {
+  .serviceTrigger {
+    min-height: 44px;
+  }
+
   .serviceMenu {
     left: 0;
+    max-height: calc(100vh - 112px - env(safe-area-inset-bottom, 0px));
+    max-height: calc(100dvh - 112px - env(safe-area-inset-bottom, 0px));
     max-width: min(86vw, 340px);
+    overflow-y: auto;
     transform: translateY(8px);
   }
 
   .serviceMenu[data-open="true"] {
     transform: translateY(0);
+  }
+
+  .serviceMenu a {
+    align-items: center;
+    display: flex;
+    min-height: 44px;
   }
 }
 

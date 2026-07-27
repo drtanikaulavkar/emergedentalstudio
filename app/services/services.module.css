@@ -172,6 +172,60 @@
   padding-block: clamp(38px, 6vw, 72px);
 }
 
+.serviceLoading {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  min-height: 460px;
+  padding-block: clamp(38px, 6vw, 72px);
+}
+
+.serviceLoadingInner {
+  align-items: center;
+  display: grid;
+  gap: clamp(30px, 6vw, 74px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+}
+
+.serviceLoadingCopy {
+  display: grid;
+  gap: 16px;
+}
+
+.serviceLoadingEyebrow,
+.serviceLoadingLine,
+.serviceLoadingImage {
+  animation: service-loading-pulse 1.2s ease-in-out infinite alternate;
+  background: color-mix(in srgb, var(--palette-lavender) 38%, var(--white));
+}
+
+.serviceLoadingEyebrow {
+  height: 12px;
+  width: 120px;
+}
+
+.serviceLoadingLine {
+  height: clamp(32px, 4.2vw, 54px);
+  max-width: 500px;
+  width: 86%;
+}
+
+.serviceLoadingLineShort {
+  height: 18px;
+  max-width: 420px;
+  width: 70%;
+}
+
+.serviceLoadingImage {
+  aspect-ratio: 16 / 10;
+  min-height: 300px;
+}
+
+@keyframes service-loading-pulse {
+  to {
+    opacity: 0.55;
+  }
+}
+
 .serviceHeroGrid {
   align-items: center;
   display: grid;
@@ -610,6 +664,7 @@
 @media (max-width: 920px) {
   .servicesHeroInner,
   .serviceHeroGrid,
+  .serviceLoadingInner,
   .serviceLayout,
   .finalCta {
     grid-template-columns: 1fr;
@@ -692,7 +747,16 @@
     padding-block: 26px;
   }
 
+  .serviceLoading {
+    min-height: 0;
+    padding-block: 26px;
+  }
+
   .serviceHeroGrid {
+    gap: 22px;
+  }
+
+  .serviceLoadingInner {
     gap: 22px;
   }
 
@@ -715,6 +779,10 @@
     min-height: 220px;
   }
 
+  .serviceLoadingImage {
+    min-height: 220px;
+  }
+
   .servicesHeroIndex {
     padding-left: 18px;
   }
@@ -733,5 +801,13 @@
 
   .finalCta {
     margin-inline: -18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceLoadingEyebrow,
+  .serviceLoadingLine,
+  .serviceLoadingImage {
+    animation: none;
   }
 }

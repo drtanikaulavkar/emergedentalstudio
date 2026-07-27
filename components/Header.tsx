@@ -12,6 +12,7 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const servicesTriggerRef = useRef<HTMLButtonElement>(null);
 
   const closeServicesDropdown = useCallback(() => {
     setIsServicesOpen(false);
@@ -19,6 +20,10 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
 
   const openServicesDropdown = useCallback(() => {
     setIsServicesOpen(true);
+  }, []);
+
+  const toggleServicesDropdown = useCallback(() => {
+    setIsServicesOpen((isOpen) => !isOpen);
   }, []);
 
   useEffect(() => {
@@ -64,8 +69,9 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
     };
 
     const closeFromEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && isServicesOpen) {
         closeServicesDropdown();
+        servicesTriggerRef.current?.focus();
       }
     };
 
@@ -76,7 +82,7 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
       document.removeEventListener("pointerdown", closeFromOutsidePointer);
       document.removeEventListener("keydown", closeFromEscape);
     };
-  }, [closeServicesDropdown]);
+  }, [closeServicesDropdown, isServicesOpen]);
 
   return (
     <header className="site-header" data-scrolled={isScrolled}>
@@ -89,8 +95,16 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
         <div
           className={styles.serviceDropdown}
           ref={servicesDropdownRef}
-          onPointerEnter={openServicesDropdown}
-          onPointerLeave={closeServicesDropdown}
+          onPointerEnter={(event) => {
+            if (event.pointerType === "mouse") {
+              openServicesDropdown();
+            }
+          }}
+          onPointerLeave={(event) => {
+            if (event.pointerType === "mouse") {
+              closeServicesDropdown();
+            }
+          }}
           onBlur={(event) => {
             if (!event.currentTarget.contains(event.relatedTarget)) {
               closeServicesDropdown();
@@ -99,20 +113,25 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
         >
           <button
             className={styles.serviceTrigger}
+            ref={servicesTriggerRef}
             type="button"
             aria-expanded={isServicesOpen}
-            aria-haspopup="menu"
-            onClick={openServicesDropdown}
-            onFocus={openServicesDropdown}
+            aria-controls="services-menu"
+            onClick={toggleServicesDropdown}
           >
             Services
           </button>
-          <div className={styles.serviceMenu} role="menu" data-open={isServicesOpen}>
+          <div
+            className={styles.serviceMenu}
+            id="services-menu"
+            data-open={isServicesOpen}
+            inert={!isServicesOpen}
+            aria-hidden={!isServicesOpen}
+          >
             {services.map((service) => (
               <Link
                 href={`/services/${service.slug}`}
                 key={service.slug}
-                role="menuitem"
                 onClick={closeServicesDropdown}
               >
                 {service.title}
