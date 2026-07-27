@@ -961,11 +961,7 @@ p {
 }
 
 .reviews-widget {
-  background: var(--shell);
-  border: 1px solid var(--line);
-  border-radius: 8px;
   min-height: 220px;
-  padding: 14px;
 }
 
 .reviews-widget .es-widget-title-container {
