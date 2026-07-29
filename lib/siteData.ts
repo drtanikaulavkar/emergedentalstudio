@@ -257,10 +257,10 @@ export const services: Service[] = [
       "Follow the dentist's instructions during healing to support long-term implant health."
     ],
     brands: [
-      {name: "Dio Implants", logoSrc: "/images/brands/dio-implants.svg", logoAlt: "Dio Implants logo"},
-      {name: "Osstem", logoSrc: "/images/brands/osstem.svg", logoAlt: "Osstem logo"},
-      {name: "Nobel Biocare", logoSrc: "/images/brands/nobel-biocare.svg", logoAlt: "Nobel Biocare logo"},
-      {name: "Neodent", logoSrc: "/images/brands/neodent.svg", logoAlt: "Neodent logo"}
+      {name: "Dio Implants", logoSrc: "/images/brands/dio-implants-official.svg", logoAlt: "Dio Implants logo"},
+      {name: "Osstem", logoSrc: "/images/brands/osstem-official.png", logoAlt: "Osstem logo"},
+      {name: "Nobel Biocare", logoSrc: "/images/brands/nobel-biocare-official.png", logoAlt: "Nobel Biocare logo"},
+      {name: "Neodent", logoSrc: "/images/brands/neodent-official.svg", logoAlt: "Neodent logo"}
     ],
     beforeAfter: [
       {
@@ -375,9 +375,9 @@ export const services: Service[] = [
       "Attend scheduled reviews so tooth movement stays on plan."
     ],
     brands: [
-      {name: "Invisalign", logoSrc: "/images/brands/invisalign.svg", logoAlt: "Invisalign logo"},
-      {name: "Damon", logoSrc: "/images/brands/damon.svg", logoAlt: "Damon braces logo"},
-      {name: "Illusion Aligners", logoSrc: "/images/brands/illusion-aligners.svg", logoAlt: "Illusion Aligners logo"}
+      {name: "Invisalign", logoSrc: "/images/brands/invisalign-official.svg", logoAlt: "Invisalign logo"},
+      {name: "Damon", logoSrc: "/images/brands/damon-official.webp", logoAlt: "Damon braces logo"},
+      {name: "Illusion Aligners", logoSrc: "/images/brands/illusion-aligners-official.png", logoAlt: "Illusion Aligners logo"}
     ],
     beforeAfter: [
       {title: "Crowding correction", caption: "Alignment improved through planned tooth movement.", ...beforeAfterPlaceholder},
@@ -530,7 +530,7 @@ export const services: Service[] = [
     summary: "A complete treatment plan to restore oral health, function, comfort, and smile appearance.",
     description:
       "Full mouth rehabilitation, also known as full mouth reconstruction, is a comprehensive plan used to restore the health, function, and appearance of the entire mouth.",
-    imageSrc: "/images/service-full-mouth-rehab.svg",
+    imageSrc: "/images/service-full-mouth-rehab.jpg",
     imageAlt: "Full mouth rehabilitation treatment planning",
     highlights: ["Improved oral health", "Improved appearance", "Improved function", "Personalized treatment plan"],
     benefits: ["Improved oral health", "Improved appearance", "Improved function", "Personalized treatment plan"],
@@ -581,7 +581,7 @@ export const services: Service[] = [
     summary: "Simple and surgical tooth extractions, including impacted wisdom teeth.",
     description:
       "Tooth extraction removes a tooth from the mouth when needed for severe decay, gum disease, trauma, or impacted teeth that cannot fully emerge.",
-    imageSrc: "/images/service-extractions.svg",
+    imageSrc: "/images/service-extractions.jpg",
     imageAlt: "Wisdom tooth extraction consultation",
     highlights: ["Pain and discomfort relief", "Prevention of further complications", "Improved oral health", "Improved alignment"],
     benefits: ["Relief from pain and discomfort", "Prevention of further complications", "Improved oral health", "Improved alignment"],
@@ -625,7 +625,7 @@ export const services: Service[] = [
     summary: "Professional cleaning to support oral health and whitening options for a brighter smile.",
     description:
       "Teeth cleaning removes plaque, tartar, and stains from the teeth. Teeth whitening reduces stains and discoloration for a brighter, more vibrant smile.",
-    imageSrc: "/images/service-cleaning-whitening.svg",
+    imageSrc: "/images/service-cleaning-whitening.jpg",
     imageAlt: "Teeth cleaning and whitening appointment",
     highlights: ["Improved oral health", "Fresher breath", "Early detection", "Brighter appearance"],
     benefits: ["Improved oral health", "Fresher breath", "Early detection of dental problems", "Improved appearance", "Boosted confidence", "Non-invasive procedure"],
