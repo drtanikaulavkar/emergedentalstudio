@@ -3,7 +3,6 @@ import Link from "next/link";
 import Script from "next/script";
 import {ArrowRight, ArrowUpRight, BadgeCheck, CalendarDays, Clock3, MapPin, MessageCircle, Phone} from "lucide-react";
 import type {Metadata} from "next";
-import type {CSSProperties} from "react";
 import {FaqAccordion} from "@/components/FaqAccordion";
 import {HeroCaptionReveal} from "@/components/HeroCaptionReveal";
 import {HeroCarousel} from "@/components/HeroCarousel";
@@ -202,9 +201,9 @@ export default async function HomePage() {
             <p className="section-kicker">Facilities</p>
             <h2>Why choose us?</h2>
           </div>
-          <div className="why-choose-grid motion-sequence" aria-label="Reasons to choose Emerge Dental Studio">
-            {whyChooseItems.map((item, index) => (
-              <article className="why-choose-item" key={item.title} style={{"--i": index} as CSSProperties}>
+          <div className="why-choose-grid" aria-label="Reasons to choose Emerge Dental Studio">
+            {whyChooseItems.map((item) => (
+              <article className="why-choose-item" key={item.title}>
                 <span className="why-choose-icon" aria-hidden="true">
                   <WhyChooseIcon name={item.icon} />
                 </span>

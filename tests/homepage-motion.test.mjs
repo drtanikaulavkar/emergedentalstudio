@@ -8,6 +8,7 @@ const css = readFileSync(resolve(root, "app", "globals.css"), "utf8");
 const page = readFileSync(resolve(root, "app", "page.tsx"), "utf8");
 const carousel = readFileSync(resolve(root, "components", "HeroCarousel.tsx"), "utf8");
 const header = readFileSync(resolve(root, "components", "Header.tsx"), "utf8");
+const servicesCarousel = readFileSync(resolve(root, "components", "ServicesCarousel.tsx"), "utf8");
 const whyChooseIcon = readFileSync(resolve(root, "components", "WhyChooseIcon.tsx"), "utf8");
 
 test("homepage carousel fills the hero without visible manual controls", () => {
@@ -78,11 +79,20 @@ test("homepage sections reflect the requested content structure", () => {
 });
 
 test("homepage exposes semantic hooks for staged motion without hiding content", () => {
-  assert.match(page, /motion-sequence/);
-  assert.match(page, /style=\{\{\s*"--i": index/);
+  assert.match(servicesCarousel, /motion-sequence/);
+  assert.match(servicesCarousel, /style=\{\{\s*"--i": index/);
   assert.match(whyChooseIcon, /why-choose-icon-path/);
   assert.match(css, /\.motion-sequence/);
   assert.doesNotMatch(css, /\.motion-sequence[^{]*\{[^}]*opacity:\s*0/);
+});
+
+test("why choose cards remain static because they are not interactive", () => {
+  assert.match(page, /className="why-choose-grid"/);
+  assert.doesNotMatch(page, /className="why-choose-grid motion-sequence"/);
+  assert.doesNotMatch(css, /\.why-choose-item:is\(:hover,\s*:focus-within\)/);
+  assert.doesNotMatch(css, /\.why-choose-item\s*\{[^}]*transition:/s);
+  assert.doesNotMatch(css, /\.why-choose-icon\s*\{[^}]*transition:/s);
+  assert.doesNotMatch(css, /\.why-choose-icon-path \*\s*\{[^}]*transition:/s);
 });
 
 test("homepage has focused micro-interactions for navigation, calls to action, services, and FAQs", () => {

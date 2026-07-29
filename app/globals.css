@@ -596,17 +596,6 @@ p {
   grid-template-columns: 50px minmax(0, 1fr);
   min-height: 94px;
   padding: 16px;
-  transition:
-    background 180ms var(--ease-out-quart),
-    border-color 180ms var(--ease-out-quart),
-    box-shadow 180ms var(--ease-out-quart),
-    transform 180ms var(--ease-out-quart);
-}
-
-.why-choose-item:is(:hover, :focus-within) {
-  background: var(--shell);
-  box-shadow: 0 10px 22px rgb(var(--palette-plum-rgb) / 0.08);
-  transform: translateY(-2px);
 }
 
 .why-choose-icon {
@@ -619,10 +608,6 @@ p {
   display: inline-flex;
   height: 50px;
   justify-content: center;
-  transition:
-    border-color 180ms var(--ease-out-quart),
-    color 180ms var(--ease-out-quart),
-    transform 180ms var(--ease-out-quart);
   width: 50px;
 }
 
@@ -635,24 +620,6 @@ p {
   stroke-linejoin: round;
   stroke-width: 2;
   width: 32px;
-}
-
-.why-choose-item:is(:hover, :focus-within) .why-choose-icon {
-  border-color: rgb(var(--palette-bronze-rgb) / 0.42);
-  color: var(--coral);
-  transform: scale(1.04);
-}
-
-.why-choose-icon-path * {
-  transition:
-    stroke 180ms var(--ease-out-quart),
-    transform 220ms var(--ease-out-quart);
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.why-choose-item:is(:hover, :focus-within) .why-choose-icon-path * {
-  transform: scale(1.03);
 }
 
 .why-choose-item h3 {
