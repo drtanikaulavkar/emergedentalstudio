@@ -25,21 +25,41 @@ function loadSiteData() {
   return sandbox.exports;
 }
 
-test("contact page opens with a compact hero and no explanatory subheading", () => {
+test("contact page provides direct contact, social, enquiry, and directions paths", () => {
   const contactPage = readFileSync(join(process.cwd(), "app", "contact", "page.tsx"), "utf8");
+  const bookingForm = readFileSync(join(process.cwd(), "components", "BookingForm.tsx"), "utf8");
   const css = readFileSync(join(process.cwd(), "app", "globals.css"), "utf8");
-  const {pages} = loadSiteData();
+  const {pages, siteSettings} = loadSiteData();
 
   assert.equal(pages.contact.heroText, "");
+  assert.equal(pages.contact.heroTitle, "Book an appointment with us");
+  assert.equal(siteSettings.email, "emergedentalstudio@gmail.com");
   assert.doesNotMatch(contactPage, /<p>\{page\.heroText\}<\/p>/);
   assert.match(contactPage, /className="page-hero contact-hero"/);
   assert.match(contactPage, /const contactServiceAreas = \[/);
-  assert.match(contactPage, /<p>Sunday<\/p>/);
-  assert.match(contactPage, /<p>By appointment only<\/p>/);
-  assert.doesNotMatch(contactPage, /Sunday: Closed/);
+  assert.match(contactPage, /href=\{`tel:\$\{settings\.phone\}`\}/);
+  assert.match(contactPage, /mailto:emergedentalstudio@gmail\.com/);
+  assert.match(contactPage, /facebook\.com\/profile\.php\?id=100085397533519/);
+  assert.match(contactPage, /instagram\.com\/emergedentalstudio/);
+  assert.match(contactPage, /linkedin\.com\/company\/emerge-dental-studio-multispeciality-dental-clinic/);
+  assert.match(contactPage, /<h2>Get in touch<\/h2>/);
+  assert.match(contactPage, /<h2>Directions to the Clinic<\/h2>/);
+  assert.match(contactPage, /className="contact-map-link"/);
+  assert.doesNotMatch(contactPage, /<h2>Hours<\/h2>/);
+  assert.doesNotMatch(contactPage, /Book online/);
   assert.doesNotMatch(contactPage, /settings\.serviceAreas\.map/);
+  assert.match(bookingForm, />\s*Full name\s*</);
+  assert.match(bookingForm, />\s*Treatment you are looking for\s*</);
+  assert.match(bookingForm, />\s*Message for us \(optional\)\s*</);
+  assert.match(bookingForm, /message\.trim\(\)/);
+  assert.match(
+    bookingForm,
+    /window\.open\(\s*`https:\/\/wa\.me\/\$\{settings\.whatsappNumber\}\?text=\$\{encodedMessage\}`/
+  );
   assert.match(css, /\.contact-hero\s*\{[^}]*padding-block:\s*clamp\(28px,\s*4vw,\s*48px\)/s);
   assert.match(css, /\.contact-hero h1\s*\{[^}]*font-size:\s*clamp\(1\.9rem,\s*3\.2vw,\s*2\.8rem\)/s);
+  assert.match(css, /\.contact-map-shell\s*\{/);
+  assert.match(css, /\.contact-map-link\s*\{/);
 });
 
 test("Sunday is listed as by appointment only across shared site settings", () => {
