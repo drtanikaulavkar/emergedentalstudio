@@ -91,7 +91,7 @@ export const siteSettings: SiteSettings = {
   clinicName: "Emerge Dental Studio",
   phone: "+91 82968 01240",
   whatsappNumber: "918296801240",
-  email: "hello@emergedentalstudio.com",
+  email: "emergedentalstudio@gmail.com",
   bookingUrl: "https://clinicia.com/calendar/book?u=tanishakaulavkar",
   address: {
     street: "3138, First Floor, Sai Baba Mandir Road, 7th Main Road, HAL 2nd Stage",
@@ -203,7 +203,7 @@ export const pages: Record<string, PageContent> = {
     seoTitle: "Contact and Book Appointment",
     seoDescription:
       "Contact Emerge Dental Studio in Indiranagar, Bengaluru. Book a dental appointment by WhatsApp, phone, or online booking.",
-    heroTitle: "Book an appointment at Emerge Dental Studio",
+    heroTitle: "Book an appointment with us",
     heroText: "",
     sections: []
   }

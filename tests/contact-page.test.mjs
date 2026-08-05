@@ -42,6 +42,10 @@ test("contact page provides direct contact, social, enquiry, and directions path
   assert.match(contactPage, /facebook\.com\/profile\.php\?id=100085397533519/);
   assert.match(contactPage, /instagram\.com\/emergedentalstudio/);
   assert.match(contactPage, /linkedin\.com\/company\/emerge-dental-studio-multispeciality-dental-clinic/);
+  assert.match(contactPage, /import \{[^}]*ExternalLink[^}]*\} from "lucide-react"/);
+  assert.doesNotMatch(contactPage, /import \{[^}]*Facebook[^}]*\} from "lucide-react"/);
+  assert.doesNotMatch(contactPage, /import \{[^}]*Instagram[^}]*\} from "lucide-react"/);
+  assert.doesNotMatch(contactPage, /import \{[^}]*Linkedin[^}]*\} from "lucide-react"/);
   assert.match(contactPage, /<h2>Get in touch<\/h2>/);
   assert.match(contactPage, /<h2>Directions to the Clinic<\/h2>/);
   assert.match(contactPage, /className="contact-map-link"/);
