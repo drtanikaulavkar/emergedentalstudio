@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import {readFileSync} from "node:fs";
+import {existsSync, readFileSync} from "node:fs";
 import {join} from "node:path";
 import test from "node:test";
 import ts from "typescript";
@@ -28,6 +28,9 @@ function loadSiteData() {
 test("contact page provides direct contact, social, enquiry, and directions paths", () => {
   const contactPage = readFileSync(join(process.cwd(), "app", "contact", "page.tsx"), "utf8");
   const bookingForm = readFileSync(join(process.cwd(), "components", "BookingForm.tsx"), "utf8");
+  const socialIconPath = join(process.cwd(), "components", "SocialIcon.tsx");
+  assert.equal(existsSync(socialIconPath), true);
+  const socialIcon = readFileSync(socialIconPath, "utf8");
   const css = readFileSync(join(process.cwd(), "app", "globals.css"), "utf8");
   const {pages, siteSettings} = loadSiteData();
 
@@ -42,10 +45,14 @@ test("contact page provides direct contact, social, enquiry, and directions path
   assert.match(contactPage, /facebook\.com\/profile\.php\?id=100085397533519/);
   assert.match(contactPage, /instagram\.com\/emergedentalstudio/);
   assert.match(contactPage, /linkedin\.com\/company\/emerge-dental-studio-multispeciality-dental-clinic/);
-  assert.match(contactPage, /import \{[^}]*ExternalLink[^}]*\} from "lucide-react"/);
-  assert.doesNotMatch(contactPage, /import \{[^}]*Facebook[^}]*\} from "lucide-react"/);
-  assert.doesNotMatch(contactPage, /import \{[^}]*Instagram[^}]*\} from "lucide-react"/);
-  assert.doesNotMatch(contactPage, /import \{[^}]*Linkedin[^}]*\} from "lucide-react"/);
+  assert.match(contactPage, /import \{SocialIcon\} from "@\/components\/SocialIcon"/);
+  assert.doesNotMatch(contactPage, /ExternalLink/);
+  assert.match(contactPage, /<SocialIcon platform=\{label\} \/>/);
+  assert.doesNotMatch(contactPage, /<span>\{label\}<\/span>/);
+  assert.match(socialIcon, /type SocialPlatform = "Instagram" \| "Facebook" \| "LinkedIn"/);
+  assert.match(socialIcon, /platform === "Instagram"/);
+  assert.match(socialIcon, /platform === "Facebook"/);
+  assert.match(socialIcon, /platform === "LinkedIn"/);
   assert.match(contactPage, /<h2>Get in touch<\/h2>/);
   assert.match(contactPage, /<h2>Directions to the Clinic<\/h2>/);
   assert.match(contactPage, /className="contact-map-link"/);
