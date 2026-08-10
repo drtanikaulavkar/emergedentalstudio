@@ -280,11 +280,14 @@ export default async function HomePage() {
               </a>
             </div>
             <div className="hours-list clinic-hours">
-              <p>
+              <p className="clinic-hours-heading">
                 <strong className="hours-day">
                   <Clock3 aria-hidden="true" />
-                  Monday to Saturday
+                  <span>Timings</span>
                 </strong>
+              </p>
+              <p>
+                <strong className="hours-day">Monday to Saturday</strong>
                 <span className="hours-time">10:00 AM to 1:00 PM</span>
                 <span className="hours-time">4:00 PM to 8:00 PM</span>
               </p>

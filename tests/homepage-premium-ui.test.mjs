@@ -31,10 +31,14 @@ test("homepage contact section uses vertical same-color text links", () => {
   assert.doesNotMatch(homepage, /contact-secondary-actions/);
   assert.match(css, /\.contact-actions\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.doesNotMatch(css, /\.contact-actions\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(css, /\.contact-text-link\s*\{[^}]*color:\s*var\(--brand\);[^}]*min-height:\s*48px;/s);
-  assert.match(css, /\.contact-text-link\s*\{[^}]*padding:\s*12px 0;/s);
+  assert.match(css, /\.contact-card\s*\{[^}]*gap:\s*10px;/s);
+  assert.match(css, /\.contact-actions\s*\{[^}]*margin-top:\s*-2px;/s);
+  assert.match(css, /\.contact-text-link\s*\{[^}]*color:\s*var\(--brand\);[^}]*min-height:\s*36px;/s);
+  assert.match(css, /\.contact-text-link\s*\{[^}]*padding:\s*5px 0;/s);
   assert.match(css, /\.contact-text-link svg\s*\{[^}]*color:\s*currentColor;/s);
   assert.match(css, /\.home-address-link\s*\{[^}]*color:\s*var\(--ink-soft\);/s);
+  assert.match(css, /\.clinic-hours\s*\{[^}]*border-top:\s*1px solid var\(--line\);[^}]*padding-top:\s*18px;/s);
+  assert.match(css, /\.clinic-hours p:not\(\.clinic-hours-heading\)\s*\{[^}]*padding-left:\s*27px;/s);
 });
 
 test("services carousel uses icon controls and image-led card affordances", () => {
@@ -121,5 +125,5 @@ test("narrow mobile layouts keep full-size targets without horizontal overflow p
   assert.match(css, /@media\s*\(max-width:\s*360px\)/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.header-cta\s*\{[^}]*min-height:\s*44px/s);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.services-carousel-arrow\s*\{[^}]*height:\s*44px;[^}]*width:\s*44px/s);
-  assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.contact-text-link\s*\{[^}]*min-height:\s*46px/s);
+  assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.contact-text-link\s*\{[^}]*min-height:\s*36px/s);
 });

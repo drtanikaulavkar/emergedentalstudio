@@ -70,6 +70,8 @@ test("homepage sections reflect the requested content structure", () => {
   assert.match(page, /<div className="contact-actions" aria-label="Contact options">/);
   assert.doesNotMatch(page, /contact-primary-actions/);
   assert.doesNotMatch(page, /contact-secondary-actions/);
+  assert.match(page, /<span>Timings<\/span>/);
+  assert.match(page, /<p className="clinic-hours-heading">/);
   assert.match(page, /Monday to Saturday/);
   assert.match(page, /10:00 AM to 1:00 PM/);
   assert.match(page, /4:00 PM to 8:00 PM/);
