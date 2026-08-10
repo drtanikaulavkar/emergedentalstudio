@@ -3,6 +3,10 @@ import {readFileSync} from "node:fs";
 import test from "node:test";
 
 const read = (path) => readFileSync(path, "utf8");
+const declarationsFor = (css, selector) =>
+  [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
+    .filter(([, selectors]) => selectors.split(",").map((item) => item.trim()).includes(selector))
+    .map(([, , declarations]) => declarations);
 
 test("homepage actions use the shared button and Lucide icon system", () => {
   const homepage = read("app/page.tsx");
@@ -113,10 +117,13 @@ test("the mobile header and key homepage folds use compact natural heights", () 
   const css = read("app/globals.css");
 
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.nav-links\s*\{[^}]*flex-wrap:\s*nowrap;[^}]*gap:\s*16px;/s);
-  assert.match(
-    css,
-    /@media\s*\(max-width:\s*560px\)[\s\S]*\.services-section,\s*\.doctor-section,\s*\.contact-section\s*\{\s*min-height:\s*auto;\s*\}/
-  );
+  for (const selector of [".services-section", ".doctor-section", ".contact-section"]) {
+    assert.equal(
+      declarationsFor(css, selector).some((declarations) => /\bmin-height\s*:/.test(declarations)),
+      false,
+      `${selector} must remain content-driven at every viewport`
+    );
+  }
 });
 
 test("narrow mobile layouts keep full-size targets without horizontal overflow pressure", () => {
