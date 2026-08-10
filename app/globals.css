@@ -307,6 +307,25 @@ main {
   scroll-margin-top: 80px;
 }
 
+.page-transition-shell {
+  animation: page-soft-lift 240ms var(--ease-out-quint) both;
+  will-change: opacity, transform, filter;
+}
+
+@keyframes page-soft-lift {
+  from {
+    filter: blur(3px);
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
   margin: 0 auto;
   max-width: 1180px;
@@ -1962,6 +1981,19 @@ p {
 
   .motion-sequence > * {
     animation-delay: 0ms !important;
+  }
+
+  .page-transition-shell {
+    animation: page-soft-fade 1ms linear both;
+  }
+
+  @keyframes page-soft-fade {
+    from,
+    to {
+      filter: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .faq-item,
