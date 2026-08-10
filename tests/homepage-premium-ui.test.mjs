@@ -16,6 +16,27 @@ test("homepage actions use the shared button and Lucide icon system", () => {
   assert.match(header, /<MessageCircle\b/);
 });
 
+test("homepage contact section uses vertical same-color text links", () => {
+  const homepage = read("app/page.tsx");
+  const css = read("app/globals.css");
+
+  assert.match(homepage, /<a className="home-address-link" href=\{directionsUrl\} target="_blank" rel="noreferrer">/);
+  assert.match(homepage, /<span>\{formatAddress\(settings\)\}<\/span>/);
+  assert.doesNotMatch(homepage, /Get directions/);
+  assert.match(homepage, /<div className="contact-actions" aria-label="Contact options">/);
+  assert.match(homepage, /className="contact-text-link"/);
+  assert.doesNotMatch(homepage, /className="contact-action(?:\s|")/);
+  assert.doesNotMatch(homepage, /contact-action-primary/);
+  assert.doesNotMatch(homepage, /contact-primary-actions/);
+  assert.doesNotMatch(homepage, /contact-secondary-actions/);
+  assert.match(css, /\.contact-actions\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.doesNotMatch(css, /\.contact-actions\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
+  assert.match(css, /\.contact-text-link\s*\{[^}]*color:\s*var\(--brand\);[^}]*min-height:\s*48px;/s);
+  assert.match(css, /\.contact-text-link\s*\{[^}]*padding:\s*12px 0;/s);
+  assert.match(css, /\.contact-text-link svg\s*\{[^}]*color:\s*currentColor;/s);
+  assert.match(css, /\.home-address-link\s*\{[^}]*color:\s*var\(--ink-soft\);/s);
+});
+
 test("services carousel uses icon controls and image-led card affordances", () => {
   const carousel = read("components/ServicesCarousel.tsx");
   const card = read("components/ServiceCard.tsx");
@@ -52,7 +73,7 @@ test("hero typography remains within the approved compact scale", () => {
     /\.button\.secondary\.hero-booking:is\(:hover, :focus-visible\)\s*\{[^}]*background:\s*var\(--palette-sage\);/s
   );
   assert.match(css, /\.services-carousel-arrow:is\(:hover, :focus-visible\)\s*\{[^}]*background:\s*var\(--action\);/s);
-  assert.match(css, /\.contact-actions a:is\(:hover, :focus-visible\)\s*\{[^}]*background:\s*var\(--action\);/s);
+  assert.match(css, /\.contact-text-link:is\(:hover, :focus-visible\)\s*\{[^}]*color:\s*var\(--action\);/s);
 });
 
 test("hero entrance motion is purposeful and respects reduced-motion preferences", () => {
@@ -100,5 +121,5 @@ test("narrow mobile layouts keep full-size targets without horizontal overflow p
   assert.match(css, /@media\s*\(max-width:\s*360px\)/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.header-cta\s*\{[^}]*min-height:\s*44px/s);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.services-carousel-arrow\s*\{[^}]*height:\s*44px;[^}]*width:\s*44px/s);
-  assert.match(css, /@media\s*\(max-width:\s*360px\)[\s\S]*\.contact-secondary-actions\s*\{[^}]*flex-wrap:\s*wrap/s);
+  assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.contact-text-link\s*\{[^}]*min-height:\s*46px/s);
 });

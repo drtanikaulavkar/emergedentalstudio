@@ -279,16 +279,14 @@ img {
 
 .header-cta:is(:hover, :focus-visible),
 .button:is(:hover, :focus-visible),
-.booking-form button:is(:hover, :focus-visible),
-.contact-actions a:is(:hover, :focus-visible) {
+.booking-form button:is(:hover, :focus-visible) {
   box-shadow: 0 8px 16px rgb(var(--palette-orchid-rgb) / 0.18);
   transform: translateY(-1px);
 }
 
 .header-cta:active,
 .button:active,
-.booking-form button:active,
-.contact-actions a:active {
+.booking-form button:active {
   transform: translateY(0) scale(0.98);
 }
 
@@ -1082,24 +1080,26 @@ p {
 .contact-section {
   background: linear-gradient(145deg, color-mix(in srgb, var(--palette-plum) 72%, black) 0%, var(--palette-plum) 58%, color-mix(in srgb, var(--palette-plum) 82%, var(--palette-bronze)) 100%);
   min-height: calc(100svh - 80px);
-  padding-block: clamp(22px, 3vw, 38px);
+  padding-block: clamp(28px, 4vw, 54px);
 }
 
 .contact-home {
   align-items: center;
+  gap: clamp(18px, 3vw, 32px);
 }
 
 .contact-card {
   background: var(--shell);
+  border: 1px solid rgb(var(--palette-lavender-rgb) / 0.6);
   border-radius: 8px;
   display: grid;
-  gap: 12px;
+  gap: 14px;
   min-width: 0;
-  padding: clamp(22px, 3.5vw, 34px);
+  padding: clamp(24px, 4vw, 42px);
 }
 
 .contact-card h2 {
-  font-size: clamp(1.35rem, 2.35vw, 2rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.08rem);
   white-space: normal;
 }
 
@@ -1172,50 +1172,77 @@ p {
   overflow-wrap: anywhere;
 }
 
-.contact-actions {
-  display: grid;
-  gap: 10px;
-}
-
-.contact-primary-actions,
-.contact-secondary-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.contact-actions a {
-  align-items: center;
-  background: var(--brand);
+.home-address-link {
+  align-items: flex-start;
   border-radius: 8px;
-  color: var(--white);
-  font-weight: 600;
-  display: inline-flex;
-  gap: 8px;
-  justify-content: center;
-  padding: 10px 14px;
+  color: var(--ink-soft);
+  display: grid;
+  font-size: clamp(0.98rem, 1.35vw, 1.06rem);
+  font-weight: 800;
+  gap: 10px;
+  grid-template-columns: 20px minmax(0, 1fr) 18px;
+  line-height: 1.45;
+  margin-inline: -8px;
+  overflow-wrap: anywhere;
+  padding: 8px;
   transition:
     background 160ms var(--ease-out-quart),
-    box-shadow 160ms var(--ease-out-quart),
+    color 160ms var(--ease-out-quart);
+}
+
+.home-address-link svg {
+  color: var(--brand);
+  flex: 0 0 auto;
+  height: 18px;
+  margin-top: 0.17em;
+  width: 18px;
+}
+
+.home-address-link:is(:hover, :focus-visible) {
+  background: var(--surface);
+  color: var(--brand);
+}
+
+.home-address-link:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.contact-actions {
+  display: grid;
+  gap: 0;
+  grid-template-columns: 1fr;
+  margin-top: 4px;
+}
+
+.contact-text-link {
+  align-items: center;
+  color: var(--brand);
+  display: flex;
+  font-size: clamp(0.96rem, 1.25vw, 1.04rem);
+  font-weight: 900;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 0;
+  transition:
+    color 160ms var(--ease-out-quart),
     transform 160ms var(--ease-out-quart);
 }
 
-.contact-primary-actions a {
-  background: var(--coral);
+.contact-text-link svg {
+  color: currentColor;
+  height: 18px;
+  width: 18px;
 }
 
-.contact-secondary-actions a {
-  flex: 1 1 0;
-  text-align: center;
-  white-space: nowrap;
+.contact-text-link:is(:hover, :focus-visible) {
+  color: var(--action);
+  transform: translateX(3px);
 }
 
-.contact-secondary-actions {
-  flex-wrap: nowrap;
-}
-
-.contact-actions a:is(:hover, :focus-visible) {
-  background: var(--action);
+.contact-text-link:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .hours-list {
@@ -1927,14 +1954,9 @@ p {
     padding: 22px;
   }
 
-  .contact-secondary-actions {
-    flex-wrap: nowrap;
-  }
-
-  .contact-secondary-actions a {
-    flex-basis: 0;
-    font-size: 0.78rem;
-    padding: 10px 8px;
+  .contact-text-link {
+    min-height: 46px;
+    padding: 11px 0;
   }
 
   .map-embed {
@@ -1972,13 +1994,9 @@ p {
     justify-content: space-between;
   }
 
-  .contact-secondary-actions {
-    flex-wrap: wrap;
-  }
-
-  .contact-secondary-actions a {
-    flex: 1 1 100%;
-    min-height: 44px;
+  .contact-text-link {
+    font-size: 0.88rem;
+    min-height: 46px;
   }
 }
 

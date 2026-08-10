@@ -65,9 +65,11 @@ test("homepage sections reflect the requested content structure", () => {
   assert.match(page, /gallery-section/);
   assert.match(page, /<h2>Visit us<\/h2>/);
   assert.doesNotMatch(page, /Visit us at/);
-  assert.match(page, /Get directions/);
-  assert.match(page, /contact-primary-actions/);
-  assert.match(page, /contact-secondary-actions/);
+  assert.match(page, /className="home-address-link"/);
+  assert.doesNotMatch(page, /Get directions/);
+  assert.match(page, /<div className="contact-actions" aria-label="Contact options">/);
+  assert.doesNotMatch(page, /contact-primary-actions/);
+  assert.doesNotMatch(page, /contact-secondary-actions/);
   assert.match(page, /Monday to Saturday/);
   assert.match(page, /10:00 AM to 1:00 PM/);
   assert.match(page, /4:00 PM to 8:00 PM/);

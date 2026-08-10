@@ -264,24 +264,20 @@ export default async function HomePage() {
           <div className="contact-card">
             <p className="section-kicker">Contact us</p>
             <h2>Visit us</h2>
-            <p>{formatAddress(settings)}</p>
-            <div className="contact-actions">
-              <div className="contact-primary-actions">
-                <a href={directionsUrl} target="_blank" rel="noreferrer">
-                  <MapPin aria-hidden="true" />
-                  Get directions
-                </a>
-              </div>
-              <div className="contact-secondary-actions">
-                <a href={`tel:${settings.phone}`}>
-                  <Phone aria-hidden="true" />
-                  {settings.phone}
-                </a>
-                <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
-                  <MessageCircle aria-hidden="true" />
-                  WhatsApp booking
-                </a>
-              </div>
+            <a className="home-address-link" href={directionsUrl} target="_blank" rel="noreferrer">
+              <MapPin aria-hidden="true" />
+              <span>{formatAddress(settings)}</span>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <div className="contact-actions" aria-label="Contact options">
+              <a className="contact-text-link" href={`tel:${settings.phone}`}>
+                <Phone aria-hidden="true" />
+                {settings.phone}
+              </a>
+              <a className="contact-text-link" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+                <MessageCircle aria-hidden="true" />
+                WhatsApp booking
+              </a>
             </div>
             <div className="hours-list clinic-hours">
               <p>
