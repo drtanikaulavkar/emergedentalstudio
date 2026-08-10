@@ -1493,13 +1493,21 @@ p {
   font-size: 0.86rem;
   font-weight: 800;
   gap: 7px;
+  height: 44px;
+  justify-content: center;
   min-height: 44px;
-  padding: 9px 13px;
+  padding: 8px;
   transition:
     background 160ms var(--ease-out-quart),
     border-color 160ms var(--ease-out-quart),
     color 160ms var(--ease-out-quart),
     transform 160ms var(--ease-out-quart);
+  width: 44px;
+}
+
+.social-links .social-icon {
+  height: 24px;
+  width: 24px;
 }
 
 .social-links a:is(:hover, :focus-visible) {

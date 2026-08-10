@@ -12,7 +12,7 @@
 
 - Keep social-link order: Instagram, Facebook, LinkedIn.
 - Keep the existing profile URLs and new-tab behavior.
-- Render icon-only links with descriptive `aria-label` values.
+- Render 24-pixel icon-only links inside 44-by-44-pixel controls with 8-pixel padding and descriptive `aria-label` values.
 - Do not add dependencies, raster assets, or unrelated styling changes.
 - Preserve unrelated uncommitted homepage, navigation, package, and test changes.
 
@@ -106,9 +106,9 @@ export function SocialIcon({platform}: {platform: SocialPlatform}) {
 }
 ```
 
-- [ ] **Step 2: Replace the generic Contact-page icon**
+- [ ] **Step 2: Replace the generic Contact-page icon and enlarge the marks**
 
-In `app/contact/page.tsx`, remove `ExternalLink` from the Lucide import, import `SocialIcon` and `SocialPlatform`, type `socialLinks` with `satisfies`, render `<SocialIcon platform={label} />`, and remove `<span>{label}</span>`.
+In `app/contact/page.tsx`, remove `ExternalLink` from the Lucide import, import `SocialIcon` and `SocialPlatform`, type `socialLinks` with `satisfies`, render `<SocialIcon platform={label} />`, and remove `<span>{label}</span>`. In `app/globals.css`, set `.social-links a` to 44-by-44 pixels with 8 pixels of padding and set `.social-links .social-icon` to 24-by-24 pixels.
 
 - [ ] **Step 3: Verify GREEN and regression safety**
 
@@ -135,7 +135,7 @@ Run the local site and inspect `/contact` at desktop and 390-pixel widths. Confi
 - [ ] **Step 5: Commit and push only intended files**
 
 ```powershell
-git add -- app/contact/page.tsx components/SocialIcon.tsx tests/contact-page.test.mjs
+git add -- app/contact/page.tsx app/globals.css components/SocialIcon.tsx tests/contact-page.test.mjs docs/superpowers/specs/2026-08-10-social-brand-icons-design.md docs/superpowers/plans/2026-08-10-social-brand-icons.md
 git commit -m "feat: add social brand icons"
 git push origin main
 ```

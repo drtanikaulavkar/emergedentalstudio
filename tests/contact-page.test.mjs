@@ -71,6 +71,8 @@ test("contact page provides direct contact, social, enquiry, and directions path
   assert.match(css, /\.contact-hero h1\s*\{[^}]*font-size:\s*clamp\(1\.9rem,\s*3\.2vw,\s*2\.8rem\)/s);
   assert.match(css, /\.contact-map-shell\s*\{/);
   assert.match(css, /\.contact-map-link\s*\{/);
+  assert.match(css, /\.social-links a\s*\{[^}]*height:\s*44px;[^}]*padding:\s*8px;[^}]*width:\s*44px;/s);
+  assert.match(css, /\.social-links \.social-icon\s*\{[^}]*height:\s*24px;[^}]*width:\s*24px;/s);
 });
 
 test("Sunday is listed as by appointment only across shared site settings", () => {

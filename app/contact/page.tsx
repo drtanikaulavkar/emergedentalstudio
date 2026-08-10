@@ -1,6 +1,8 @@
 import type {Metadata} from "next";
-import {ArrowUpRight, ExternalLink, Mail, MapPin, Phone} from "lucide-react";
+import {ArrowUpRight, Mail, MapPin, Phone} from "lucide-react";
 import {BookingForm} from "@/components/BookingForm";
+import {SocialIcon} from "@/components/SocialIcon";
+import type {SocialPlatform} from "@/components/SocialIcon";
 import {formatAddress} from "@/lib/siteData";
 import {getPageBySlug, getSiteSettings} from "@/lib/sanity/queries";
 
@@ -22,7 +24,7 @@ const socialLinks = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/emerge-dental-studio-multispeciality-dental-clinic/?viewAsMember=true"
   }
-];
+] satisfies Array<{label: SocialPlatform; href: string}>;
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("contact");
@@ -64,8 +66,7 @@ export default async function ContactPage() {
             <div className="social-links">
               {socialLinks.map(({label, href}) => (
                 <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={`Follow Emerge Dental Studio on ${label}`}>
-                  <ExternalLink aria-hidden="true" />
-                  <span>{label}</span>
+                  <SocialIcon platform={label} />
                 </a>
               ))}
             </div>
