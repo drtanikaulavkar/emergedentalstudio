@@ -154,17 +154,19 @@ export default async function HomePage() {
         </aside>
       </section>
 
-      <section className="container section services-section">
-        <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
-        </SectionHeader>
-        <ServicesCarousel services={featuredServices} />
-        <div className="actions">
-          <Button asChild className="button ghost" variant="outline">
-            <Link href="/services">
-              View all services
-              <ArrowRight aria-hidden="true" />
-            </Link>
-          </Button>
+      <section className="section services-section">
+        <div className="container services-content">
+          <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
+          </SectionHeader>
+          <ServicesCarousel services={featuredServices} />
+          <div className="actions">
+            <Button asChild className="button ghost" variant="outline">
+              <Link href="/services">
+                View all services
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -224,32 +226,34 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="container section gallery-section">
-        <SectionHeader eyebrow="Smile gallery" title="Results that speak" />
-        <div className="gallery-grid">
-          <article className="gallery-card">
-            <div className="before-after-preview">
-              <Image src="/images/before-after/smile-before.svg" alt="Before smile makeover placeholder" width={360} height={240} />
-              <Image src="/images/before-after/smile-after.svg" alt="After smile makeover placeholder" width={360} height={240} />
-            </div>
-            <h3>Before-after smile transformations</h3>
-            <p>Placeholders for cosmetic, implant, and restorative treatment results.</p>
-          </article>
-          <article className="gallery-card video-placeholder">
-            <span className="video-play" aria-hidden="true" />
-            <h3>Patient testimonial videos</h3>
-            <p>Space reserved for short patient stories and treatment experience videos.</p>
-          </article>
-          <article className="gallery-card video-placeholder">
-            <span className="video-play" aria-hidden="true" />
-            <h3>Smile makeover walkthroughs</h3>
-            <p>Placeholders for future reels showing planning, design, and final smiles.</p>
-          </article>
+      <section className="section gallery-section">
+        <div className="container gallery-content">
+          <SectionHeader eyebrow="Smile gallery" title="Results that speak" />
+          <div className="gallery-grid">
+            <article className="gallery-card">
+              <div className="before-after-preview">
+                <Image src="/images/before-after/smile-before.svg" alt="Before smile makeover placeholder" width={360} height={240} />
+                <Image src="/images/before-after/smile-after.svg" alt="After smile makeover placeholder" width={360} height={240} />
+              </div>
+              <h3>Before-after smile transformations</h3>
+              <p>Placeholders for cosmetic, implant, and restorative treatment results.</p>
+            </article>
+            <article className="gallery-card video-placeholder">
+              <span className="video-play" aria-hidden="true" />
+              <h3>Patient testimonial videos</h3>
+              <p>Space reserved for short patient stories and treatment experience videos.</p>
+            </article>
+            <article className="gallery-card video-placeholder">
+              <span className="video-play" aria-hidden="true" />
+              <h3>Smile makeover walkthroughs</h3>
+              <p>Placeholders for future reels showing planning, design, and final smiles.</p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section className="container section faq-section">
-        <div className="faq-layout">
+      <section className="section faq-section">
+        <div className="container faq-layout">
           <Image className="faq-image" src="/images/home-faq.jpg" alt="Emerge Dental Studio consultation space" width={1004} height={1318} />
           <div>
             <p className="section-kicker">Before you visit</p>

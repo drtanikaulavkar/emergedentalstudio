@@ -59,7 +59,12 @@ test("homepage sections reflect the requested content structure", () => {
   assert.doesNotMatch(page, /15000\+/);
   assert.doesNotMatch(css, /background:\s*#fbf5ee/);
   assert.doesNotMatch(css, /\.why-choose-item\s*\{[^}]*border-right/s);
-  assert.match(css, /\.why-choose-section\s*\{[^}]*background:\s*var\(--surface\)/s);
+  assert.match(css, /\.services-section,\s*\.why-choose-section,\s*\.reviews-section,\s*\.gallery-section,\s*\.faq-section\s*\{[^}]*background:\s*transparent/s);
+  assert.doesNotMatch(css, /\.services-section\s*\{[^}]*min-height:/s);
+  assert.doesNotMatch(css, /\.doctor-section\s*\{[^}]*min-height:/s);
+  assert.doesNotMatch(css, /\.contact-section\s*\{[^}]*min-height:/s);
+  assert.match(css, /\.faq-section\s*\{[^}]*border-top:\s*1px solid var\(--line\)/s);
+  assert.doesNotMatch(css, /\.reviews-section\s*\{[^}]*rgba\(177, 154, 200, 0\.2\)/s);
   assert.match(page, /<SectionHeader eyebrow="Hear what our patients have to say about us" title="Patients reviews"/);
   assert.match(page, /<SectionHeader eyebrow="Smile gallery" title="Results that speak"/);
   assert.match(page, /gallery-section/);
