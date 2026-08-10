@@ -48,6 +48,14 @@ test("services disclosure uses deterministic touch and mouse interactions", () =
   assert.doesNotMatch(header, /role="menuitem"/);
   assert.match(css, /\.serviceMenu\[data-open="true"\]/);
   assert.match(css, /@media \(max-width: 920px\)[\s\S]*?\.serviceTrigger[\s\S]*?min-height: 44px;/);
+  assert.match(
+    css,
+    /@media \(max-width: 920px\)[\s\S]*?\.serviceTrigger\s*\{[^}]*margin-block:\s*-10px;[^}]*min-height:\s*44px;[^}]*\}/
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 920px\)[\s\S]*?\.serviceTrigger::after\s*\{[^}]*bottom:\s*0;[^}]*\}/
+  );
   assert.match(css, /@media \(max-width: 920px\)[\s\S]*?\.serviceMenu a[\s\S]*?min-height: 44px;/);
   assert.match(css, /max-height: calc\(100vh -[^;]*env\(safe-area-inset-bottom, 0px\)\);\s*max-height: calc\(100dvh -[^;]*env\(safe-area-inset-bottom, 0px\)\);/);
   assert.match(css, /overflow-y: auto;/);
