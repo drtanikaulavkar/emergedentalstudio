@@ -110,7 +110,12 @@
 
 @media (max-width: 920px) {
   .serviceTrigger {
+    margin-block: -10px;
     min-height: 44px;
+  }
+
+  .serviceTrigger::after {
+    bottom: 0;
   }
 
   .serviceMenu {
