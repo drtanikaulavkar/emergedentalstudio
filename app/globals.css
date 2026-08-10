@@ -1982,6 +1982,10 @@ p {
     height: 360px;
   }
 
+  .contact-map-link {
+    display: none;
+  }
+
   .floating-whatsapp {
     height: 52px;
     width: 52px;
