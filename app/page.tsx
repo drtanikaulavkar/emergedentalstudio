@@ -8,7 +8,6 @@ import {HeroCaptionReveal} from "@/components/HeroCaptionReveal";
 import {HeroCarousel} from "@/components/HeroCarousel";
 import {SectionHeader} from "@/components/SectionHeader";
 import {ServicesCarousel} from "@/components/ServicesCarousel";
-import {Button} from "@/components/ui/button";
 import {WhyChooseIcon, type WhyChooseIconName} from "@/components/WhyChooseIcon";
 import {doctor, formatAddress} from "@/lib/siteData";
 import {getPageBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries";
@@ -142,33 +141,29 @@ export default async function HomePage() {
                   <span className="hero-subtitle-line">Specialist-led cosmetic & implant dentistry in Indiranagar, Bengaluru.</span>
                   <span className="hero-subtitle-line">From smile makeovers to routine care, designed around you.</span>
                 </p>
-                <Button asChild className="button secondary hero-booking" size="lg" variant="warm">
-                  <a href={whatsappBookingUrl} target="_blank" rel="noreferrer">
-                    <CalendarDays aria-hidden="true" />
-                    Book a Consultation
-                  </a>
-                </Button>
+                <a className="button secondary hero-booking" href={whatsappBookingUrl} target="_blank" rel="noreferrer">
+                  <CalendarDays aria-hidden="true" />
+                  Book a Consultation
+                </a>
               </div>
             </HeroCaptionReveal>
           </div>
         </aside>
       </section>
 
-      <section className="container section services-section">
+      <section className="container section services-section homepage-deferred-section">
         <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
         </SectionHeader>
         <ServicesCarousel services={featuredServices} />
         <div className="actions">
-          <Button asChild className="button ghost" variant="outline">
-            <Link href="/services">
-              View all services
-              <ArrowRight aria-hidden="true" />
-            </Link>
-          </Button>
+          <Link className="button ghost" href="/services">
+            View all services
+            <ArrowRight aria-hidden="true" />
+          </Link>
         </div>
       </section>
 
-      <section className="section doctor-section">
+      <section className="section doctor-section homepage-deferred-section">
         <div className="container split">
           <Image
             className="doctor-photo"
@@ -185,17 +180,15 @@ export default async function HomePage() {
               {doctor.role} - {doctor.qualifications}
             </p>
             <p>{doctor.intro}</p>
-            <Button asChild className="button ghost doctor-link" variant="outline">
-              <Link href="/about">
-                Meet Dr. Tanisha
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
-            </Button>
+            <Link className="button ghost doctor-link" href="/about">
+              Meet Dr. Tanisha
+              <ArrowUpRight aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="section why-choose-section">
+      <section className="section why-choose-section homepage-deferred-section">
         <div className="container why-choose-layout">
           <div className="why-choose-heading">
             <p className="section-kicker">Facilities</p>
@@ -214,7 +207,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section reviews-section">
+      <section className="section reviews-section homepage-deferred-section">
         <div className="container">
           <SectionHeader eyebrow="Hear what our patients have to say about us" title="Patients reviews" />
           <Script src="https://apps.elfsight.com/p/platform.js" strategy="lazyOnload" />
@@ -224,7 +217,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="container section gallery-section">
+      <section className="container section gallery-section homepage-deferred-section">
         <SectionHeader eyebrow="Smile gallery" title="Results that speak" />
         <div className="gallery-grid">
           <article className="gallery-card">
@@ -248,7 +241,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="container section faq-section">
+      <section className="container section faq-section homepage-deferred-section">
         <div className="faq-layout">
           <Image className="faq-image" src="/images/home-faq.jpg" alt="Emerge Dental Studio consultation space" width={1004} height={1318} />
           <div>
@@ -259,7 +252,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section contact-section">
+      <section className="section contact-section homepage-deferred-section">
         <div className="container contact-home">
           <div className="contact-card">
             <p className="section-kicker">Contact us</p>
