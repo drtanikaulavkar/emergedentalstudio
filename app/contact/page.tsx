@@ -2,8 +2,7 @@ import type {Metadata} from "next";
 import {ArrowUpRight, Mail, MapPin, Phone} from "lucide-react";
 import {BookingForm} from "@/components/BookingForm";
 import {SocialIcon} from "@/components/SocialIcon";
-import type {SocialPlatform} from "@/components/SocialIcon";
-import {formatAddress} from "@/lib/siteData";
+import {formatAddress, socialProfiles} from "@/lib/siteData";
 import {buildPageMetadata} from "@/lib/seo";
 import {getPageBySlug, getSiteSettings} from "@/lib/sanity/queries";
 
@@ -12,21 +11,6 @@ const contactEmail = "emergedentalstudio@gmail.com";
 const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Emerge%20Dental%20Studio%20Indiranagar%20Bengaluru";
 const mapsUrl =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0059496583885!2d77.63272917520163!3d12.971470887343878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17258ff3f73d%3A0xa4f9b26340b29668!2sEmerge%20Dental%20Studio%20%7C%20Dentist%2C%20Prosthodontist%20%7C%207th%20Main%2C%20Indiranagar!5e0!3m2!1sen!2sin!4v1682962797284!5m2!1sen!2sin";
-const socialLinks = [
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/emergedentalstudio/"
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/profile.php?id=100085397533519"
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/emerge-dental-studio-multispeciality-dental-clinic/?viewAsMember=true"
-  }
-] satisfies Array<{label: SocialPlatform; href: string}>;
-
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("contact");
   return buildPageMetadata({
@@ -66,7 +50,7 @@ export default async function ContactPage() {
           <div className="contact-detail">
             <h2>Follow us</h2>
             <div className="social-links">
-              {socialLinks.map(({label, href}) => (
+              {socialProfiles.map(({label, href}) => (
                 <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={`Follow Emerge Dental Studio on ${label}`}>
                   <SocialIcon platform={label} />
                 </a>

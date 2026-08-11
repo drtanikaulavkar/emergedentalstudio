@@ -149,6 +149,21 @@ export const doctor = {
   ]
 };
 
+export const socialProfiles = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/emergedentalstudio/"
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=100085397533519"
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/emerge-dental-studio-multispeciality-dental-clinic/?viewAsMember=true"
+  }
+] as const;
+
 export const pages: Record<string, PageContent> = {
   home: {
     title: "Home",

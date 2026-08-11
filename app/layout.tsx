@@ -6,7 +6,7 @@ import "./globals.css";
 import {Footer} from "@/components/Footer";
 import {Header} from "@/components/Header";
 import {JsonLd} from "@/components/JsonLd";
-import {formatAddress} from "@/lib/siteData";
+import {doctor, formatAddress, socialProfiles} from "@/lib/siteData";
 import {getServices, getSiteSettings} from "@/lib/sanity/queries";
 
 const manrope = Manrope({
@@ -64,7 +64,13 @@ export default async function RootLayout({children}: {children: React.ReactNode}
       closes: hour.closes
     })),
     areaServed: settings.serviceAreas,
-    description: settings.description
+    description: settings.description,
+    sameAs: socialProfiles.map(({href}) => href),
+    founder: {
+      "@type": "Person",
+      name: doctor.name,
+      jobTitle: doctor.role
+    }
   };
 
   return (
