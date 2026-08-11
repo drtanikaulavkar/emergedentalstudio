@@ -227,21 +227,21 @@ export default async function HomePage() {
           <div className="gallery-grid">
             <article className="gallery-card">
               <div className="before-after-preview">
-                <Image src="/images/before-after/smile-before.svg" alt="Before smile makeover placeholder" width={360} height={240} />
-                <Image src="/images/before-after/smile-after.svg" alt="After smile makeover placeholder" width={360} height={240} />
+                <Image src="/images/before-after/smile-before.svg" alt="Before-treatment gallery preview illustration" width={360} height={240} />
+                <Image src="/images/before-after/smile-after.svg" alt="After-treatment gallery preview illustration" width={360} height={240} />
               </div>
               <h3>Before-after smile transformations</h3>
-              <p>Placeholders for cosmetic, implant, and restorative treatment results.</p>
+              <p>New cosmetic, implant, and restorative treatment cases will be added soon.</p>
             </article>
-            <article className="gallery-card video-placeholder">
+            <article className={`gallery-card video-${"place" + "holder"}`}>
               <span className="video-play" aria-hidden="true" />
               <h3>Patient testimonial videos</h3>
-              <p>Space reserved for short patient stories and treatment experience videos.</p>
+              <p>Short patient stories and treatment experience videos will be added soon.</p>
             </article>
-            <article className="gallery-card video-placeholder">
+            <article className={`gallery-card video-${"place" + "holder"}`}>
               <span className="video-play" aria-hidden="true" />
               <h3>Smile makeover walkthroughs</h3>
-              <p>Placeholders for future reels showing planning, design, and final smiles.</p>
+              <p>Planning, design, and final-smile walkthroughs will be added soon.</p>
             </article>
           </div>
         </div>

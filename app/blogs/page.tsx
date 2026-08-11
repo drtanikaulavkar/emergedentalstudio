@@ -28,7 +28,7 @@ export default function BlogsPage() {
         <div className="container">
           <p className="eyebrow">Blogs</p>
           <h1>Dental notes for clearer decisions</h1>
-          <p>Placeholder articles for future guides on smile design, implants, prevention, and everyday dental care.</p>
+          <p>Patient-friendly guides on smile design, implants, prevention, and everyday dental care are coming soon.</p>
         </div>
       </section>
 

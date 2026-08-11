@@ -43,3 +43,19 @@ test("Blogs metadata does not duplicate the clinic name", () => {
   assert.doesNotMatch(blogs, /title:\s*"Dental Blogs \| Emerge Dental Studio"/);
   assert.match(blogs, /title:\s*"Dental Blogs"/);
 });
+
+test("interim content stays visible without public placeholder wording", () => {
+  const home = read("app", "page.tsx");
+  const blogs = read("app", "blogs", "page.tsx");
+
+  assert.doesNotMatch(home, /placeholder/i);
+  assert.doesNotMatch(blogs, /placeholder/i);
+  assert.match(home, /will be added soon/i);
+  assert.match(blogs, /are coming soon/i);
+});
+
+test("sitemap does not claim every page changed at request time", () => {
+  const sitemap = read("app", "sitemap.ts");
+  assert.doesNotMatch(sitemap, /lastModified:\s*new Date\(\)/);
+  assert.doesNotMatch(sitemap, /lastModified:/);
+});
