@@ -8,12 +8,13 @@ const declarationsFor = (css, selector) =>
     .filter(([, selectors]) => selectors.split(",").map((item) => item.trim()).includes(selector))
     .map(([, , declarations]) => declarations);
 
-test("homepage actions use the shared button and Lucide icon system", () => {
+test("homepage actions use server-rendered links and the Lucide icon system", () => {
   const homepage = read("app/page.tsx");
   const header = read("components/Header.tsx");
 
   assert.match(homepage, /from\s+["']lucide-react["']/);
-  assert.match(homepage, /from\s+["']@\/components\/ui\/button["']/);
+  assert.doesNotMatch(homepage, /from\s+["']@\/components\/ui\/button["']/);
+  assert.doesNotMatch(header, /from\s+["']@\/components\/ui\/button["']/);
   assert.match(homepage, /<CalendarDays\b/);
   assert.match(homepage, /<MapPin\b/);
   assert.match(homepage, /<Phone\b/);
@@ -87,12 +88,16 @@ test("hero typography remains within the approved compact scale", () => {
 test("hero entrance motion is purposeful and respects reduced-motion preferences", () => {
   const homepage = read("app/page.tsx");
   const reveal = read("components/HeroCaptionReveal.tsx");
+  const css = read("app/globals.css");
 
   assert.match(homepage, /from\s+["']@\/components\/HeroCaptionReveal["']/);
   assert.match(homepage, /<HeroCaptionReveal>/);
-  assert.match(reveal, /from\s+["']motion\/react["']/);
-  assert.match(reveal, /useReducedMotion/);
+  assert.doesNotMatch(reveal, /^"use client";/m);
+  assert.doesNotMatch(reveal, /motion\/react|useReducedMotion/);
+  assert.match(reveal, /className="hero-caption-reveal"/);
   assert.doesNotMatch(reveal, /opacity:\s*0/);
+  assert.match(css, /@keyframes hero-caption-rise/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.hero-caption-reveal\s*\{[^}]*animation:\s*none/s);
 });
 
 test("mobile section headings can wrap without widening the page", () => {

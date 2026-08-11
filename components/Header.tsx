@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {MessageCircle} from "lucide-react";
 import {useCallback, useEffect, useRef, useState} from "react";
-import {Button} from "@/components/ui/button";
 import type {Service, SiteSettings} from "@/lib/siteData";
 import styles from "./Header.module.css";
 
@@ -142,12 +141,10 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
         <Link href="/blogs">Blogs</Link>
         <Link href="/contact">Contact</Link>
       </nav>
-      <Button asChild className="header-cta" size="md">
-        <a href={`https://wa.me/${settings.whatsappNumber}`} target="_blank" rel="noreferrer">
-          <MessageCircle aria-hidden="true" />
-          WhatsApp
-        </a>
-      </Button>
+      <a className="header-cta" href={`https://wa.me/${settings.whatsappNumber}`} target="_blank" rel="noreferrer">
+        <MessageCircle aria-hidden="true" />
+        WhatsApp
+      </a>
     </header>
   );
 }

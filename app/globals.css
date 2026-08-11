@@ -357,6 +357,20 @@ main {
   padding-left: clamp(14px, 2vw, 22px);
 }
 
+.hero-caption-reveal {
+  animation: hero-caption-rise 580ms var(--ease-out-quint) 120ms both;
+}
+
+@keyframes hero-caption-rise {
+  from {
+    transform: translateY(18px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 .hero-caption-copy {
   display: grid;
   gap: clamp(12px, 2vw, 18px);
@@ -647,6 +661,11 @@ p {
 
 .section {
   padding-block: clamp(34px, 6vw, 64px);
+}
+
+.homepage-deferred-section {
+  contain-intrinsic-block-size: auto 760px;
+  content-visibility: auto;
 }
 
 .section.alt {
@@ -2021,6 +2040,10 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-caption-reveal {
+    animation: none;
   }
 
   .motion-sequence > * {

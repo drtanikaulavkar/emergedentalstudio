@@ -19,7 +19,7 @@ const sectionClasses = [
 test("non-hero homepage sections use full-width wrappers with nested containers", () => {
   for (const sectionClass of sectionClasses) {
     const sectionPattern = new RegExp(
-      `<section className="section ${sectionClass}">\\s*<div className="container(?: [^"]+)?">`,
+      `<section className="section ${sectionClass}(?: [^"]+)?">\\s*<div className="container(?: [^"]+)?">`,
       "s"
     );
 

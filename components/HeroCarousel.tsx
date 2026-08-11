@@ -14,10 +14,29 @@ export type HeroCarouselSlide = {
 
 export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [deferredSlidesReady, setDeferredSlidesReady] = useState(false);
   const [isPointerPaused, setIsPointerPaused] = useState(false);
   const [isFocusPaused, setIsFocusPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const isPaused = prefersReducedMotion || isPointerPaused || isFocusPaused;
+
+  useEffect(() => {
+    const loadDeferredSlides = () => setDeferredSlidesReady(true);
+    const idleCallbackApi = window as unknown as {
+      requestIdleCallback?: Window["requestIdleCallback"];
+      cancelIdleCallback?: Window["cancelIdleCallback"];
+    };
+    const requestIdleCallback = idleCallbackApi.requestIdleCallback?.bind(window);
+    const cancelIdleCallback = idleCallbackApi.cancelIdleCallback?.bind(window);
+
+    if (requestIdleCallback && cancelIdleCallback) {
+      const idleCallback = requestIdleCallback(loadDeferredSlides, {timeout: 1800});
+      return () => cancelIdleCallback(idleCallback);
+    }
+
+    const fallbackTimer = window.setTimeout(loadDeferredSlides, 1200);
+    return () => window.clearTimeout(fallbackTimer);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -73,7 +92,17 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
             } as CSSProperties
           }
         >
-          <Image src={slide.src} alt={slide.alt} width={1600} height={1000} priority={index === 0} sizes="100vw" />
+          {(index === 0 || deferredSlidesReady) && (
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              width={1600}
+              height={1000}
+              priority={index === 0}
+              fetchPriority={index === 0 ? "high" : "low"}
+              sizes="100vw"
+            />
+          )}
         </figure>
       ))}
     </div>

@@ -15,8 +15,7 @@ test("design system dependencies are installed", () => {
     "class-variance-authority",
     "clsx",
     "tailwind-merge",
-    "lucide-react",
-    "motion"
+    "lucide-react"
   ]) {
     assert.ok(dependencies[dependency], `${dependency} should be listed in dependencies`);
   }
