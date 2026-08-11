@@ -10,6 +10,7 @@ import styles from "./Header.module.css";
 export function Header({settings, services}: {settings: SiteSettings; services: Pick<Service, "title" | "slug">[]}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
   const servicesTriggerRef = useRef<HTMLButtonElement>(null);
 
@@ -59,6 +60,29 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
   }, []);
 
   useEffect(() => {
+    const header = headerRef.current;
+
+    if (!header) {
+      return;
+    }
+
+    const updateScrollPadding = () => {
+      const headerHeight = header.getBoundingClientRect().height;
+      document.documentElement.style.setProperty("--site-header-height", `${headerHeight}px`);
+    };
+
+    updateScrollPadding();
+
+    const resizeObserver = new ResizeObserver(updateScrollPadding);
+    resizeObserver.observe(header);
+
+    return () => {
+      resizeObserver.disconnect();
+      document.documentElement.style.removeProperty("--site-header-height");
+    };
+  }, []);
+
+  useEffect(() => {
     const closeFromOutsidePointer = (event: PointerEvent) => {
       const dropdown = servicesDropdownRef.current;
 
@@ -84,7 +108,7 @@ export function Header({settings, services}: {settings: SiteSettings; services: 
   }, [closeServicesDropdown, isServicesOpen]);
 
   return (
-    <header className="site-header" data-scrolled={isScrolled}>
+    <header className="site-header" data-scrolled={isScrolled} ref={headerRef}>
       <Link className="brand" href="/" aria-label={`${settings.clinicName} home`}>
         <Image src="/images/emerge-logo.png" alt={settings.clinicName} width={180} height={45} priority />
       </Link>

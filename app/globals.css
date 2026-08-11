@@ -48,6 +48,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--site-header-height, 0px);
 }
 
 body {
@@ -302,7 +303,6 @@ img {
 
 main {
   overflow: hidden;
-  scroll-margin-top: 80px;
 }
 
 .page-transition-shell {

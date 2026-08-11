@@ -67,18 +67,12 @@ test("services disclosure uses deterministic touch and mouse interactions", () =
   assert.doesNotMatch(header, /onMouseLeave/);
 });
 
-test("service detail routes provide accessible loading feedback", () => {
+test("service detail routes preserve native scroll positioning during navigation", () => {
   const loadingPath = "app/services/[slug]/loading.tsx";
   const css = readFileSync("app/services/services.module.css", "utf8");
 
-  assert.equal(existsSync(loadingPath), true);
-  const loading = readFileSync(loadingPath, "utf8");
-
-  assert.match(loading, /role="status"/);
-  assert.match(loading, /aria-live="polite"/);
-  assert.match(loading, /styles\.serviceLoading/);
-  assert.match(loading, /Loading treatment details\.\.\./);
-  assert.doesNotMatch(loading, /…|â€¦/);
-  assert.match(css, /\.serviceLoading/);
-  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.equal(existsSync(loadingPath), false);
+  assert.doesNotMatch(css, /\.serviceLoading/);
+  assert.doesNotMatch(css, /service-loading-pulse/);
+  assert.doesNotMatch(css, /\.serviceSection\s*\{[^}]*scroll-margin-top\s*:/s);
 });
