@@ -1,5 +1,7 @@
 import type {Metadata} from "next";
 import {Manrope} from "next/font/google";
+import {Analytics} from "@vercel/analytics/next";
+import {SpeedInsights} from "@vercel/speed-insights/next";
 import "./globals.css";
 import {Footer} from "@/components/Footer";
 import {Header} from "@/components/Header";
@@ -81,6 +83,8 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           </svg>
           <span className="floating-whatsapp-label">WhatsApp</span>
         </a>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
