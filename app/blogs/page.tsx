@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type {Metadata} from "next";
+import {buildPageMetadata} from "@/lib/seo";
 
 const blogPosts = [
   {
@@ -14,10 +15,11 @@ const blogPosts = [
   }
 ];
 
-export const metadata: Metadata = {
-  title: "Dental Blogs | Emerge Dental Studio",
-  description: "Placeholder dental blogs from Emerge Dental Studio in Indiranagar, Bengaluru."
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Dental Blogs",
+  description: "Patient-friendly dental guides from Emerge Dental Studio in Indiranagar, Bengaluru, with new articles coming soon.",
+  path: "/blogs"
+});
 
 export default function BlogsPage() {
   return (

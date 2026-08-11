@@ -5,6 +5,7 @@ import {notFound} from "next/navigation";
 import {ArrowUpRight, Check, MessageCircle} from "lucide-react";
 import {FaqAccordion} from "@/components/FaqAccordion";
 import {Button} from "@/components/ui/button";
+import {buildServiceMetadata} from "@/lib/seo";
 import {getServiceBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries";
 import styles from "../services.module.css";
 
@@ -25,10 +26,7 @@ export async function generateMetadata({params}: ServicePageProps): Promise<Meta
     return {};
   }
 
-  return {
-    title: service.title,
-    description: service.summary
-  };
+  return buildServiceMetadata({title: service.title, summary: service.summary, slug: service.slug});
 }
 
 export default async function ServiceDetailPage({params}: ServicePageProps) {

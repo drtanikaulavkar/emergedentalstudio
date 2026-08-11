@@ -4,6 +4,7 @@ import {BookingForm} from "@/components/BookingForm";
 import {SocialIcon} from "@/components/SocialIcon";
 import type {SocialPlatform} from "@/components/SocialIcon";
 import {formatAddress} from "@/lib/siteData";
+import {buildPageMetadata} from "@/lib/seo";
 import {getPageBySlug, getSiteSettings} from "@/lib/sanity/queries";
 
 const contactServiceAreas = ["Indiranagar", "Koramangala", "Domlur", "Ulsoor", "Cambridge layout"];
@@ -28,10 +29,11 @@ const socialLinks = [
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("contact");
-  return {
+  return buildPageMetadata({
     title: page.seoTitle,
-    description: page.seoDescription
-  };
+    description: page.seoDescription,
+    path: "/contact"
+  });
 }
 
 export default async function ContactPage() {

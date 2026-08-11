@@ -2,15 +2,17 @@ import type {Metadata} from "next";
 import {CalendarDays} from "lucide-react";
 import {ServiceCard} from "@/components/ServiceCard";
 import {Button} from "@/components/ui/button";
+import {buildPageMetadata} from "@/lib/seo";
 import {getPageBySlug, getServices} from "@/lib/sanity/queries";
 import styles from "./services.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("services");
-  return {
+  return buildPageMetadata({
     title: page.seoTitle,
-    description: page.seoDescription
-  };
+    description: page.seoDescription,
+    path: "/services"
+  });
 }
 
 export default async function ServicesPage() {

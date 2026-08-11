@@ -10,6 +10,7 @@ import {SectionHeader} from "@/components/SectionHeader";
 import {ServicesCarousel} from "@/components/ServicesCarousel";
 import {WhyChooseIcon, type WhyChooseIconName} from "@/components/WhyChooseIcon";
 import {doctor, formatAddress} from "@/lib/siteData";
+import {buildPageMetadata} from "@/lib/seo";
 import {getPageBySlug, getServices, getSiteSettings} from "@/lib/sanity/queries";
 
 const carouselSlides = [
@@ -107,10 +108,11 @@ const whyChooseItems = [
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("home");
-  return {
+  return buildPageMetadata({
     title: page.seoTitle,
-    description: page.seoDescription
-  };
+    description: page.seoDescription,
+    path: "/"
+  });
 }
 
 export default async function HomePage() {

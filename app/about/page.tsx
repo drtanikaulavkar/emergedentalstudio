@@ -2,14 +2,16 @@ import type {Metadata} from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {doctor} from "@/lib/siteData";
+import {buildPageMetadata} from "@/lib/seo";
 import {getPageBySlug} from "@/lib/sanity/queries";
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getPageBySlug("about");
-  return {
+  return buildPageMetadata({
     title: page.seoTitle,
-    description: page.seoDescription
-  };
+    description: page.seoDescription,
+    path: "/about"
+  });
 }
 
 export default async function AboutPage() {
