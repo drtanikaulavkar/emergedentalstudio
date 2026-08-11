@@ -134,7 +134,6 @@ export default async function ServiceDetailPage({params}: ServicePageProps) {
                 {service.brands.map((brand) => (
                   <article className={styles.brandCard} key={brand.name}>
                     <Image src={brand.logoSrc} alt={brand.logoAlt} width={240} height={90} />
-                    <span>{brand.name}</span>
                   </article>
                 ))}
               </div>

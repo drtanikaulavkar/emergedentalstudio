@@ -479,7 +479,7 @@
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
   justify-content: center;
   min-height: 126px;
   padding: 20px;
@@ -492,13 +492,6 @@
 .brandCard img {
   max-height: 58px;
   object-fit: contain;
-}
-
-.brandCard span {
-  color: var(--ink);
-  font-size: 0.86rem;
-  font-weight: 750;
-  text-align: center;
 }
 
 .beforeAfterGrid {
