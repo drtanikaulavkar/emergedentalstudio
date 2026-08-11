@@ -12,7 +12,7 @@ Next.js scrolls the destination `<main>` into view after client-side navigation.
 
 - Add a ref to the persistent `Header` element.
 - Observe the rendered header with `ResizeObserver` and publish its current block size as the root CSS custom property `--site-header-height`.
-- Replace the fixed `main` scroll margin with `scroll-margin-top: var(--site-header-height, 80px)`.
+- Replace the fixed `main` scroll margin with `scroll-margin-top: var(--site-header-height, 0px)` so the fallback does not assume a header height.
 - Update the variable initially and whenever the header changes size, including responsive wrapping and viewport changes.
 - Remove the custom property when the header component unmounts.
 
