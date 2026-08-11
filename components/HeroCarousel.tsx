@@ -83,6 +83,7 @@ export function HeroCarousel({slides}: {slides: HeroCarouselSlide[]}) {
         <figure
           className="carousel-slide"
           data-active={index === activeIndex}
+          data-initial={index === 0}
           aria-hidden={index !== activeIndex}
           key={slide.caption}
           style={

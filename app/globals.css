@@ -538,6 +538,11 @@ p {
   transform: scale(1);
 }
 
+.carousel-slide[data-initial="true"] img {
+  transform: scale(1);
+  transition: none;
+}
+
 .hero h1 {
   color: var(--white);
   font-size: clamp(1.72rem, 3vw, 2.72rem);

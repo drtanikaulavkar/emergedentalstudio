@@ -135,3 +135,8 @@ test("reduced motion disables autoplay and progress animations", () => {
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.doesNotMatch(css, /\.carousel-progress/);
 });
+
+test("initial hero image stays visually stable for LCP measurement", () => {
+  assert.match(carousel, /data-initial=\{index === 0\}/);
+  assert.match(css, /\.carousel-slide\[data-initial="true"\] img\s*\{[^}]*transform:\s*scale\(1\)[^}]*transition:\s*none/s);
+});
