@@ -158,7 +158,7 @@ export default async function HomePage() {
           <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"} />
           <ServicesCarousel services={featuredServices} />
           <div className="actions services-actions">
-            <Link className="button ghost" href="/services">
+            <Link className="services-link" href="/services">
               View all services
               <ArrowRight aria-hidden="true" />
             </Link>

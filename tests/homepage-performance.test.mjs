@@ -42,7 +42,7 @@ test("styling-only actions do not create homepage client boundaries", () => {
   assert.doesNotMatch(header, /components\/ui\/button/);
   assert.doesNotMatch(button, /^"use client";/m);
   assert.match(homepage, /<a[^>]*className="button secondary hero-booking"/s);
-  assert.match(homepage, /<Link[^>]*className="button ghost"/s);
+  assert.match(homepage, /<Link[^>]*className="services-link"/s);
   assert.match(header, /<a className="header-cta"/);
 });
 

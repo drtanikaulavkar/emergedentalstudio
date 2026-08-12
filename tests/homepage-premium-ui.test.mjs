@@ -149,6 +149,6 @@ test("narrow mobile layouts keep full-size targets without horizontal overflow p
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.header-cta\s*\{[^}]*min-height:\s*44px/s);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.services-carousel-arrow\s*\{[^}]*display:\s*none/s);
   assert.match(homepage, /className="actions services-actions"/);
-  assert.equal(declarationsFor(css, ".button").some((declarations) => /min-height:\s*44px/.test(declarations)), true);
+  assert.equal(declarationsFor(css, ".services-link").some((declarations) => /min-height:\s*44px/.test(declarations)), true);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.contact-text-link\s*\{[^}]*min-height:\s*36px/s);
 });

@@ -696,7 +696,33 @@ p {
 
 .services-section .actions {
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 4px;
+}
+
+.services-link {
+  align-items: center;
+  color: var(--brand);
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 800;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 4px;
+}
+
+.services-link svg {
+  height: 16px;
+  transition: transform 180ms var(--ease-out-quart);
+  width: 16px;
+}
+
+.services-link:is(:hover, :focus-visible) svg {
+  transform: translateX(3px);
+}
+
+.services-link:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .section-header {
@@ -925,7 +951,8 @@ p {
 
 .services-carousel-rail .service-card-content {
   gap: 0;
-  padding: 10px 10px 12px;
+  grid-template-rows: auto auto minmax(4.05em, auto);
+  padding: 14px 14px 16px;
 }
 
 .services-carousel-rail .service-card-index,
@@ -935,30 +962,23 @@ p {
 
 .services-carousel-rail .service-card-meta {
   display: block;
-}
-
-.services-carousel-rail .service-card .eyebrow {
-  font-size: 0.68rem;
   margin-bottom: 4px;
 }
 
+.services-carousel-rail .service-card .eyebrow {
+  font-size: 0.72rem;
+}
+
 .services-carousel-rail .service-card h3 {
-  font-size: clamp(0.9rem, 0.82rem + 0.22vw, 1.02rem);
-  min-height: 0;
+  font-size: clamp(1rem, 0.92rem + 0.22vw, 1.12rem);
 }
 
 .services-carousel-rail .service-card-summary {
   display: -webkit-box;
-  font-size: clamp(0.74rem, 0.68rem + 0.16vw, 0.8rem);
-  -webkit-line-clamp: 2;
+  font-size: clamp(0.82rem, 0.78rem + 0.12vw, 0.88rem);
+  -webkit-line-clamp: 3;
   line-height: 1.35;
   margin-top: 8px;
-}
-
-@media (min-width: 1200px) {
-  .services-carousel-rail {
-    grid-auto-columns: calc((100% - 56px) / 5);
-  }
 }
 
 .motion-sequence > * {
@@ -1895,7 +1915,7 @@ p {
   }
 
   .services-carousel-rail {
-    grid-auto-columns: calc((100% - 28px) / 3);
+    grid-auto-columns: calc((100% - 14px) / 2);
   }
 
   .why-choose-grid {
@@ -2026,7 +2046,7 @@ p {
 
   .services-carousel-rail {
     gap: 12px;
-    grid-auto-columns: max(136px, calc((100% - 36px) / 2));
+    grid-auto-columns: calc(100% - 52px);
     padding: 2px 28px 5px 2px;
     scroll-padding-inline: 2px 18px;
     scroll-snap-type: x mandatory;

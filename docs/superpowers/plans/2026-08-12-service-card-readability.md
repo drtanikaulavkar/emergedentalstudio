@@ -12,6 +12,7 @@
 
 - Preserve one shared carousel code path.
 - Preserve service descriptions, whole-card links, the line indicator, mobile swipe, and desktop arrows.
+- Render “View all services” as a borderless text-and-arrow link with a 44px interaction height.
 - Show one card plus a next-card cue on phones, two cards on tablets, and four cards on desktop.
 - Do not alter service cards on the full Services directory page.
 
@@ -29,7 +30,7 @@
 
 - [ ] **Step 1: Update the source-level regression assertions**
 
-Require `grid-template-rows`, two-line title and summary minimum heights, larger padding and type, four desktop cards, two tablet cards, and one phone card with a visible next-card cue.
+Require `grid-template-rows`, a single-line title row, a three-line summary row, larger padding and type, four desktop cards, two tablet cards, one phone card with a visible next-card cue, and a lightweight section link.
 
 - [ ] **Step 2: Run the targeted test and verify it fails**
 
@@ -49,7 +50,7 @@ Expected: FAIL because the existing CSS still uses 1/2/3/4/5 sizing and no share
 
 - [ ] **Step 1: Add the shared content grid and readable type scale**
 
-Use reserved two-line rows for titles and descriptions, increase padding, and keep label/title/description spacing on the 4px rhythm.
+Use a natural single-line row for titles and a reserved three-line row for descriptions, increase padding, and keep label/title/description spacing on the 4px rhythm.
 
 - [ ] **Step 2: Replace the responsive widths**
 

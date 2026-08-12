@@ -15,28 +15,31 @@ test("homepage services use the standard section header and one shared action", 
   );
   assert.doesNotMatch(page, /services-heading-row|services-mobile-link|services-desktop-actions/);
   assert.match(page, /className="actions services-actions"/);
+  assert.match(page, /<Link className="services-link" href="\/services">/);
+  assert.doesNotMatch(page, /<Link className="button ghost" href="\/services">/);
+  assert.match(css, /\.services-link\s*\{[^}]*display:\s*inline-flex;[^}]*min-height:\s*44px/s);
+  assert.match(css, /\.services-link:focus-visible\s*\{[^}]*outline:\s*3px solid var\(--gold\)/s);
+  assert.match(css, /\.services-section \.actions\s*\{[^}]*margin-top:\s*4px/s);
 });
 
-test("the carousel uses one compact card presentation at every size", () => {
+test("the carousel uses one readable, vertically aligned card presentation at every size", () => {
   assert.match(
     css,
-    /\.services-carousel-rail \.service-card-content\s*\{[^}]*gap:\s*0;[^}]*padding:\s*10px 10px 12px/s
+    /\.services-carousel-rail \.service-card-content\s*\{[^}]*gap:\s*0;[^}]*grid-template-rows:\s*auto auto minmax\(4\.05em,\s*auto\);[^}]*padding:\s*14px 14px 16px/s
   );
-  assert.match(css, /\.services-carousel-rail \.service-card \.eyebrow\s*\{[^}]*margin-bottom:\s*4px/s);
-  assert.match(css, /\.services-carousel-rail \.service-card h3\s*\{[^}]*min-height:\s*0/s);
-  assert.match(css, /\.services-carousel-rail \.service-card-summary\s*\{[^}]*margin-top:\s*8px/s);
+  assert.match(css, /\.services-carousel-rail \.service-card \.eyebrow\s*\{[^}]*font-size:\s*0\.72rem/s);
+  assert.match(css, /\.services-carousel-rail \.service-card-meta\s*\{[^}]*margin-bottom:\s*4px/s);
+  assert.match(css, /\.services-carousel-rail \.service-card h3\s*\{[^}]*font-size:\s*clamp\(1rem,[^;]+1\.12rem\)/s);
+  assert.match(css, /\.services-carousel-rail \.service-card-summary\s*\{[^}]*font-size:\s*clamp\(0\.82rem,[^;]+0\.88rem\);[^}]*-webkit-line-clamp:\s*3;[^}]*margin-top:\s*8px/s);
   assert.match(css, /\.services-carousel-rail \.service-card-affordance\s*\{[^}]*display:\s*none/s);
 });
 
-test("responsive layouts show two, three, four, or five cards through CSS only", () => {
+test("responsive layouts show one, two, or four readable cards through CSS only", () => {
   assert.match(css, /\.services-carousel-rail\s*\{[^}]*grid-auto-columns:\s*calc\(\(100% - 42px\) \/ 4\)/s);
+  assert.doesNotMatch(css, /@media \(min-width: 1200px\)[\s\S]*\.services-carousel-rail/);
   assert.match(
     css,
-    /@media \(min-width: 1200px\)[\s\S]*\.services-carousel-rail\s*\{[^}]*grid-auto-columns:\s*calc\(\(100% - 56px\) \/ 5\)/s
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 920px\)[\s\S]*\.services-carousel-rail\s*\{[^}]*grid-auto-columns:\s*calc\(\(100% - 28px\) \/ 3\)/s
+    /@media \(max-width: 920px\)[\s\S]*\.services-carousel-rail\s*\{[^}]*grid-auto-columns:\s*calc\(\(100% - 14px\) \/ 2\)/s
   );
   assert.match(
     css,
@@ -48,7 +51,7 @@ test("responsive layouts show two, three, four, or five cards through CSS only",
   );
   assert.match(
     css,
-    /@media \(max-width: 560px\)[\s\S]*\.services-carousel-rail\s*\{[^}]*grid-auto-columns:\s*max\(136px,\s*calc\(\(100% - 36px\) \/ 2\)\)/s
+    /@media \(max-width: 560px\)[\s\S]*\.services-carousel-rail\s*\{[^}]*grid-auto-columns:\s*calc\(100% - 52px\)/s
   );
   assert.match(
     css,
