@@ -1877,7 +1877,7 @@ p {
   }
 
   .hero {
-    min-height: calc(100svh - 112px);
+    min-height: 70svh;
   }
 
   .hero-copy {

@@ -85,6 +85,16 @@ test("hero typography remains within the approved compact scale", () => {
   assert.match(css, /\.contact-text-link:is\(:hover, :focus-visible\)\s*\{[^}]*color:\s*var\(--action\);/s);
 });
 
+test("the hero is compact on mobile and remains viewport-filling on desktop", () => {
+  const css = read("app/globals.css");
+
+  assert.match(css, /\.hero\s*\{[^}]*min-height:\s*calc\(100svh\s*-\s*78px\);/s);
+  assert.match(
+    css,
+    /@media\s*\(max-width:\s*560px\)[\s\S]*?\.hero\s*\{[^}]*min-height:\s*70svh;/s
+  );
+});
+
 test("hero entrance motion is purposeful and respects reduced-motion preferences", () => {
   const homepage = read("app/page.tsx");
   const reveal = read("components/HeroCaptionReveal.tsx");
