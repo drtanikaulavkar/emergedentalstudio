@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint app components lib sanity scripts tests",
+    "lint": "eslint .",
     "test:homepage-motion": "node --test tests/homepage-motion.test.mjs",
     "test:page-transition": "node --test tests/page-transition.test.mjs",
     "test:impeccable-wrapper": "node --test tests/impeccable-wrapper.test.mjs",

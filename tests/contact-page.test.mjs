@@ -32,7 +32,7 @@ test("contact page provides direct contact, social, enquiry, and directions path
   assert.equal(existsSync(socialIconPath), true);
   const socialIcon = readFileSync(socialIconPath, "utf8");
   const css = readFileSync(join(process.cwd(), "app", "globals.css"), "utf8");
-  const {pages, siteSettings} = loadSiteData();
+  const {pages, siteSettings, socialProfiles} = loadSiteData();
 
   assert.equal(pages.contact.heroText, "");
   assert.equal(pages.contact.heroTitle, "Book an appointment with us");
@@ -42,9 +42,19 @@ test("contact page provides direct contact, social, enquiry, and directions path
   assert.match(contactPage, /const contactServiceAreas = \[/);
   assert.match(contactPage, /href=\{`tel:\$\{settings\.phone\}`\}/);
   assert.match(contactPage, /mailto:emergedentalstudio@gmail\.com/);
-  assert.match(contactPage, /facebook\.com\/profile\.php\?id=100085397533519/);
-  assert.match(contactPage, /instagram\.com\/emergedentalstudio/);
-  assert.match(contactPage, /linkedin\.com\/company\/emerge-dental-studio-multispeciality-dental-clinic/);
+  assert.match(contactPage, /import \{formatAddress, socialProfiles\} from "@\/lib\/siteData"/);
+  assert.match(contactPage, /socialProfiles\.map/);
+  assert.deepEqual(
+    Array.from(socialProfiles, ({label, href}) => ({label, href})),
+    [
+      {label: "Instagram", href: "https://www.instagram.com/emergedentalstudio/"},
+      {label: "Facebook", href: "https://www.facebook.com/profile.php?id=100085397533519"},
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/emerge-dental-studio-multispeciality-dental-clinic/?viewAsMember=true"
+      }
+    ]
+  );
   assert.match(contactPage, /import \{SocialIcon\} from "@\/components\/SocialIcon"/);
   assert.doesNotMatch(contactPage, /ExternalLink/);
   assert.match(contactPage, /<SocialIcon platform=\{label\} \/>/);

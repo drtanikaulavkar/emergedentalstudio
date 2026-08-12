@@ -10,7 +10,8 @@ type PageMetadataInput = {
 };
 
 export function buildPageMetadata({title, description, path}: PageMetadataInput): Metadata {
-  const brandedTitle = title.includes(clinicName) ? title : `${title} | ${clinicName}`;
+  const titleSegments = title.split("|").map((segment) => segment.trim()).filter(Boolean);
+  const brandedTitle = [...titleSegments.filter((segment) => segment !== clinicName), clinicName].join(" | ");
 
   return {
     title: {absolute: brandedTitle},

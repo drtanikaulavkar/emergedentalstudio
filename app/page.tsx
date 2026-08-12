@@ -233,12 +233,12 @@ export default async function HomePage() {
               <h3>Before-after smile transformations</h3>
               <p>New cosmetic, implant, and restorative treatment cases will be added soon.</p>
             </article>
-            <article className={`gallery-card video-${"place" + "holder"}`}>
+            <article className="gallery-card video-placeholder">
               <span className="video-play" aria-hidden="true" />
               <h3>Patient testimonial videos</h3>
               <p>Short patient stories and treatment experience videos will be added soon.</p>
             </article>
-            <article className={`gallery-card video-${"place" + "holder"}`}>
+            <article className="gallery-card video-placeholder">
               <span className="video-play" aria-hidden="true" />
               <h3>Smile makeover walkthroughs</h3>
               <p>Planning, design, and final-smile walkthroughs will be added soon.</p>
