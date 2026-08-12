@@ -83,8 +83,10 @@ export type PageContent = {
   }>;
 };
 
+const homeSeoTitle = "Dentist & Implantologist in Indiranagar, Bengaluru | Emerge Dental Studio";
+
 export const siteSettings: SiteSettings = {
-  title: "Best Dentist Near Me in Bengaluru | Emerge Dental Studio",
+  title: homeSeoTitle,
   description:
     "Emerge Dental Studio offers general, cosmetic, implant, orthodontic, pediatric, and restorative dental care in Bengaluru.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.emergedentalstudio.com",
@@ -168,7 +170,7 @@ export const pages: Record<string, PageContent> = {
   home: {
     title: "Home",
     slug: "home",
-    seoTitle: "Best Dentist Near Me in Bengaluru | Emerge Dental Studio",
+    seoTitle: homeSeoTitle,
     seoDescription:
       "Looking for a trusted dentist in Bengaluru? Emerge Dental Studio offers preventive, cosmetic, implant, orthodontic, pediatric, and restorative dental care.",
     heroTitle: "Beautiful Smiles. Built on Precision.",

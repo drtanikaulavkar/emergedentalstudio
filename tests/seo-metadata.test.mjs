@@ -7,6 +7,17 @@ import ts from "typescript";
 const root = resolve(import.meta.dirname, "..");
 const read = (...parts) => readFileSync(resolve(root, ...parts), "utf8");
 
+test("homepage targets dentist and implantologist searches in Indiranagar", () => {
+  const siteData = read("lib", "siteData.ts");
+  const expectedTitle = "Dentist & Implantologist in Indiranagar, Bengaluru | Emerge Dental Studio";
+
+  assert.equal(siteData.match(new RegExp(expectedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"))?.length, 1);
+  assert.match(siteData, /const homeSeoTitle =/);
+  assert.equal(siteData.match(/title: homeSeoTitle/g)?.length, 1);
+  assert.equal(siteData.match(/seoTitle: homeSeoTitle/g)?.length, 1);
+  assert.doesNotMatch(siteData, /Best Dentist Near Me in Bengaluru/);
+});
+
 test("public routes use the shared canonical and Open Graph metadata builder", () => {
   const seoPath = resolve(root, "lib", "seo.ts");
   assert.equal(existsSync(seoPath), true, "lib/seo.ts should exist");
