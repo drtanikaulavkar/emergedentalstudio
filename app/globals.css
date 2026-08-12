@@ -775,7 +775,8 @@ p {
   grid-auto-columns: calc((100% - 42px) / 4);
   grid-auto-flow: column;
   overflow-x: auto;
-  padding: 2px;
+  padding-block: 2px;
+  padding-inline: 0;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;

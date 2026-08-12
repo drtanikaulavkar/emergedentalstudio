@@ -51,3 +51,8 @@ test("homepage sections below the hero opt into offscreen rendering containment"
   assert.match(css, /\.homepage-deferred-section\s*\{[^}]*content-visibility:\s*auto/s);
   assert.match(css, /\.homepage-deferred-section\s*\{[^}]*contain-intrinsic-block-size:\s*auto 760px/s);
 });
+
+test("services carousel starts at an exact scroll-snap position without inline padding", () => {
+  assert.match(css, /\.services-carousel-rail\s*\{[^}]*padding-inline:\s*0/s);
+  assert.match(css, /\.services-carousel-rail\s*\{[^}]*scroll-snap-type:\s*x mandatory/s);
+});
