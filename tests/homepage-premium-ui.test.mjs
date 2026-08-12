@@ -143,9 +143,12 @@ test("the mobile header and key homepage folds use compact natural heights", () 
 
 test("narrow mobile layouts keep full-size targets without horizontal overflow pressure", () => {
   const css = read("app/globals.css");
+  const homepage = read("app/page.tsx");
 
   assert.match(css, /@media\s*\(max-width:\s*360px\)/);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.header-cta\s*\{[^}]*min-height:\s*44px/s);
-  assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.services-carousel-arrow\s*\{[^}]*height:\s*44px;[^}]*width:\s*44px/s);
+  assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.services-carousel-arrow\s*\{[^}]*display:\s*none/s);
+  assert.match(homepage, /className="actions services-actions"/);
+  assert.equal(declarationsFor(css, ".button").some((declarations) => /min-height:\s*44px/.test(declarations)), true);
   assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.contact-text-link\s*\{[^}]*min-height:\s*36px/s);
 });

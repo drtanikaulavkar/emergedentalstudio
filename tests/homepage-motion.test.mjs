@@ -46,7 +46,7 @@ test("homepage sections reflect the requested content structure", () => {
   assert.match(page, /"braces-aligners"/);
   assert.match(page, /"root-canal-treatment"/);
   assert.match(page, /<ServicesCarousel services=\{featuredServices\} \/>/);
-  assert.match(page, /<SectionHeader eyebrow="Services" title=\{servicesIntro\?\.title \|\| "Care for every stage of your smile"\}>\s*<\/SectionHeader>/);
+  assert.match(page, /<SectionHeader eyebrow="Services" title=\{servicesIntro\?\.title \|\| "Care for every stage of your smile"\} \/>/);
   assert.match(page, /<p className="section-kicker">Facilities<\/p>/);
   assert.match(page, /<h2>Why choose us\?<\/h2>/);
   assert.match(page, /Individualized & Family Dental Care/);

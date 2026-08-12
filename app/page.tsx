@@ -155,10 +155,9 @@ export default async function HomePage() {
 
       <section className="section services-section homepage-deferred-section">
         <div className="container services-content">
-          <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"}>
-          </SectionHeader>
+          <SectionHeader eyebrow="Services" title={servicesIntro?.title || "Care for every stage of your smile"} />
           <ServicesCarousel services={featuredServices} />
-          <div className="actions">
+          <div className="actions services-actions">
             <Link className="button ghost" href="/services">
               View all services
               <ArrowRight aria-hidden="true" />
