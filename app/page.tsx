@@ -180,7 +180,10 @@ export default async function HomePage() {
             <h2>{doctor.name}</h2>
             <p className="doctor-credential">
               <BadgeCheck aria-hidden="true" />
-              {doctor.role} - {doctor.qualifications}
+              <span className="doctor-credential-copy">
+                <span>{doctor.role}</span>
+                <span>BDS, MDS in Prosthodontics.</span>
+              </span>
             </p>
             <p>{doctor.intro}</p>
             <Link className="button ghost doctor-link" href="/about">
@@ -194,8 +197,7 @@ export default async function HomePage() {
       <section className="section why-choose-section homepage-deferred-section">
         <div className="container why-choose-layout">
           <div className="why-choose-heading">
-            <p className="section-kicker">Facilities</p>
-            <h2>Why choose us?</h2>
+            <h2>Why Choose Us</h2>
           </div>
           <div className="why-choose-grid" aria-label="Reasons to choose Emerge Dental Studio">
             {whyChooseItems.map((item) => (
@@ -212,7 +214,7 @@ export default async function HomePage() {
 
       <section className="section reviews-section homepage-deferred-section">
         <div className="container">
-          <SectionHeader eyebrow="Hear what our patients have to say about us" title="Patients reviews" />
+          <SectionHeader title="Patient Reviews" />
           <Script src="https://apps.elfsight.com/p/platform.js" strategy="lazyOnload" />
           <div className="reviews-widget">
             <div className="elfsight-app-ff647765-4f7b-4dc5-bd88-b5235109b9ca" />
@@ -222,7 +224,7 @@ export default async function HomePage() {
 
       <section className="section gallery-section homepage-deferred-section">
         <div className="container gallery-content">
-          <SectionHeader eyebrow="Smile gallery" title="Results that speak" />
+          <SectionHeader title="Smile Gallery" />
           <div className="gallery-grid">
             <article className="gallery-card">
               <div className="before-after-preview">
@@ -250,8 +252,7 @@ export default async function HomePage() {
         <div className="container faq-layout">
           <Image className="faq-image" src="/images/home-faq.jpg" alt="Emerge Dental Studio consultation space" width={1004} height={1318} />
           <div>
-            <p className="section-kicker">Before you visit</p>
-            <h2>Frequently asked questions</h2>
+            <h2>Frequently Asked Questions</h2>
             <FaqAccordion items={faqs} defaultOpenFirst />
           </div>
         </div>
@@ -260,8 +261,7 @@ export default async function HomePage() {
       <section className="section contact-section homepage-deferred-section">
         <div className="container contact-home">
           <div className="contact-card">
-            <p className="section-kicker">Contact us</p>
-            <h2>Visit us</h2>
+            <h2>Visit Our Clinic</h2>
             <a className="home-address-link" href={directionsUrl} target="_blank" rel="noreferrer">
               <MapPin aria-hidden="true" />
               <span>{formatAddress(settings)}</span>

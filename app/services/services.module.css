@@ -84,21 +84,23 @@
 .servicesHeroIndex strong {
   color: var(--palette-sage);
   font-size: clamp(3rem, 7vw, 5.8rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 0.9;
 }
 
 .servicesHeroIndex span {
   color: var(--white);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .servicesHeroIndex p {
   color: rgb(var(--palette-white-rgb) / 0.66);
-  font-size: 0.92rem;
+  font-size: 1rem;
+  line-height: 1.5;
   max-width: 24ch;
 }
 
@@ -163,7 +165,8 @@
 
 .servicesGrid :global(.service-card-summary) {
   -webkit-line-clamp: 3;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .serviceHero {
@@ -191,7 +194,7 @@
 
 .serviceIntro {
   color: var(--ink-soft);
-  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+  font-size: clamp(1.0625rem, 1.25vw, 1.08rem);
   line-height: 1.62;
   margin-top: 18px;
   max-width: 660px;
@@ -257,16 +260,17 @@
 
 .pageGuide strong {
   color: var(--ink);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   margin-bottom: 8px;
   text-transform: uppercase;
 }
 
 .pageGuide a {
   color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 650;
+  font-size: 0.9375rem;
+  font-weight: 600;
   padding-block: 5px;
   transition: color 160ms var(--ease-out-quart), translate 160ms var(--ease-out-quart);
 }
@@ -287,14 +291,15 @@
 }
 
 .serviceSection h2 {
-  font-size: clamp(1.45rem, 2.4vw, 2.05rem);
+  font-size: clamp(1.5rem, 2.4vw, 2.05rem);
   max-width: 21ch;
 }
 
 .sectionLabel {
   color: var(--brand);
-  font-size: 0.76rem;
-  font-weight: 800;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -303,7 +308,7 @@
   color: var(--ink);
   columns: 2;
   font-size: clamp(1rem, 1.7vw, 1.12rem);
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.45;
   margin: 0;
   padding: 22px 0 10px 26px;
@@ -339,7 +344,7 @@
 .stepNumber {
   color: var(--brand);
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 700;
   padding-top: 3px;
 }
 
@@ -347,7 +352,7 @@
 .sectionCard h3,
 .caseCard h3 {
   font-family: var(--font-body), "Segoe UI", sans-serif;
-  font-size: 1.08rem;
+  font-size: 1.125rem;
   font-weight: 800;
 }
 
@@ -356,7 +361,8 @@
 .sectionCard li,
 .aftercareList li {
   color: var(--ink-soft);
-  font-size: 0.96rem;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 .processStep p {
@@ -447,11 +453,13 @@
 .caseLabel {
   background: rgb(var(--palette-plum-rgb) / 0.88);
   color: var(--white);
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-size: 0.8125rem;
+  font-weight: 700;
   left: 8px;
+  letter-spacing: 0.08em;
   padding: 4px 7px;
   position: absolute;
+  text-transform: uppercase;
   top: 8px;
 }
 
@@ -463,7 +471,8 @@
 
 .caseCaption {
   color: var(--ink-soft);
-  font-size: 0.88rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .sectionCards {
@@ -504,7 +513,7 @@
   border-bottom: 1px solid var(--line);
   display: flex;
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 700;
   justify-content: space-between;
   min-height: 76px;
   padding: 14px 4px;
@@ -518,8 +527,9 @@
 
 .relatedLink small {
   color: var(--muted);
-  font-size: 0.68rem;
-  font-weight: 750;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -666,8 +676,7 @@
   }
 
   .serviceIntro {
-    font-size: 0.92rem;
-    line-height: 1.48;
+    line-height: 1.5;
     margin-top: 12px;
   }
 
