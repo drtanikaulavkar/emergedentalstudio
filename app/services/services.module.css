@@ -227,38 +227,15 @@
   margin-top: 26px;
 }
 
-.heroImageFrame {
-  isolation: isolate;
-  position: relative;
-}
-
-.heroImageFrame::before {
-  border: 1px solid rgb(var(--palette-orchid-rgb) / 0.42);
-  content: "";
-  inset: 18px -16px -16px 18px;
-  position: absolute;
-  z-index: -1;
-}
-
 .heroImage {
   aspect-ratio: 16 / 10;
+  border-radius: 8px;
   display: block;
   height: min(34vw, 420px);
   max-height: 420px;
   min-height: 300px;
   object-fit: cover;
   width: 100%;
-}
-
-.heroImageLabel {
-  background: var(--palette-plum);
-  bottom: 0;
-  color: var(--white);
-  font-size: 0.76rem;
-  font-weight: 700;
-  left: 0;
-  padding: 10px 14px;
-  position: absolute;
 }
 
 .serviceLayout {

@@ -74,10 +74,7 @@ export default async function ServiceDetailPage({params}: ServicePageProps) {
               </a>
             </Button>
           </div>
-          <div className={styles.heroImageFrame}>
-            <Image className={styles.heroImage} src={service.imageSrc} alt={service.imageAlt} width={960} height={720} priority />
-            <span className={styles.heroImageLabel}>Personalised care at Emerge</span>
-          </div>
+          <Image className={styles.heroImage} src={service.imageSrc} alt={service.imageAlt} width={960} height={720} priority />
         </div>
       </section>
 
