@@ -7,3 +7,7 @@ output
 .env
 *.log
 *.tsbuildinfo
+.codex-temp/
+.playwright-cli/
+.worktrees/
+.superpowers/

@@ -1,4 +1,4 @@
-# Elfsight Reviews Performance — Pending Work
+# Elfsight Reviews Performance
 
 **Status:** Deferred by product decision on 2026-07-27.
 

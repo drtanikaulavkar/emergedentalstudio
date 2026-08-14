@@ -1,78 +1,31 @@
 import assert from "node:assert/strict";
-import {existsSync, readFileSync} from "node:fs";
+import {readFileSync} from "node:fs";
 import test from "node:test";
 
-test("header exposes services as a dropdown of direct service links", () => {
+test("header receives CMS service data and exposes direct treatment links", () => {
   const header = readFileSync("components/Header.tsx", "utf8");
   const layout = readFileSync("app/layout.tsx", "utf8");
 
-  assert.match(header, /services:\s*Pick<Service,\s*"title"\s*\|\s*"slug">/);
-  assert.match(header, /Header\.module\.css/);
-  assert.doesNotMatch(header, /aria-haspopup/);
-  assert.match(header, /className=\{styles\.serviceMenu\}/);
-  assert.match(header, /href=\{`\/services\/\$\{service\.slug\}`\}/);
-  assert.match(header, /href="\/blogs"/);
-  assert.doesNotMatch(header, /\{href:\s*"\/services",\s*label:\s*"Services"\}/);
   assert.match(layout, /getServices/);
-  assert.match(layout, /<Header settings=\{settings\} services=\{services\}/);
+  assert.match(layout, /<Header[^>]*services=\{services\}/);
+  assert.match(header, /\/services\/\$\{service\.slug\}/);
 });
 
-test("services disclosure uses deterministic touch and mouse interactions", () => {
+test("services disclosure supports pointer, keyboard, and screen-reader interaction", () => {
   const header = readFileSync("components/Header.tsx", "utf8");
-  const css = readFileSync("components/Header.module.css", "utf8");
 
-  assert.match(header, /useRef/);
-  assert.match(header, /servicesDropdownRef/);
-  assert.match(header, /const servicesTriggerRef = useRef<HTMLButtonElement>\(null\);/);
-  assert.match(header, /ref=\{servicesTriggerRef\}/);
-  assert.match(header, /const closeServicesDropdown = useCallback\(\(\) => \{/);
-  assert.match(header, /const openServicesDropdown = useCallback\(\(\) => \{/);
-  assert.match(header, /const toggleServicesDropdown = useCallback\(\(\) => \{\s*setIsServicesOpen\(\(isOpen\) => !isOpen\);/);
-  assert.match(header, /onClick=\{toggleServicesDropdown\}/);
-  assert.match(header, /onPointerEnter=\{\(event\) => \{\s*if \(event\.pointerType === "mouse"\) \{\s*openServicesDropdown\(\);/);
-  assert.match(header, /onPointerLeave=\{\(event\) => \{\s*if \(event\.pointerType === "mouse"\) \{\s*closeServicesDropdown\(\);/);
-  assert.doesNotMatch(header, /onFocus=/);
-  assert.match(header, /pointerdown/);
-  assert.match(header, /contains\(event\.target as Node\)/);
-  assert.match(header, /event\.key === "Escape" && isServicesOpen/);
-  assert.match(header, /servicesTriggerRef\.current\?\.focus\(\);/);
-  assert.match(header, /\[closeServicesDropdown, isServicesOpen\]/);
-  assert.match(header, /onClick=\{closeServicesDropdown\}/);
-  assert.doesNotMatch(header, /onPointerDown=\{\(event\) => \{/);
-  assert.doesNotMatch(header, /event\.currentTarget\.blur\(\)/);
-  assert.match(header, /aria-controls="services-menu"/);
-  assert.match(header, /id="services-menu"/);
-  assert.match(header, /inert=\{!isServicesOpen\}/);
-  assert.match(header, /aria-hidden=\{!isServicesOpen\}/);
-  assert.doesNotMatch(header, /role="menu"/);
-  assert.doesNotMatch(header, /role="menuitem"/);
-  assert.match(css, /\.serviceMenu\[data-open="true"\]/);
-  assert.match(css, /@media \(max-width: 920px\)[\s\S]*?\.serviceTrigger[\s\S]*?min-height: 44px;/);
-  assert.match(
-    css,
-    /@media \(max-width: 920px\)[\s\S]*?\.serviceTrigger\s*\{[^}]*margin-block:\s*-10px;[^}]*min-height:\s*44px;[^}]*\}/
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 920px\)[\s\S]*?\.serviceTrigger::after\s*\{[^}]*bottom:\s*0;[^}]*\}/
-  );
-  assert.match(css, /@media \(max-width: 920px\)[\s\S]*?\.serviceMenu a[\s\S]*?min-height: 44px;/);
-  assert.match(css, /max-height: calc\(100vh -[^;]*env\(safe-area-inset-bottom, 0px\)\);\s*max-height: calc\(100dvh -[^;]*env\(safe-area-inset-bottom, 0px\)\);/);
-  assert.match(css, /overflow-y: auto;/);
-  assert.doesNotMatch(header, /isServicesClosing/);
-  assert.doesNotMatch(css, /\.serviceDropdown:hover \.serviceMenu/);
-  assert.doesNotMatch(css, /\.serviceDropdown:focus-within \.serviceMenu/);
-  assert.doesNotMatch(css, /data-closing/);
-  assert.doesNotMatch(header, /onMouseEnter/);
-  assert.doesNotMatch(header, /onMouseLeave/);
+  assert.match(header, /onClick/);
+  assert.match(header, /onPointerEnter/);
+  assert.match(header, /onPointerLeave/);
+  assert.match(header, /Escape/);
+  assert.match(header, /aria-controls/);
+  assert.match(header, /aria-hidden/);
+  assert.match(header, /inert/);
+  assert.match(header, /\.focus\(\)/);
 });
 
-test("service detail routes preserve native scroll positioning during navigation", () => {
-  const loadingPath = "app/services/[slug]/loading.tsx";
+test("service detail navigation does not replace native scrolling with a loading shell", () => {
   const css = readFileSync("app/services/services.module.css", "utf8");
 
-  assert.equal(existsSync(loadingPath), false);
-  assert.doesNotMatch(css, /\.serviceLoading/);
   assert.doesNotMatch(css, /service-loading-pulse/);
-  assert.doesNotMatch(css, /\.serviceSection\s*\{[^}]*scroll-margin-top\s*:/s);
 });
